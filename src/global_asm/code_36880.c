@@ -826,43 +826,35 @@ void func_global_asm_80634908(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4
     func_global_asm_80633A1C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-// TODO: Needs more shape on Prop_unk24
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063495C.s")
-
-/*
 void func_global_asm_8063495C(Prop_unk24 *arg0, Prop *arg1) {
     PropModel50_B8 *var_v0;
     s16 *var_t0;
-    s32 *temp_a3;
-    s32 var_a0;
-    s32 var_t1;
-    s32 var_t2;
+    s32 count;
+    s32 target;
+    s32 found;
+    s32 i;
 
     var_v0 = arg1->model_pointer->unk50;
     if (var_v0 != NULL) {
         do {
-            var_t1 = 0;
-            temp_a3 = arg0->unk70 + arg0;
-            var_a0 = *temp_a3;
-            var_t0 = temp_a3 + 4;
-            var_t2 = 0;
-            if (var_a0 != 0) {
-loop_2:
-                if (var_v0->unk5C == *var_t0) {
-                    var_t1 = 1;
-                } else {
-                    var_a0 -= 1;
-                    var_t0 += 0x30;
-                    var_t2 += 1;
-                }
-                if (var_a0 != 0) {
-                    if (var_t1 == 0) {
-                        goto loop_2;
+            target = var_v0->unk5C;
+            count = *(s32 *) (arg0->unk70 + ((u8 *) arg0));
+            var_t0 = (s16 *) ((s32 *) (arg0->unk70 + ((u8 *) arg0)) + 1);
+            found = FALSE;
+            i = 0;
+            if (count != 0) {
+                do {
+                    if (target == (*var_t0)) {
+                        found = TRUE;
+                    } else {
+                        count -= 1;
+                        var_t0 += 0x18;
+                        i += 1;
                     }
-                }
+                } while ((count != 0) && (found == 0));
             }
-            if (var_t1 != 0) {
-                var_v0->unk44 = arg1->model_pointer->unk0[var_t2].unk24;
+            if (found != FALSE) {
+                var_v0->unk44 = (s32) arg1->model_pointer->unk24[i];
             } else {
                 var_v0->unk44 = 0;
             }
@@ -870,7 +862,6 @@ loop_2:
         } while (var_v0 != NULL);
     }
 }
-*/
 
 // Init for PropModel50_B8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806349FC.s")

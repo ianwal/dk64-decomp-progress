@@ -760,7 +760,7 @@ us,asm,func_global_asm_80692500,32,yes
 us,asm,func_global_asm_8073726C,560,yes
 us,asm,func_global_asm_806E5ED4,204,yes
 us,asm,func_global_asm_80661440,68,yes
-us,asm,func_global_asm_8063495C,160,no
+us,asm,func_global_asm_8063495C,160,yes
 us,asm,func_global_asm_806B1EA8,32,yes
 us,asm,func_global_asm_806E2C74,80,yes
 us,asm,func_global_asm_806D6F0C,88,yes
