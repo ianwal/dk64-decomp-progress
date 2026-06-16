@@ -29,14 +29,34 @@ void func_global_asm_80613A50(Actor *arg0, s8 arg1) {
     func_global_asm_80614644(arg0, aaS0, temp3);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80613AF8.s")
+extern u16 *D_global_asm_807FBB58;
+
+void func_global_asm_80613AF8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
+    s16 temp_t2;
+    u16 temp;
+    u32 new_var;
+
+    if (arg1 >= 0) {
+        temp_t2 = arg1 - ((((arg1 & 0x4000) & 0xFFFF) & 0xFFFF) & 0xFFFF);
+        new_var = temp_t2;
+        extra_player_info_pointer->unk4E = new_var;
+        temp = ((temp_t2 * 7) + arg0->unk58) - 2;
+
+        // fake match
+        if (0) {
+        }
+
+        arg1 = D_global_asm_807FBB58[temp] + (arg1 & 0x4000);
+    } else {
+        extra_player_info_pointer->unk4E = arg1;
+    }
+    func_global_asm_80613C48(arg0, arg1, arg2, arg3);
+}
 
 extern u16 *D_807FBB58;
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80613BA0.s")
-
-extern u16 *D_global_asm_807FBB58;
 
 /*
 void func_global_asm_80613BA0(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {

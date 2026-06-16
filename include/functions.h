@@ -507,7 +507,7 @@ void func_global_asm_806136B4(Actor *arg0);
 void func_global_asm_80613794(Actor *arg0, u8 arg1);
 // TODO: func_global_asm_80613944 has no documented signature
 void func_global_asm_80613A50(Actor *arg0, s8 arg1);
-void func_global_asm_80613AF8(Actor *arg0, s32 arg1, f32 arg2, f32 arg3);
+void func_global_asm_80613AF8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3);
 // TODO: func_global_asm_80613BA0 has no documented signature
 void func_global_asm_80613C48(Actor *arg0, s16 arg1, f32 arg2, f32 arg3);
 // TODO: func_global_asm_80613CA8 has no documented signature
@@ -4817,4 +4817,3 @@ void func_jetpac_8002AEFC(Gfx **arg0, char *string, s32 x, s32 y, s32 arg4);
 void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u8 arg5, u8 *arg6);
 
 #endif
-
