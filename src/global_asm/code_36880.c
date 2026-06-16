@@ -988,7 +988,78 @@ void func_global_asm_80635098(PropModel50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3
 
 // Similar to below, loops over DL looking for specific commands (G_SETTIMG (0xFD), G_SETPRIMCOLOR (0xFA))
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80635114.s")
+void func_global_asm_80635114(Gfx *gfx, s32 len, s32 img, s32 arg3, Gfx **fd1, Gfx **fd2, Gfx **fa) {
+    s32 found;
+    u32 new_var4;
+    u32 new_var2;
+    Gfx **new_var;
+    *fd1 = 0;
+    *fd2 = 0;
+    *fa = 0;
+    found = FALSE;
+
+    if (len != 0) {
+        while (1) {
+            len -= 8;
+            new_var4 = gfx->words.w0 >> 24;
+            if (new_var4 == G_SETTIMG) {
+                if (gfx->words.w1 == ((u32) img)) {
+                    *fd1 = gfx;
+                    found = TRUE;
+                }
+            }
+            gfx++;
+            if (found) {
+                break;
+            }
+            if (len == 0) {
+                break;
+            }
+        }
+    }
+
+    if (arg3 != 0) {
+        found = ((u32) img) * 0;
+        if (len != 0) {
+            while (1) {
+                len -= 8;
+                new_var2 = gfx->words.w0 >> 24;
+                if (new_var2 == G_SETTIMG) {
+                    if (gfx->words.w1 == ((u32) img)) {
+                        *fd2 = gfx;
+                        found = TRUE;
+                    }
+                }
+                gfx++;
+                if (found) {
+                    break;
+                }
+                if (len == 0) {
+                    break;
+                }
+            }
+        }
+        found = 0;
+        if (len != 0) {
+            while (1) {
+                new_var4 = gfx->words.w0 >> 24;
+                len -= 8;
+                if (new_var4 == G_SETPRIMCOLOR) {
+                    new_var = fa;
+                    *new_var = gfx;
+                    found = TRUE;
+                }
+                gfx++;
+                if (found) {
+                    break;
+                }
+                if (len == 0) {
+                    break;
+                }
+            }
+        }
+    }
+}
 
 // Appears to find the offset of the first G_ENDDL command in a Display List
 s32 func_global_asm_80635214(Gfx *dl) {
