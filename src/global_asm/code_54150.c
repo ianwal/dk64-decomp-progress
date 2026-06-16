@@ -198,20 +198,16 @@ void func_global_asm_806508B4(s16 arg0, s16 arg1, s16 arg2) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8065092C.s")
-
-/*
 void func_global_asm_8065092C(s16 arg0, s16 arg1) {
     Prop_unk78 *temp_a0;
 
     temp_a0 = D_global_asm_807F6000[func_global_asm_80659470(arg0)].unk78;
-    if (temp_a0 != NULL) {
-        temp_a0[arg1 + 1].unk2 = 0;
-        func_global_asm_8064FA7C(temp_a0, &temp_a0->unk8);
+    if (temp_a0 != 0) {
+        // Same as temp_a0[arg1 + 1].unk2 = 0 but matches.
+        ((temp_a0 + arg1) + 1)->unk2 = 0;
+        func_global_asm_8064FA7C(temp_a0, &temp_a0[arg1].unk8);
     }
 }
-*/
 
 void func_global_asm_80650998(s16 arg0, s16 arg1) {
     Prop_unk78 *temp_v1;
