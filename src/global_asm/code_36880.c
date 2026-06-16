@@ -1036,34 +1036,44 @@ typedef struct {
     void *unk34[1]; // TODO: How many?
 } Struct80635548;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80635468.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+} Struct80635468_arg0_elem;
 
-/*
-// TODO: Hmm
-void func_global_asm_80635468(Struct80635548_unk24 *arg0, Struct80635548 *arg1) {
+typedef struct {
+    char pad[0x20];
+    u8 unk20;
+    char pad21[3];
+    void *unk24[1];
+    char pad28[0xC];
+    void *unk34[1];
+} Struct80635468_arg1;
+
+// I think arg0 is Prop_unk24, but it might not be.
+void func_global_asm_80635468(Prop_unk24 *arg0, Struct80635468_arg1 *arg1) {
     s16 temp_a1;
     s32 i;
-    s32 var_v0;
-    void *var_s2;
+    u8 var_v0;
+    Struct80635468_arg0_elem *var_s2;
 
-    var_s2 = arg0->unk70 + arg0 + 4;
-    if (*(arg0->unk6C + arg0) != 0) {
-        var_v0 = 7;
+    var_s2 = (Struct80635468_arg0_elem *) ((arg0->unk70 + ((u8 *) arg0)) + 4);
+    if ((*((s32 *) (arg0->unk6C + ((u8 *) arg0)))) != 0) {
+        var_v0 = TABLE_07_TEXTURES_UNCOMPRESSED;
     } else {
-        var_v0 = 0x19;
+        var_v0 = TABLE_25_TEXTURES_GEOMETRY;
     }
     for (i = 0; i < arg1->unk20; i++) {
         arg1->unk24[i] = getPointerTableFile(var_v0, var_s2->unk0, 1, 0);
         temp_a1 = var_s2->unk2;
-        if (temp_a1 != -1) {
+        if (temp_a1 != ((-1) & 0xFFFFFFFFu)) {
             arg1->unk34[i] = getPointerTableFile(var_v0, temp_a1, 1, 0);
         } else {
             arg1->unk34[i] = NULL;
         }
-        var_s2 += 0x30;
+        var_s2 = (Struct80635468_arg0_elem *) (((u8 *) var_s2) + 0x30);
     }
 }
-*/
 
 void func_global_asm_80635548(s32 arg0, Struct80635548 *arg1) {
     s32 i;

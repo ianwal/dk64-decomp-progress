@@ -1145,7 +1145,7 @@ typedef struct player_additional_actor_data {
     u8 unk268; // Used
 } PlayerAdditionalActorData;
 
-//f32 at unk8 doesn't match with what's in structs.h (s16) 
+//f32 at unk8 doesn't match with what's in structs.h (s16)
 //for PlayerAdditionalActorData so making this struct
 typedef struct {
     u8 pad0[0x8];
@@ -1331,7 +1331,7 @@ typedef struct KRoolChunkyAAD178 {
 } KRoolChunkyAAD178;
 
 struct actor {
-    Actor_unk0 *unk0; 
+    Actor_unk0 *unk0;
     ActorAnimationState *animation_state;
     u32 *unk8; // Current bone array Pointer // TODO: Proper type
     s16 unkC;
@@ -1933,6 +1933,8 @@ typedef struct {
     s32 unk60;
     s32 unk64;
     s32 unk68;
+    s32 unk6C;
+    s32 unk70;
 } Prop_unk24;
 
 typedef struct Prop_unk74 Prop_unk74;
@@ -2191,7 +2193,7 @@ typedef struct Struct8073BC74_auxbus_unk20 {
     s16 *unk20[1]; // TODO: How many elements? m2c doesn't support VLAs
 } Struct8073BC74_auxbus_unk20;
 
-typedef struct Struct8073BC74_auxbus_unk1C Struct8073BC74_auxbus_unk1C; 
+typedef struct Struct8073BC74_auxbus_unk1C Struct8073BC74_auxbus_unk1C;
 
 struct Struct8073BC74_auxbus_unk1C {
     u8 pad0[8];
@@ -3150,7 +3152,7 @@ struct otherSpriteControl {
         Struct80717D84_unk384_80718BF4 *unk384_80718BF4;
         Struct80717D84_unk384_80717404 *unk384_80717404;
     };
-	/* 0x384 */ 
+	/* 0x384 */
 };
 
 // TODO: Which struct is this?
