@@ -1397,48 +1397,28 @@ void func_global_asm_80671D10(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *
     *arg4 = phi_v1->unk8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671D64.s")
-
-/*
-// TODO: Yikes
 s32 func_global_asm_80671D64(Actor *arg0, s32 arg1) {
     LedgeInfo *temp_v0;
     LedgeInfo90 *var_a1;
-    s32 temp_v0_2;
-    s32 temp_v1;
     s32 var_a2;
     u8 var_v1;
+    s32 var_a0;
 
     temp_v0 = arg0->ledge_info_pointer;
-    var_a2 = arg1 - 1;
     if (object_timer == temp_v0->unk88) {
         var_v1 = D_global_asm_807444FC;
     } else {
+
         var_v1 = D_global_asm_807444FC ^ 1;
     }
+    var_a0 = (s32) temp_v0->unk74[var_v1];
     var_a1 = temp_v0->unk90;
-    if (var_a2 != 0) {
-        temp_v1 = -(var_a2 & 3);
-        temp_v0_2 = temp_v1 + var_a2;
-        if (temp_v1 != 0) {
-            do {
-                var_a2 -= 1;
-                var_a1 = var_a1->next;
-            } while (temp_v0_2 != var_a2);
-            if (var_a2 != 0) {
-                goto loop_7;
-            }
-        } else {
-            do {
-loop_7:
-                var_a2 -= 4;
-                var_a1 = var_a1->next->next->next->next;
-            } while (var_a2 != 0);
-        }
+    for (arg1--; arg1 != 0; arg1--) {
+        var_a1 = var_a1->next;
     }
-    return ((var_a1->unk18 >> 6) << 6) + (temp_v0 + (var_v1 * 4))->unk74;
+
+    return (((u32) var_a1->unk18 >> 6) << 6) + var_a0;
 }
-*/
 
 u8 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5);
 
