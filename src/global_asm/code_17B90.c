@@ -15,7 +15,7 @@ void *func_global_asm_80612E90(Actor *, s32, u8);
 
 void func_global_asm_806130A4(u32, Gfx *);             /* extern */
 void func_global_asm_8061324C(Gfx *, Gfx *, void *, s32); /* extern */
-void func_global_asm_806133C8(u32, Gfx *);             /* extern */
+void func_global_asm_806133C8(Gfx *, Gfx *);           /* extern */
 void func_global_asm_80687D50(s32, void *);            /* extern */
 extern Struct807FB630 D_global_asm_807FB630[];
 extern void *D_global_asm_807FB634;
@@ -99,7 +99,17 @@ void func_global_asm_80613214(Actor *actor) {
 
 // Displaylist stuff, looks for 0xFD (G_SETTIMG) commands in a loop
 // Possibly the code responsible for loading textures dynamically
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
+void func_global_asm_806133C8(Gfx *arg0, Gfx *arg1) {
+    u32 var_v0;
+
+    while (arg0 != arg1) {
+        var_v0 = arg0->words.w0 >> 0x18;
+        if (var_v0 == G_SETTIMG && ((arg0->words.w1 << 4) >> 0x1C) == 0) {
+            arg0->words.w1 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, arg0->words.w1, 0, 0);
+        }
+        arg0++;
+    }
+}
 
 extern u16 D_global_asm_807FBB30;
 
