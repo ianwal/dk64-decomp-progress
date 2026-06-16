@@ -497,26 +497,34 @@ u8 func_global_asm_80652BC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     return phi_s1;
 }
 
-// fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652DB4.s")
-
-/*
 s32 func_global_asm_80652DB4(f32 arg0, f32 arg1, f32 arg2) {
     s16 temp_v0;
-    s16 i;
+    s32 i;
+    s16 new_var;
+    f32 new_var2;
+    s16 *ptr;
 
+    i = 0;
     if (D_global_asm_807F6C28 == 0) {
         return 0xFF;
     }
-    temp_v0 = func_global_asm_806531B8(arg0, arg1, arg2, 0);
-    for (i = 0; i < D_global_asm_807F6C80; i++) {
-        if (D_global_asm_807F6C58[i] == temp_v0) {
+    new_var2 = arg1;
+    temp_v0 = func_global_asm_806531B8(arg0, new_var2, arg2, 0);
+    while (i < D_global_asm_807F6C80) {
+        ptr = &D_global_asm_807F6C58[i];
+        new_var = temp_v0;
+        if (D_global_asm_807F6C58[i] == new_var) {
             return 1;
         }
+        i++;
+
+        // fake match
+        if (0) {
+        }
     }
+
     return 0;
 }
-*/
 
 u8 func_global_asm_80652E58(s16 arg0) {
     if (D_global_asm_807F6C28 == 0) {
