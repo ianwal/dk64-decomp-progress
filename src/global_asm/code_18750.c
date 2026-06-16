@@ -313,11 +313,7 @@ void playAnimation(Actor *arg0, s32 arg1) {
     playActorAnimation(arg0, D_global_asm_807FBB54[offset]);
 }
 
-// https://decomp.me/scratch/OBNTk
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/playActorAnimation.s")
-
-/*
-extern s32 D_global_asm_807FBB50[];
+extern s32 *D_global_asm_807FBB50;
 
 void playActorAnimation(Actor *arg0, s32 arg1) {
     ActorAnimationState *aaS;
@@ -326,20 +322,19 @@ void playActorAnimation(Actor *arg0, s32 arg1) {
     aaS->unk70 = 0;
     aaS->unk78 = 0;
     aaS->unk7C = 0;
-    aaS->unk80 = 0;
     aaS->unk88 = 0;
+    aaS->unk80 = 0.0f;
     if (arg1 == 0) {
         aaS->unk68 = 0;
         D_global_asm_807F5AF0 = 0;
         D_global_asm_807F5AF4 = 0;
     } else {
         aaS->unk64 = arg1;
-        aaS->unk68 = D_global_asm_807FBB50[arg1] + D_global_asm_807F5AF0;
+        aaS->unk68 = (u8 *) D_global_asm_807FBB50 + D_global_asm_807FBB50[arg1];
         aaS->unk6C = aaS->unk68;
         D_global_asm_807F5AF0 = aaS->unk68;
     }
 }
-*/
 
 void getAnimationArg8(u8 *arg0) {
     *arg0 = *D_global_asm_807F5AF0++;
