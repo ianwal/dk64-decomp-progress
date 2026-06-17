@@ -69,9 +69,9 @@ void func_global_asm_80712BD4(void) {
     if (D_global_asm_807467CC == 0) {
         func_global_asm_8060E1A8();
     }
-    if ((getLevelIndex(current_map, 1U) == 8) && 
-        !(D_global_asm_807FBB68 & 2) && 
-        (current_map != MAP_KROOLS_SHOE) && 
+    if ((getLevelIndex(current_map, 1U) == 8) &&
+        !(D_global_asm_807FBB68 & 2) &&
+        (current_map != MAP_KROOLS_SHOE) &&
         (!func_global_asm_80712628()) &&
         (temp_v0 == 0)) {
         func_global_asm_80712574();
@@ -391,16 +391,13 @@ Gfx *func_global_asm_80713B40(Gfx *dl) {
 }
 */
 
-// 64 bit stuff, doable, close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80713C8C.s")
-
 extern OSTime D_global_asm_807445B0;
 extern Struct80755340 D_global_asm_80755340;
 extern u16 D_global_asm_80755358[];
 
-/*
 void func_global_asm_80713C8C(void) {
     OSTime temp_ret;
+    s32 new_var;
 
     D_global_asm_8075531C = 1;
     if (!D_global_asm_80755340.unk10) {
@@ -412,12 +409,13 @@ void func_global_asm_80713C8C(void) {
         return;
     }
     D_global_asm_80755340.unk0 += D_global_asm_807445B0;
-    if ((global_properties_bitfield & 2)) {
+    if (global_properties_bitfield & 2) {
         return;
     }
     temp_ret = (osGetTime() - D_global_asm_80755340.unk0) * 64;
-    D_global_asm_80755340.unk8 = D_global_asm_80755340.unkC - ((temp_ret / 3000) / 1000000);
-    if (D_global_asm_80755340.unk11 < 0xAU && D_global_asm_80755340.unk8 == D_global_asm_80755358[D_global_asm_80755340.unk11]) {
+    new_var = (temp_ret / 3000) / 1000000;
+    D_global_asm_80755340.unk8 = D_global_asm_80755340.unkC - new_var;
+    if ((D_global_asm_80755340.unk11 < 0xAU) && (D_global_asm_80755340.unk8 == D_global_asm_80755358[D_global_asm_80755340.unk11])) {
         playSound(0x2D4, 0x7FFFU, 63.0f, 1.0f, 0, 0);
         D_global_asm_80755340.unk11++;
     }
@@ -425,7 +423,6 @@ void func_global_asm_80713C8C(void) {
         func_global_asm_807127B4();
     }
 }
-*/
 
 Gfx *func_global_asm_80713DFC(Gfx *dl) { // displayHelmTimer()
     s32 stackPad0;
