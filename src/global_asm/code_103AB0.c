@@ -181,19 +181,16 @@ Gfx *func_global_asm_8070068C(Gfx *dl) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807007B8.s")
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807009F4.s")
-
 extern s16 *D_global_asm_8076A0A0;
 
-/*
 s16 func_global_asm_807009F4(s16 arg0) {
     s16 temp_t8;
     s16 var_a1;
     s16 var_v0;
 
     var_v0 = 0;
-    var_a1 = 0x1FE;
+    temp_t8 = 0x1FE;
+    var_a1 = temp_t8;
     if (arg0 == -1) {
         return 0;
     }
@@ -204,7 +201,7 @@ s16 func_global_asm_807009F4(s16 arg0) {
         } else {
             var_v0 = temp_t8 + 1;
         }
-        if (arg0 >= D_global_asm_8076A0A0[temp_t8] && arg0 < D_global_asm_8076A0A0[temp_t8 + 1]) {
+        if ((arg0 >= D_global_asm_8076A0A0[temp_t8]) && (arg0 < D_global_asm_8076A0A0[temp_t8 + 1])) {
             return temp_t8 + 8;
         }
         if (var_a1 < var_v0) {
@@ -212,7 +209,6 @@ s16 func_global_asm_807009F4(s16 arg0) {
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700AE4.s")
 
