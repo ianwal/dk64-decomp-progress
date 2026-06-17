@@ -292,24 +292,20 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
 }
 */
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711950.s")
-
-/*
 void func_global_asm_80711950(f32 arg0, s16 arg1, s16 arg2) {
     f64 var_f18;
+    f32 new_var;
     s32 var_s0;
     s32 var_s4;
     u32 temp_hi;
-    u32 r;
-    f32 temp;
+    s32 r;
 
     if (global_properties_bitfield & 0x10) {
-        D_global_asm_807FDA1E = (func_global_asm_80612D10(character_change_array->unk2C4) * (f32) arg1);
+        D_global_asm_807FDA1E = func_global_asm_80612D10(character_change_array->unk2C4) * ((f32) arg1);
         if (arg0 < 1.0) {
-            temp = arg0 * 100.0f;
+            arg0 = arg0 * 100.0f;
             r = (func_global_asm_806119A0() / 10000U) % 100U;
-            if (temp > r) {
+            if (r < arg0) {
                 var_s4 = 1;
             } else {
                 var_s4 = 0;
@@ -321,16 +317,15 @@ void func_global_asm_80711950(f32 arg0, s16 arg1, s16 arg2) {
         var_s0 = 0;
         for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
             var_f18 = (func_global_asm_806119A0() / 10000U) % 125U;
-            r = (func_global_asm_806119A0() / 10000U) % 320U;
-            func_global_asm_8070F5CC(1, arg2, ((f32) (var_f18 / 1000.0) + 0.075), r, -0xA, 0xC8U);
+            new_var = (f32) (var_f18 / 1000.0);
+            func_global_asm_8070F5CC(1, arg2, new_var + 0.075, (func_global_asm_806119A0() / 10000U) % 320U, -0xA, 0xC8U);
         }
+
         if (D_global_asm_807550E0->unk0 != 0) {
             addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1U);
         }
     }
 }
-*/
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711BD0.s")
 

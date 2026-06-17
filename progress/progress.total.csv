@@ -1549,7 +1549,7 @@ us,asm,func_global_asm_806013A0,72,yes
 us,asm,func_global_asm_8071B758,324,yes
 us,asm,getAnimationArg32,100,yes
 us,asm,func_global_asm_8072C918,1744,no
-us,asm,func_global_asm_80711950,640,no
+us,asm,func_global_asm_80711950,640,yes
 us,asm,func_global_asm_806B48B8,76,yes
 us,asm,func_global_asm_8068B930,132,yes
 us,asm,func_global_asm_806F58A0,424,yes
