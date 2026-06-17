@@ -187,57 +187,46 @@ Struct8070D754_temp_v0 *func_global_asm_8070D754(Actor *arg0) {
     return *nextPointer;
 }
 
+typedef struct Struct8070D82C_v0 Struct8070D82C_v0;
+
 typedef struct {
+    Struct8070D82C_v0 *unk0;
+} Struct8070D82C_v1;
+
+struct Struct8070D82C_v0 {
     s16 unk0;
     s8 unk2;
     s8 unk3;
-    s32 unk4;
-} Struct8070D82C_malloc;
-
-typedef struct {
-    Struct8070D82C_malloc *unk0;
-} Struct8070D82C_v1;
-
-typedef struct Struct8070D82C_v0 Struct8070D82C_v0;
-
-struct Struct8070D82C_v0 {
-    Struct8070D82C_v0 *next;
-    Struct8070D82C_v1 *unk4;
+    Struct8070D82C_v1 unk4;
 };
 
 typedef struct {
     s32 unk0;
     Actor* unk4;
-    Struct8070D82C_v0 *unk8;
+    Struct8070D82C_v1 unk8;
 } Struct8070D8C0;
 
-void func_global_asm_8070D82C(Struct8070D8C0*, u16, u8);
-
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070D82C.s")
-
-/*
 void func_global_asm_8070D82C(Struct8070D8C0 *arg0, u16 arg1, u8 arg2) {
     Struct8070D82C_v1 *var_v1;
     Struct8070D82C_v0 *var_v0;
 
     var_v1 = &arg0->unk8;
-    if (arg0->unk8) {
-        var_v0 = var_v0->next;
+    if (arg0->unk8.unk0) {
         do {
+            var_v0 = var_v1->unk0;
             var_v1 = &var_v0->unk4;
-            var_v0 = var_v0->next;
+            var_v0 = var_v1->unk0;
+            var_v0 = var_v1->unk0;
         } while (var_v0);
     }
     var_v1->unk0 = malloc(8);
     var_v1->unk0->unk0 = arg1;
     var_v1->unk0->unk2 = arg2;
-    var_v1->unk0->unk4 = 0;
+    var_v1->unk0->unk4.unk0 = 0;
     if (arg0->unk4->control_state == 4) {
         arg0->unk4->control_state = 0;
     }
 }
-*/
 
 typedef struct {
     u8 unk0[0x54 - 0x0];
