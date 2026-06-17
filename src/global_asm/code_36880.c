@@ -1057,6 +1057,7 @@ s32 func_global_asm_80635214(Gfx *dl) {
     s32 found;
     s32 new_var;
     s32 offset;
+    u32 command;
 
     offset = 0;
     found = FALSE;

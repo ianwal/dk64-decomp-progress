@@ -323,20 +323,15 @@ int func_global_asm_8073202C(unsigned int inst, char *sp, unsigned int *arg2) {
     }
 }
 
-s32 func_global_asm_80732064(s32 arg0, s32 *arg1)
-{
-    s32 new_var;
-    s32 new_var2;
-    new_var = (arg0 & 0xFFFF0000) == 0x27BD0000;
-    if (new_var != 0)
-    {
-        new_var2 = (s16)arg0;
-        new_var = *arg1;
-        new_var = new_var + new_var2;
-        new_var2 = new_var;
-        *arg1 = new_var2;
-        arg1 += 0;
-        return 1;
+s32 func_global_asm_80732064(s32 arg0, s32 *arg1) {
+    s32 val;
+    s32 imm;
+    if (((arg0 & 0xFFFF0000) == 0x27BD0000) != 0) {
+        imm = (s16)arg0;
+        val = *arg1;
+        val += imm;
+        *arg1 = val;
+        return TRUE;
     }
     return 0;
 }
