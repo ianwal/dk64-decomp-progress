@@ -1283,10 +1283,6 @@ void func_global_asm_8060A4D0(s32 arg0, f32 arg1) {
     func_global_asm_8060A398(arg0);
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A500.s")
-
-/*
 void func_global_asm_8060A500(void) {
     f32 var_f12;
     f64 temp_f20;
@@ -1297,17 +1293,16 @@ void func_global_asm_8060A500(void) {
     temp_f20 = 0.075;
     for (i = 0; i < 4; i++) {
         if (D_global_asm_80770598[i] != 0) {
-            D_global_asm_80770568[D_global_asm_80770598[i]] = D_global_asm_80770568[D_global_asm_80770598[i]] + ((D_global_asm_80770578[i] - D_global_asm_80770568[D_global_asm_80770598[i]]) * temp_f20);
-            var_f12 = ABS(D_global_asm_80770578[i] - D_global_asm_80770568[D_global_asm_80770598[i]]);
+            D_global_asm_80770568[i] += (D_global_asm_80770578[i] - D_global_asm_80770568[i]) * temp_f20;
+            var_f12 = ABS(D_global_asm_80770578[i] - D_global_asm_80770568[i]);
             if (var_f12 < temp_f22) {
-                D_global_asm_80770568[D_global_asm_80770598[i]] = D_global_asm_80770578[i];
+                D_global_asm_80770568[i] = D_global_asm_80770578[i];
                 D_global_asm_80770598[i] = 0;
             }
             func_global_asm_8060A398(i);
         }
     }
 }
-*/
 
 void func_global_asm_8060A60C(s32 arg0, f32 arg1) {
     D_global_asm_80770578[arg0] = arg1;
