@@ -2397,7 +2397,7 @@ void func_global_asm_806D9940(void) {
     renderActor(gCurrentActorPointer, 0);
 }
 
-// close, doable, regalloc
+// close, doable, regalloc, this function matches if playSoundAtActorPosition is changed to return u8, but that probably isn't correct.
 // https://decomp.me/scratch/YQGZn
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9AD4.s")
 
@@ -3999,7 +3999,7 @@ void func_global_asm_806DED44(void) {
                 func_global_asm_80629174();
                 func_global_asm_806CFF9C(gCurrentActorPointer);
                 func_global_asm_80709464(PaaD->unk1A4);
-                
+
                 for (i = 0; i < 4; i++) {
                     changeCollectableCount(D_global_asm_80750FE0[i], 0, 9999);
                     func_global_asm_806F8BC4(D_global_asm_80750FE0[i], 0, 0);

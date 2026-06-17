@@ -155,10 +155,6 @@ s32 func_global_asm_80709ACC(Struct807FD9A8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A220.s")
 
-// close
-// https://decomp.me/scratch/pBtpT
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A848.s")
-
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 
@@ -173,24 +169,27 @@ typedef struct {
     u32 unk1C;
 } Struct8070A848;
 
-/*
 void func_global_asm_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
-    Struct8070A848 *temp = arg1;
-    s32 i = 0;
-
-    while (i < (D_global_asm_80744490 * D_global_asm_80744494) / 16) {
-        arg0[i].unk0 = temp[i].unk0 | 0x10001;
-        arg0[i].unk4 = temp[i].unk4 | 0x10001;
-        arg0[i].unk8 = temp[i].unk8 | 0x10001;
-        arg0[i].unkC = temp[i].unkC | 0x10001;
-        arg0[i].unk10 = temp[i].unk10 | 0x10001;
-        arg0[i].unk14 = temp[i].unk14 | 0x10001;
-        arg0[i].unk18 = temp[i].unk18 | 0x10001;
-        arg0[i].unk1C = temp[i].unk1C | 0x10001;
+    s32 i;
+    Struct8070A848 *src = arg1;
+    Struct8070A848 *dst = arg0;
+    // fake match, whitespace matters here so formatting is disabled.
+    // clang-format off
+    i = 0; while (i < ((D_global_asm_80744490 * D_global_asm_80744494) / 16)) {
+        // clang-format on
+        dst->unk0 = src->unk0 | 0x10001;
+        dst->unk4 = src->unk4 | 0x10001;
+        dst->unk8 = src->unk8 | 0x10001;
+        dst->unkC = src->unkC | 0x10001;
+        dst->unk10 = src->unk10 | 0x10001;
+        dst->unk14 = src->unk14 | 0x10001;
+        dst->unk18 = src->unk18 | 0x10001;
+        dst->unk1C = src->unk1C | 0x10001;
+        dst++;
+        src++;
         i++;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A934.s")
 

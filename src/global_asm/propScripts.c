@@ -1988,8 +1988,8 @@ void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         player = character_change_array->playerPointer;
         if (
             (player->control_state == 0x1C) &&
-            (player->control_state_progress < 7) && 
-            (current_character_index[0] == 0) && 
+            (player->control_state_progress < 7) &&
+            (current_character_index[0] == 0) &&
             (player->locked_to_pad == 1)
         ) {
             if (arg1 == player->unk10C) {
@@ -2148,7 +2148,7 @@ void func_global_asm_8064B514(u8 arg0, u8 arg1, s8 arg2, s16 arg3) {
     if (arg3) {
         func_global_asm_806F8D58(0xD, 0);
     } else {
-        func_global_asm_806F8BC4(0xD, 1, 0); 
+        func_global_asm_806F8BC4(0xD, 1, 0);
     }
 }
 
@@ -2340,7 +2340,7 @@ s32 func_global_asm_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
                 0,
                 character_change_array[temp_v0].playerPointer,
                 9,
-                yRot * 11.37777805f, 
+                yRot * 11.37777805f,
                 0,
                 x,
                 y,
@@ -3434,11 +3434,6 @@ u8 func_global_asm_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_global_asm_807F6950;
 }
 
-// regalloc, float, close
-// https://decomp.me/scratch/qE2WY
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064F210.s")
-
-/*
 u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
     f32 temp2;
@@ -3447,16 +3442,16 @@ u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 temp4;
     f32 temp_f0;
     f32 temp;
+    f32 new_var;
 
     temp_f18 = (D_global_asm_807F622C * 4096.0f) / 360.0f;
     sp2C = func_global_asm_80612794(temp_f18);
     temp_f0 = func_global_asm_80612790(temp_f18);
     temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
     temp = -temp;
-    temp = (gPlayerPointer->x_position * sp2C) + (temp_f0 * gPlayerPointer->z_position) + temp;
-    return 6.0 < temp;
+    new_var = (gPlayerPointer->x_position * sp2C) + (temp_f0 * gPlayerPointer->z_position) + temp;
+    return 6.0 < new_var;
 }
-*/
 
 s32 func_global_asm_8064F2F0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return 1;
