@@ -3430,7 +3430,7 @@ us,asm,func_global_asm_80601678,88,yes
 us,asm,func_global_asm_80726DEC,116,yes
 us,asm,func_global_asm_806725A0,68,yes
 us,asm,func_global_asm_8063C390,48,yes
-us,asm,func_global_asm_8068C20C,224,no
+us,asm,func_global_asm_8068C20C,224,yes
 us,asm,func_global_asm_806D7510,500,yes
 us,asm,func_global_asm_80609B80,1584,no
 us,asm,func_global_asm_806ADDD8,516,yes

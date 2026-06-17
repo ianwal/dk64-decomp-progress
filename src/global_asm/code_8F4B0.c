@@ -814,20 +814,18 @@ typedef struct {
 
 extern TempCBig D_global_asm_807FC630[];
 
-// Displaylist stuff, uses TempCBig, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068C20C.s")
-
-/*
 Gfx *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
     s32 j;
     u8 i;
+    u8 k;
 
     i = D_global_asm_807501E0;
 
     while (i) {
         j = i - 1;
+        k = j;
         i = j;
-        if (arg1 == D_global_asm_807FC630[j].unk8) {
+        if (arg1 == D_global_asm_807FC630[k].unk8) {
             gDPPipeSync(dl++);
             dl = D_global_asm_807FC630[i].unk0(dl, D_global_asm_807FC630[i].unk4);
         }
@@ -838,7 +836,6 @@ Gfx *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
     }
     return dl;
 }
-*/
 
 void func_global_asm_8068C2EC(void) {
     D_global_asm_807501E0 = 0;
