@@ -472,13 +472,10 @@ void func_global_asm_8064431C(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg
     createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806443E4.s")
-
 void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
-extern f32 D_80770DCC;
-extern f32 D_80770DD0;
-extern f32 D_80770DD4;
+extern f32 D_global_asm_80770DCC;
+extern f32 D_global_asm_80770DD0;
+extern f32 D_global_asm_80770DD4;
 extern f32 D_global_asm_807480DC;
 extern s8 D_global_asm_8077058C;
 extern u8 D_global_asm_80770DC9;
@@ -493,12 +490,15 @@ typedef struct InstanceData806443E4 {
     f32 unkC;
 } InstanceData806443E4;
 
-/*
 void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData806443E4 *var_v1;
     f32 var_f16;
     f32 var_f14;
     f32 dx, dy, dz;
+
+    // fake match
+    if (gPlayerPointer->PaaD) {
+    }
 
     if (gPlayerPointer->PaaD->unk1F0 & 0x20000000) {
         return;
@@ -521,10 +521,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     } else if (character_change_array->chunk == 7) {
         var_f14 = 0.0f;
     } else {
-        dx = D_global_asm_807F621C - 1714.0f;
-        dy = D_global_asm_807F6220 - 226.0f;
-        dz = D_global_asm_807F6224 - 3410.0f;
-        var_f16 -= sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
+        var_f16 -= sqrtf(SQ(D_global_asm_807F621C - 1714.0f) + SQ(D_global_asm_807F6220 - 226.0f) + SQ(D_global_asm_807F6224 - 3410.0f));
         if (var_f16 < 0.0) {
             var_f16 = 0.0f;
         }
@@ -547,8 +544,13 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         if (RandClamp(10) == 5) {
             if (var_f16 < 2200.0f) {
                 if (D_global_asm_80770DC9 != 0) {
-                    if (D_80770DD4 < 600.0f) {
-                        playSound(0x9C, (s32) ((((var_f14 * 32767.0f * 60.0f) / 255.0f) * (600.0 - D_80770DD4)) / 1000.0), D_80770DCC, 0.8f, 0x1E, (u32) D_80770DD0);
+                    if (D_global_asm_80770DD4 < 600.0f) {
+                        playSound(0x9C,
+                            (s32) ((((var_f14 * 32767.0f * 60.0f) / 255.0f) * (600.0 - D_global_asm_80770DD4)) / 1000.0),
+                                  D_global_asm_80770DCC,
+                                  0.8f,
+                                  0x1E,
+                                  (u32) D_global_asm_80770DD0);
                     }
                 } else {
                     func_global_asm_80608DA8(0x9C, var_f14 * 60.0f, 0x7F, 0x1E, (rand() >> 0xF) % 3);
@@ -564,7 +566,6 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     var_v1->unkC = ((0.3 - var_v1->unkC) * 0.2) + var_v1->unkC;
     func_global_asm_80659670(var_v1->unk4, var_v1->unk8, var_v1->unkC, 0xE);
 }
-*/
 
 void func_global_asm_806449C0(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);

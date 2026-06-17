@@ -1264,8 +1264,8 @@ us,asm,func_global_asm_80687080,348,yes
 us,asm,func_global_asm_806B54BC,1488,yes
 us,asm,func_global_asm_806907B8,40,yes
 us,asm,func_global_asm_806DB3AC,708,yes
-us,asm,func_global_asm_806EB744,392,yes
 us,asm,func_global_asm_806C9F44,48,yes
+us,asm,func_global_asm_806EB744,392,yes
 us,asm,func_global_asm_806F544C,76,yes
 us,asm,func_global_asm_80653EA8,192,yes
 us,asm,func_global_asm_806D1110,236,yes
@@ -3235,7 +3235,7 @@ us,asm,func_global_asm_8062210C,112,yes
 us,asm,func_global_asm_80678CC8,272,yes
 us,asm,func_global_asm_806F70FC,636,yes
 us,asm,func_global_asm_8063C4A8,28,yes
-us,asm,func_global_asm_806443E4,1500,no
+us,asm,func_global_asm_806443E4,1500,yes
 us,asm,func_global_asm_80641B00,204,yes
 us,asm,func_global_asm_806C10A0,608,yes
 us,asm,printText,252,yes
