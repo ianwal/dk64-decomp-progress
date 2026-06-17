@@ -2698,8 +2698,6 @@ s32 func_menu_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 
     return var_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80031980.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -2707,17 +2705,18 @@ typedef struct {
     f32 unkC;
 } Struct80031980;
 
-/*
 f32 func_menu_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
-    // TODO: These are possibly volatile
-    f32 temp =  ( (2.0f * arg0->unk0) + (-2.0f * arg0->unk4) +          arg0->unk8)  + arg0->unkC;
-    f32 temp2 = ((-3.0f * arg0->unk0) +  (3.0f * arg0->unk4) + (-2.0f * arg0->unk8)) - arg0->unkC;
+    f32 sp[4];
+
+    sp[0] = arg0->unkC + (((arg0->unk0 + arg0->unk0) + ((-2.0f) * arg0->unk4)) + arg0->unk8);
+    sp[1] = ((((-3.0f) * arg0->unk0) + (3.0f * arg0->unk4)) + ((-2.0f) * arg0->unk8)) - (*arg0).unkC;
+    sp[2] = arg0->unk8;
+    sp[3] = arg0->unk0;
     if (arg2 != NULL) {
-        *arg2 =           arg0->unk8 + (3.0f * temp * arg1) + (2.0f * temp2 * arg1);
+        *arg2 = ((((3.0f * sp[0]) * arg1) + (sp[1] + sp[1])) * arg1) + ((0, sp[2]));
     }
-    return arg0->unk0 +   arg0->unk8 + (      temp * arg1) + (       temp2 * arg1);
+    return (((((sp[0] * arg1) + sp[1]) * arg1) + sp[2]) * arg1) + sp[3];
 }
-*/
 
 void func_menu_80031A5C(void) {
     switch (gCurrentActorPointer->control_state_progress) {
