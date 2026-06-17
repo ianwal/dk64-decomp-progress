@@ -199,10 +199,6 @@ u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
     return var_v1;
 }
 
-// regalloc, permutable
-// https://decomp.me/scratch/sk00B
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807103E0.s")
-
 typedef struct {
     s32 unk0;
     f32 unk4;
@@ -223,24 +219,23 @@ typedef struct {
     u8 unkB3;
 } Struct807103E0;
 
-/*
 u8 func_global_asm_807103E0(Struct807103E0 *arg0) {
+    s32 negB3;
+
     func_global_asm_8070FA58(arg0); // TODO: Consolidate structs?
-    arg0->unk4 += func_global_asm_80612794(arg0->unk22 * 0.5) * (f32)(arg0->unk28 * 0.05);
+    arg0->unk4 += func_global_asm_80612794(arg0->unk22 * 0.5) * ((f32) (arg0->unk28 * 0.05));
     func_global_asm_8070FC40(arg0); // TODO: Consolidate structs?
     arg0->unk8 = arg0->unk4;
-    arg0->unkC += (1.0 + func_global_asm_80612794(arg0->unk22)) * (f32)(1.0 + (arg0->unk20 * 0.08));
+    arg0->unkC += (1.0 + func_global_asm_80612794(arg0->unk22)) * ((f32) (1.0 + (arg0->unk20 * 0.08)));
     arg0->unk22 += 0x64;
-    // Problem is here, end of the line
-    arg0->unk24 = (func_global_asm_80612794(arg0->unk22 * 0.5) * 0.5 + 0.5) * ((arg0->unkB3 * 4) - (arg0->unkB3 * -4)) + (arg0->unkB3 * -4);
+    arg0->unk24 = (((func_global_asm_80612794(arg0->unk22 * 0.5) * 0.5) + 0.5) * ((arg0->unkB3 * 4) - ((-arg0->unkB3) * 4))) + ((-arg0->unkB3) * 4);
     if (((ABS(arg0->unk10)) * 140.0f) < arg0->unkC) {
         if (arg0->unkB1 >= 0xA) {
             arg0->unkB1 -= 0xA;
         }
     }
-    return D_global_asm_807FD9EC < arg0->unkC || arg0->unkB1 < 0xA;
+    return (D_global_asm_807FD9EC < arg0->unkC) || (arg0->unkB1 < 0xA);
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807105D4.s")
@@ -544,7 +539,7 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
 
 void func_global_asm_80712944(OSContPad *arg0) {
     s32 i;
-    
+
     func_global_asm_8060AC34(arg0); // wrapper for subdragHookFunction()
     for (i = 0; i < 4; i++) {
         arg0[i].stick_x &= D_global_asm_8075530C;
@@ -583,4 +578,3 @@ void func_global_asm_80712A40(void) {
         }
     }
 }
-
