@@ -471,12 +471,14 @@ void func_global_asm_805FC2B0(void) {
 */
 
 // OSTime stuff
+// Matched but needs .data migrated for D_global_asm_807445C0
+// https://decomp.me/scratch/GV2tY
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FC668.s")
 
 void func_global_asm_806FB2B8();
 extern OSTime D_global_asm_807445B0;
 extern OSTime D_global_asm_807445B8;
-extern OSTime D_global_asm_807445C0;
+// static OSTime D_global_asm_807445C0 = 0; // Has to be static for func_global_asm_805FC668 to match
 extern s8 D_global_asm_807445C8;
 
 /*
@@ -506,28 +508,26 @@ s32 func_global_asm_805FC668(void) {
         }
     } else {
         D_global_asm_807445B8 += D_global_asm_807445B0;
-        D_global_asm_807445C0 = 0;
         D_global_asm_807445B0 = 0;
+        D_global_asm_807445C0 = 0;
         if (D_global_asm_807445C8 > 0) {
             if (!(global_properties_bitfield & 1)) {
                 D_global_asm_807445C8 = 0;
-            } else {
-                if (--D_global_asm_807445C8 <= 0) {
-                    if (((gameIsInAdventureMode() != 0) || (gameIsInMysteryMenuMinigameMode() != 0)) && !(global_properties_bitfield & 0x40000)) {
-                        playSong(MUSIC_34_PAUSE_MENU, 1.0f);
-                        playSong(MUSIC_41_START_TO_PAUSE_GAME, 1.0f);
-                        if ((cc_number_of_players < 2) && (gameIsInMysteryMenuMinigameMode() == 0)) {
-                            spawnActor(ACTOR_PAUSE_MENU, 0);
-                            global_properties_bitfield |= 0x100000;
-                        } else {
-                            spawnActor(ACTOR_PAUSE_MENU_MYSTERY_MENU, 0);
-                        }
-                        gLastSpawnedActor->unk64 |= 2;
+            } else if ((--D_global_asm_807445C8) <= 0) {
+                if (((gameIsInAdventureMode() != 0) || (gameIsInMysteryMenuMinigameMode() != 0)) && !(global_properties_bitfield & 0x40000)) {
+                    playSong(MUSIC_34_PAUSE_MENU, 1.0f);
+                    playSong(MUSIC_41_START_TO_PAUSE_GAME, 1.0f);
+                    if ((cc_number_of_players < 2) && (gameIsInMysteryMenuMinigameMode() == 0)) {
+                        spawnActor(ACTOR_PAUSE_MENU, 0);
+                        global_properties_bitfield |= 0x100000;
+                    } else {
+                        spawnActor(ACTOR_PAUSE_MENU_MYSTERY_MENU, 0);
                     }
-                    D_global_asm_807445C0 = osGetTime();
-                    global_properties_bitfield ^= 1;
-                    global_properties_bitfield |= 2;
+                    gLastSpawnedActor->unk64 |= 2;
                 }
+                D_global_asm_807445C0 = osGetTime();
+                global_properties_bitfield ^= 1;
+                global_properties_bitfield |= 2;
             }
         }
         if ((global_properties_bitfield & 1) && (D_global_asm_807445C8 <= 0)) {
@@ -673,14 +673,14 @@ void func_global_asm_805FCA94(Struct805FD088 *arg0) {
         character_change_array[0].far,
         1.0f);
     guLookAt(&arg0->unk200,
-        character_change_array[0].look_at_eye_x + offset, 
-        character_change_array[0].look_at_eye_y, 
-        character_change_array[0].look_at_eye_z + offset, 
-        character_change_array[0].look_at_at_x, 
-        character_change_array[0].look_at_at_y, 
-        character_change_array[0].look_at_at_z, 
-        character_change_array[0].look_at_up_x, 
-        character_change_array[0].look_at_up_y, 
+        character_change_array[0].look_at_eye_x + offset,
+        character_change_array[0].look_at_eye_y,
+        character_change_array[0].look_at_eye_z + offset,
+        character_change_array[0].look_at_at_x,
+        character_change_array[0].look_at_at_y,
+        character_change_array[0].look_at_at_z,
+        character_change_array[0].look_at_up_x,
+        character_change_array[0].look_at_up_y,
         character_change_array[0].look_at_up_z);
     D_global_asm_807445CC++;
 }
@@ -846,7 +846,7 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
         gSPClearGeometryMode(dl++, G_ZBUFFER);
         gDPSetFillColor(dl++, 0x00010001);
-        gDPSetScissorFrac(dl++, 
+        gDPSetScissorFrac(dl++,
             G_SC_NON_INTERLACE,
             D_global_asm_80744498 * 4.0f,
             D_global_asm_8074449C * 4.0f,
@@ -854,30 +854,30 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
             D_global_asm_807444A4 * 4.0f);
         if (D_global_asm_8074447C) {
             gDPFillRectangle(dl++,
-                temp_v0_6->unk4, 
-                temp_v0_6->unk6, 
-                character_change_array->unk270[0], 
+                temp_v0_6->unk4,
+                temp_v0_6->unk6,
+                character_change_array->unk270[0],
                 temp_v0_6->unkA);
         }
         if (D_global_asm_80744480) {
-            gDPFillRectangle(dl++, 
-            character_change_array->unk270[2], 
-            temp_v0_6->unk6, 
-            temp_v0_6->unk8, 
+            gDPFillRectangle(dl++,
+            character_change_array->unk270[2],
+            temp_v0_6->unk6,
+            temp_v0_6->unk8,
             temp_v0_6->unkA);
         }
         if (D_global_asm_80744484) {
-            gDPFillRectangle(dl++, 
-            character_change_array->unk270[0], 
-            temp_v0_6->unk6, 
-            character_change_array->unk270[2], 
+            gDPFillRectangle(dl++,
+            character_change_array->unk270[0],
+            temp_v0_6->unk6,
+            character_change_array->unk270[2],
             character_change_array->unk270[1]);
         }
         if (D_global_asm_80744488) {
-            gDPFillRectangle(dl++, 
-            character_change_array->unk270[0], 
-            character_change_array->unk270[3], 
-            character_change_array->unk270[2], 
+            gDPFillRectangle(dl++,
+            character_change_array->unk270[0],
+            character_change_array->unk270[3],
+            character_change_array->unk270[2],
             temp_v0_6->unkA);
         }
         gDPPipeSync(dl++);
@@ -885,8 +885,8 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
         character_change_array->unk27A = character_change_array->unk270[3] - character_change_array->unk270[1];
         if (
             (!D_global_asm_8074447C) &&
-            (!D_global_asm_80744480) && 
-            (!D_global_asm_80744484) && 
+            (!D_global_asm_80744480) &&
+            (!D_global_asm_80744484) &&
             (!D_global_asm_80744488)) {
             D_global_asm_8074448C = 0;
         } else {
