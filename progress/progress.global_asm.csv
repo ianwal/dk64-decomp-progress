@@ -2557,7 +2557,7 @@ us,asm,func_global_asm_8066EAEC,84,yes
 us,asm,func_global_asm_8072DC7C,120,yes
 us,asm,func_global_asm_80644A18,680,no
 us,asm,func_global_asm_806D4010,556,yes
-us,asm,changeCollectableCount,568,no
+us,asm,changeCollectableCount,568,yes
 us,asm,func_global_asm_807300BC,844,no
 us,asm,func_global_asm_80726E60,128,yes
 us,asm,func_global_asm_80675180,180,yes

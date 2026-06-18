@@ -416,6 +416,7 @@ s32 func_global_asm_806F8EB4(void) {
     return countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT);
 }
 
+// getMaxItemCapacity ?
 u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
     s32 kong;
     u16 var_a0;
@@ -483,10 +484,6 @@ u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
     return var_a0;
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/changeCollectableCount.s")
-
-/*
 void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
     HUDDisplay *HUDItem;
     CharacterProgress *sp48;
@@ -499,33 +496,36 @@ void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
 
     sp48 = &D_global_asm_807FC950[playerIndex].character_progress[func_global_asm_806C8DE0(playerIndex)];
     HUDItem = func_global_asm_806F7FD0(playerIndex);
-    if ((HUDItem[HUDItemIndex].unk_2d == 0 || amount >= 0) && HUDItem[HUDItemIndex].unk_2c == 0) {
+    if (((HUDItem[HUDItemIndex].unk_2d == 0) || (amount >= 0)) && (HUDItem[HUDItemIndex].unk_2c == 0)) {
         if ((HUDItemIndex != 0xA) && (HUDItemIndex != 0xC)) {
-            if ((*HUDItem[HUDItemIndex].actual_count_pointer + amount) < 0) {
+            if (((*HUDItem[HUDItemIndex].actual_count_pointer) + amount) < 0) {
                 *HUDItem[HUDItemIndex].actual_count_pointer = 0;
             } else {
                 *HUDItem[HUDItemIndex].actual_count_pointer += amount;
-                // getMaxItemCapacity(HUDItemIndex, playerIndex)
                 maxItemCapacity = func_global_asm_806F8EDC(HUDItemIndex, playerIndex);
-                if (maxItemCapacity < *HUDItem[HUDItemIndex].actual_count_pointer) {
+                if (maxItemCapacity < (*HUDItem[HUDItemIndex].actual_count_pointer)) {
                     *HUDItem[HUDItemIndex].actual_count_pointer = maxItemCapacity;
                 }
-                if (HUDItemIndex == 8 && (func_global_asm_805FEF10(&flagIndex) != 0)) {
+                if ((HUDItemIndex == 8) && (func_global_asm_805FEF10(&flagIndex) != 0)) {
                     setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
                 }
-                if (amount > 0 && HUDItemIndex == 0) {
+                if ((amount > 0) && (HUDItemIndex == 0)) {
                     levelIndex = getLevelIndex(D_global_asm_8076A0AB, 1);
                     amountBefore = sp48->coloured_bananas[levelIndex] + sp48->coloured_bananas_fed_to_tns[levelIndex];
-                    if (amountBefore >= 75 && ((amountBefore - amount) < 75)) {
+                    if ((amountBefore >= 75) && ((amountBefore - amount) < 75)) {
                         // Award banana medal
                         setFlag(func_global_asm_807319D8(PERMFLAG_ITEM_MEDAL_JAPES_DK, levelIndex, current_character_index[playerIndex]), TRUE, FLAG_TYPE_PERMANENT);
                         func_global_asm_80687C48();
                     }
-                    if (amountBefore == 100 && (amountBefore - amount) < 100) {
+                    if ((amountBefore == 100) && ((amountBefore - amount) < 100)) {
                         // Play 100 bananas collected jingle
                         playSong(0xAC, 1.0f);
                     }
                 }
+            }
+
+            // fake match
+            if (0) {
             }
         }
         if (HUDItemIndex == 8) {
@@ -533,7 +533,6 @@ void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
         }
     }
 }
-*/
 
 void func_global_asm_806F93EC(u16 *arg0, Maps map) {
     *arg0 |= 1 << getLevelIndex(map, TRUE);
