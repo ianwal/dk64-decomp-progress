@@ -118,27 +118,24 @@ void func_global_asm_806F8170(s32 HUDItemIndex, f32 *xOut, f32 *yOut, f32 *zOut)
     *zOut = D_global_asm_80754280->hud_item[HUDItemIndex].unk_18;
 }
 
-// Close
-// https://decomp.me/scratch/bxVyL
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F8278.s")
-
-void func_global_asm_806F8278(u8 playerIndex);
-
-/*
 void func_global_asm_806F8278(u8 playerIndex) {
+    s32 new_var;
+    PlayerProgress *new_var2;
     s32 levelIndex;
     s32 totalGBs;
     s32 kong;
 
     totalGBs = 0;
-    for (levelIndex = 0; levelIndex < 14; levelIndex++) {
+    new_var2 = &D_global_asm_807FC950[playerIndex];
+    new_var = 14;
+    for (levelIndex = 0; levelIndex < new_var; levelIndex++) {
         for (kong = 0; kong < 5; kong++) {
-            totalGBs += D_global_asm_807FC950[playerIndex].character_progress[kong].golden_bananas[levelIndex];
+            totalGBs += new_var2->character_progress[kong].golden_bananas[levelIndex];
         }
     }
-    D_global_asm_80754280->hud_item[playerIndex * 0xF + 9].hud_count = totalGBs;
+
+    D_global_asm_80754280->hud_item[(playerIndex * 0xF) + 9].hud_count = totalGBs;
 }
-*/
 
 void func_global_asm_806F833C(s32 arg0) {
     u32 HUDItemIndex;
