@@ -1391,52 +1391,45 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806485A0.s")
-
-/*
 void func_global_asm_806485A0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
-    f32 sp80;
-    f32 sp70;
-    f32 sp6C;
     f32 temp_f0;
     f32 temp_f20;
     f32 temp_f22;
     f32 temp_f26;
-    f32 temp_f28;
-    f32 temp_f2;
+    s32 pad;
     f32 temp_f30;
+    s16 temp_v0;
     s32 temp_v1;
     s32 i;
+    f32 sp80;
 
+    temp_v0 = arg2 >> 8;
+    temp_f30 = arg2 & 0xFF;
     temp_v1 = arg3 & 0xFF;
-    switch (arg2 >> 8) {
+    switch (temp_v0) {
         case 0:
-            sp80 = 1.0f;
+            sp80 = 1; // doesn't match if 1.0f for some reason
             break;
         case 1:
             sp80 = 4.0f;
             break;
     }
-        temp_f30 = arg2 & 0xFF;
-        sp70 = arg3 >> 8;
-        temp_f28 = 0.05f;
-    for (i = 0; i != temp_v1; i++) {
-        sp6C = sp80 * 1.5;
-            func_global_asm_8071496C(func_global_asm_806119FC() * sp70);
-loop_8:
+    for (i = 0; i < temp_v1; i++) {
+        func_global_asm_8071496C(func_global_asm_806119FC() * (arg3 >> 8));
+        do {
             temp_f22 = (2.0f * func_global_asm_806119FC()) - 1.0f;
             temp_f20 = (2.0f * func_global_asm_806119FC()) - 1.0f;
             temp_f26 = (2.0f * func_global_asm_806119FC()) - 1.0f;
-            temp_f0 = sqrtf((temp_f22 * temp_f22) + (temp_f20 * temp_f20) + (temp_f26 * temp_f26));
-            if (temp_f0 < temp_f28) {
-                goto loop_8;
-            }
-            temp_f2 = temp_f30 / temp_f0;
-            drawSpriteAtPosition(&D_global_asm_8071FF18, sp6C, D_global_asm_807F621C + (temp_f22 * temp_f2), D_global_asm_807F6220 + ((temp_f20 * temp_f2) + temp_f30), D_global_asm_807F6224 + (temp_f26 * temp_f2));
+            temp_f0 = sqrtf(SQ(temp_f22) + SQ(temp_f20) + SQ(temp_f26));
+        } while (temp_f0 < 0.05f);
+        temp_f0 = temp_f30 / temp_f0;
+        temp_f22 *= temp_f0;
+        temp_f20 *= temp_f0;
+        temp_f20 += temp_f30;
+        temp_f26 *= temp_f0;
+        drawSpriteAtPosition(&D_global_asm_8071FF18, sp80 * 1.5, D_global_asm_807F621C + temp_f22, D_global_asm_807F6220 + temp_f20, D_global_asm_807F6224 + temp_f26);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806487C4.s")
 
