@@ -899,15 +899,11 @@ void func_global_asm_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646058.s")
 
-// doable, rodata, close, regalloc s registers
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646770.s")
-
 extern f32 D_global_asm_807480F0;
 typedef struct InstanceData80646770 {
     s32 unk0;
 } InstanceData80646770;
 
-/*
 void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 old;
     s32 count;
@@ -920,8 +916,8 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
         var_v1->unk0 = 0;
     }
     var_v1 = arg0->unk0;
-    count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
     old = var_v1->unk0;
+    count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
     if (count == ++var_v1->unk0) {
         var_v1->unk0 = 0;
     }
@@ -944,14 +940,12 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
                 D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8
             );
         } else {
-            old = ++var_v1->unk0;
-            if (count == var_v1->unk0) {
+            if (count == ++var_v1->unk0) {
                 var_v1->unk0 = 0;
             }
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646978.s")
 
