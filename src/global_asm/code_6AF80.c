@@ -289,7 +289,7 @@ s32 func_global_asm_80666FC8(f32 arg0, f32 arg1, f32 arg2, u8 arg3) {
     if (!phi_v0) {
         return TRUE;
     }
-    
+
     if (arg2 < arg0) {
         phi_f0 = arg0 - arg2;
     } else {
@@ -1111,34 +1111,32 @@ void func_global_asm_8066A584(Struct8066AC10 *arg0, f32 arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A64C.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A75C.s")
-
-/*
 void func_global_asm_8066A75C(Actor *arg0, u32 arg1, f32 *arg2, f32 arg3, f32 *arg4) {
     Mtx *temp;
     f32 sp78;
     f32 sp74;
     f32 sp70;
+    LedgeInfo *new_var;
     u8 var_v0;
     f32 sp28[4][4];
 
     sp78 = *arg2;
     sp74 = *arg4;
-    if (object_timer == arg0->ledge_info_pointer->unk88) {
+    new_var = arg0->ledge_info_pointer;
+    if (object_timer == new_var->unk88) {
         var_v0 = D_global_asm_807444FC;
     } else {
-        var_v0 = D_global_asm_807444FC ^ 1;
+        var_v0 = D_global_asm_807444FC;
+        var_v0 = var_v0 ^ 1;
     }
-    temp = arg0->ledge_info_pointer->unk74[var_v0];
+    temp = new_var->unk74[var_v0];
     if (arg1 == -1U) {
-        memcpy(sp28, arg0->ledge_info_pointer->unk70, sizeof(Mtx));
+        memcpy(sp28, new_var->unk70, sizeof(Mtx));
     } else {
         guMtxL2F(sp28, &temp[arg1 >> 6]);
     }
     guMtxXFMF(sp28, sp78, arg3, sp74, arg2, &sp70, arg4);
 }
-*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A834.s")
@@ -1172,7 +1170,7 @@ s32 func_global_asm_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
     return (
         !(arg1 < var_f12) &&
         !(sp1C < arg1) &&
-        !(arg2 < sp20) && 
+        !(arg2 < sp20) &&
         var_f0 < arg2) ? 1 : 0;
 }
 */
