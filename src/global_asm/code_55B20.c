@@ -1097,23 +1097,23 @@ void func_global_asm_80655BF0(void) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80655CF8.s")
+extern s16 D_global_asm_807F6C30[];
 
-extern s16 D_807F6C30[];
-
-/*
-// It's an unrolled loop
 s32 func_global_asm_80655CF8(s16 arg0, s32 arg1) {
     s32 i;
+
     for (i = 0; i < arg1; i++) {
-        if (arg0 == D_807F6C30[i]) {
+        if (arg0 == D_global_asm_807F6C30[i]) {
             return TRUE;
         }
+
+        // fake match
+        if (0) {
+        }
     }
+
     return FALSE;
 }
-*/
 
 // Displaylist stuff, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80655DD0.s")

@@ -780,7 +780,7 @@ us,asm,playSong,204,yes
 us,asm,func_global_asm_8069D0D8,32,yes
 us,asm,func_global_asm_8060116C,52,yes
 us,asm,func_global_asm_8067B2B8,8,yes
-us,asm,func_global_asm_80655CF8,216,no
+us,asm,func_global_asm_80655CF8,216,yes
 us,asm,func_global_asm_80610B84,84,yes
 us,asm,func_global_asm_80737EA4,104,yes
 us,asm,func_global_asm_80611408,300,no
