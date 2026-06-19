@@ -49,7 +49,7 @@ typedef struct CutsceneBank {
 
 void func_global_asm_80622B24(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, void *);
 
-extern OSTime D_global_asm_807F5CE0;
+extern OSTime D_global_asm_807F5CE0; // Needs to be static but that requires bss migration
 extern f32 D_global_asm_807574E0;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
@@ -57,8 +57,8 @@ extern Actor *D_global_asm_807F5CE8;
 extern s16 D_global_asm_807F5CEC;
 extern u16 D_global_asm_807F5CF0;
 extern u16 D_global_asm_807F5CF4;
-extern f32 D_807F5CFC;
-extern f32 D_807F5D00;
+extern f32 D_global_asm_807F5CFC;
+extern f32 D_global_asm_807F5D00;
 extern s16 D_global_asm_807F5D04;
 extern s16 D_global_asm_807F5D06;
 extern s16 D_global_asm_807F5D08;
@@ -72,10 +72,10 @@ extern u8 D_global_asm_807476EC;
 extern CutsceneBank D_807F5B10[2];
 extern s16 D_global_asm_807F5CEE;
 extern s16 D_global_asm_807F5CF2;
-extern u8 D_807F5CF6;
+extern u8 D_global_asm_807F5CF6;
 extern s8 D_global_asm_807F5CFA;
 extern Actor *D_global_asm_807F5D0C;
-extern u8 D_807F5D14;
+extern u8 D_global_asm_807F5D14;
 extern OSTime D_global_asm_807476D0;
 extern u8 D_global_asm_807476D8;
 extern s16 D_global_asm_807476E4;
@@ -92,10 +92,10 @@ u8 func_global_asm_8061B4B0(void) {
     return D_global_asm_807F5CE0 != 0;
 }
 
-// doable, 64 bit maths, timestamp, close
+// Matches, but D_global_asm_807F5CE0 needs to be static which requires .bss migration
+// https://decomp.me/scratch/Ssf91
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061B4E4.s")
 
-/*
 typedef struct {
     u32 unk0; // TODO: What is this?
     u8 unk4; // Map
@@ -106,10 +106,11 @@ typedef struct {
 
 extern Struct80747708 D_global_asm_80747708[];
 
+/*
 void func_global_asm_8061B4E4(void) {
-    if ((u32)(((((osGetTime() - D_global_asm_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_807F5D14].unk0) {
-        func_global_asm_80712524(D_global_asm_80747708[D_807F5D14].unk4, D_global_asm_80747708[D_807F5D14].unk5);
-        if (++D_807F5D14 > 5) {
+    if ((u32)(((((osGetTime() - D_global_asm_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_global_asm_807F5D14].unk0) {
+        func_global_asm_80712524(D_global_asm_80747708[D_global_asm_807F5D14].unk4, D_global_asm_80747708[D_global_asm_807F5D14].unk5);
+        if (++D_global_asm_807F5D14 > 5) {
             D_global_asm_807F5CE0 = 0;
         }
     }
