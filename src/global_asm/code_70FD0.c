@@ -449,9 +449,6 @@ s8 func_global_asm_8066D2F4(Struct8066D250 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066D4DC.s")
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066DB40.s")
-
 typedef struct {
     s16 unk0[9];
     s16 unk12;
@@ -483,16 +480,16 @@ typedef struct {
     s8 sp79;
 } Struct8066DB40_stack4C;
 
-/*
 s32 func_global_asm_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg1) {
-    s32 pad;
+    s16 temp_a0;
+    s16 temp_v1;
     Struct8066DB40_stack4C sp4C;
     f32 sp48;
     s64 sp40;
     s64 sp38;
     s64 sp30;
     s64 sp28;
-    s32 pad2;
+    s16 temp_v0;
 
     sp4C.sp4C[0] = arg0->unk0[0];
     sp4C.sp4C[1] = arg0->unk0[1];
@@ -503,11 +500,15 @@ s32 func_global_asm_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg
     sp4C.sp4C[6] = arg0->unk0[6];
     sp4C.sp4C[7] = arg0->unk0[7];
     sp4C.sp4C[8] = arg0->unk0[8];
+
+    // fake match, whitespace matters here so formatting is disabled.
+    // clang-format off
     sp4C.sp4C[0] *= 8;sp4C.sp4C[1] *= 8;sp4C.sp4C[2] *= 8;
     sp4C.sp4C[3] *= 8;
     sp4C.sp4C[4] *= 8;
     sp4C.sp4C[5] *= 8;
     sp4C.sp4C[6] *= 8;sp4C.sp4C[7] *= 8;sp4C.sp4C[8] *= 8;
+    // clang-format on
 
     sp4C.sp70 = arg0->unk12;
     sp4C.sp74 = arg0->unk14;
@@ -526,13 +527,24 @@ s32 func_global_asm_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg
     arg1->unk10 = sp38;
     arg1->unk18 = sp40;
     arg1->unk20 = sp48;
-    arg1->unk24 = MIN(arg0->unk0[1], arg0->unk0[4]);
-    arg1->unk24 = MIN(arg1->unk24, arg0->unk0[7]);
-    arg1->unk26 = MAX(arg0->unk0[1], arg0->unk0[4]);
+
+    temp_a0 = arg0->unk0[4]; // a0
+    temp_v1 = arg0->unk0[1]; // v1
+
+    // fake match
+    if ((temp_v0 && temp_v0) && temp_v0) {
+    }
+
+    arg1->unk24 = MIN(temp_v1, temp_a0);
+    temp_v1 = arg1->unk24;
+    temp_v0 = arg0->unk0[7];
+    arg1->unk24 = MIN(temp_v1, temp_v0);
+    temp_a0 = arg0->unk0[4];
+    temp_v1 = arg0->unk0[1];
+    arg1->unk26 = MAX(temp_v1, temp_a0);
     arg1->unk26 = MAX(arg1->unk26, arg0->unk0[7]);
     return 1;
 }
-*/
 
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066DD34.s")
