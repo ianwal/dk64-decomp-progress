@@ -795,12 +795,8 @@ void func_global_asm_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80669830.s")
-
-/*
 void func_global_asm_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
-    f32 sp30[4][4];
+    f32 sp30[3][4];
 
     sp30[2][1] = arg1->unk8 - arg1->unk0;
     sp30[2][2] = arg1->unk14 - arg1->unkC;
@@ -808,13 +804,11 @@ void func_global_asm_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
     sp30[1][2] = arg1->unk4 - arg1->unk0;
     sp30[1][3] = arg1->unk10 - arg1->unkC;
     sp30[2][0] = arg1->unk1C - arg1->unk18;
-    sp30[0][3] = (sp30[2][2] * sp30[2][0]) - (sp30[1][3] * sp30[2][3]);
-    sp30[1][0] = (sp30[2][3] * sp30[1][2]) - (sp30[2][0] * sp30[2][1]);
-    sp30[1][2] = (sp30[2][1] * sp30[1][3]) - (sp30[1][2] * sp30[2][2]);
-    sp30[0][0] = sp30[2][2];
-    func_global_asm_80666AF8(arg0, sp30[0][3], sp30[1][0], sp30[1][2], arg1->unk24, arg2, 1);
+    sp30[0][3] = (sp30[2][2] * sp30[2][0]) - (sp30[2][3] * sp30[1][3]);
+    sp30[1][0] = (sp30[2][3] * sp30[1][2]) - (sp30[2][1] * sp30[2][0]);
+    sp30[1][1] = (sp30[2][1] * sp30[1][3]) - (sp30[2][2] * sp30[1][2]);
+    func_global_asm_80666AF8(arg0, sp30[0][3], sp30[1][0], sp30[1][1], arg1->unk24, arg2, 1);
 }
-*/
 
 s32 func_global_asm_80669930(f32 arg0[4][4]) {
     f32 sp4[7];
