@@ -3294,7 +3294,7 @@ void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, u32, u32, u32);
 Gfx *func_global_asm_8070068C(Gfx *dl);
 Gfx *func_global_asm_807007B8(Gfx *dl);
 s16 func_global_asm_807009F4(s16 arg0);
-s16 func_global_asm_80700AE4(s16, s16);
+u16 func_global_asm_80700AE4(s16, s16);
 // TODO: func_global_asm_80700BF4 has no documented signature
 // TODO: func_global_asm_80701098 has no documented signature
 void func_global_asm_80701C90(void);

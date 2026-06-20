@@ -210,7 +210,45 @@ s16 func_global_asm_807009F4(s16 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700AE4.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} Struct80754BC4_unk0;
+
+typedef struct {
+    Struct80754BC4_unk0 unk0[8];
+} Struct80754BC4;
+
+extern Struct80754BC4 D_global_asm_80754BC4;
+extern u16 *D_global_asm_8076A060;
+
+u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
+    Struct80754BC4 sp18;
+    u16 *new_var;
+    s32 new_var3;
+    u16 new_var2;
+    u16 new_var4;
+    u16 temp_a2;
+    Struct80754BC4_unk0 *temp_t1;
+
+    sp18 = D_global_asm_80754BC4;
+    new_var3 = 7;
+    new_var = D_global_asm_8076A060;
+    if ((((arg0 < character_change_array->unk270[0]) || (character_change_array->unk270[2] < arg0)) || (arg1 < character_change_array->unk270[1])) || (character_change_array->unk270[3] < arg1)) {
+        return 0xFFFF;
+    }
+    new_var += (D_global_asm_80744490 * arg1) + arg0;
+    temp_a2 = new_var[0];
+    new_var2 = (temp_a2 >> 0xD) & new_var3;
+    temp_t1 = &sp18.unk0[new_var2];
+    // These & 0xFFFF force t7 -> t6, but there's probably a better way to do this.
+    new_var4 =
+        ((((((temp_t1->unk4 + ((((temp_a2 >> 2) & 0xFFFFu) & 0x7FF) << temp_t1->unk0)) >> 3) & 0xFFFFu) & 0xFFFFu) &
+          0xFFFFu) &
+         0xFFFFu) &
+        0xFFFFu;
+    return new_var4 & 0xFFFF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700BF4.s")
 
