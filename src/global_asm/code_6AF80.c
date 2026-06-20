@@ -117,9 +117,6 @@ u8 func_global_asm_80666AEC(void) {
     return D_global_asm_807F94AA;
 }
 
-// close, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80666AF8.s")
-
 extern f64 D_global_asm_80758EE8;
 extern f32 D_global_asm_80758EF0;
 extern f64 D_global_asm_80758EF8;
@@ -129,9 +126,9 @@ extern u8 D_global_asm_807F949E[];
 extern s16 D_global_asm_807F94A6;
 extern s16 D_global_asm_807F94A8;
 
-/*
 void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
     s16 var_v0;
+    u8 *new_var;
     f32 temp_f0_2;
     f32 var_f14;
 
@@ -141,6 +138,7 @@ void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
     if (arg4 == 0xFE) {
         arg4 = 0;
     }
+    new_var = &arg5;
     D_global_asm_807F949E[arg6] = arg4;
     if (arg3 > 0.0f) {
         var_f14 = arg3;
@@ -152,14 +150,14 @@ void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
     } else {
         var_v0 = (func_global_asm_80611BB4(ABS(arg1), var_f14) / D_global_asm_80758EF0) * 2048.0f;
     }
-    if (arg1 >= 0.0 && arg3 >= 0.0) {
+    if ((arg1 >= 0.0) && (arg3 >= 0.0)) {
         var_v0 -= 0x800;
-    } else if (arg1 >= 0.0 && arg3 < 0.0) {
+    } else if ((arg1 >= 0.0) && (arg3 < 0.0)) {
         var_v0 = -var_v0;
-    } else if (arg1 < 0.0 && arg3 >= 0.0) {
+    } else if ((arg1 < 0.0) && (arg3 >= 0.0)) {
         var_v0 = 0x800 - var_v0;
     }
-    if (arg5 != 0) {
+    if (*new_var != 0) {
         D_global_asm_807F9490[arg6] = var_v0 & 0xFFF;
     }
     D_global_asm_807F94A6 = var_v0 & 0xFFF;
@@ -169,12 +167,11 @@ void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
     } else {
         var_v0 = (func_global_asm_80611BB4(ABS(arg2), temp_f0_2) / D_global_asm_80758F00) * 2048.0f;
     }
-    if (arg5 != 0) {
+    if (*new_var != 0) {
         D_global_asm_807F9498[arg6] = var_v0;
     }
     D_global_asm_807F94A8 = var_v0;
 }
-*/
 
 extern f32 D_global_asm_80752F7C[];
 extern f32 D_global_asm_80752F98[];
