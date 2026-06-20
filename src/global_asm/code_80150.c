@@ -283,9 +283,6 @@ void func_global_asm_8067BDF8(void) {
     func_global_asm_8067BF84(0x13, temp_a1, &temp_a1->unk1, &sp1F);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BE30.s")
-
 typedef struct {
     s16 unk0;
     s8 unk2;
@@ -293,9 +290,9 @@ typedef struct {
     s8 unk4;
 } AAD_global_asm_8067BE30;
 
-/*
 void func_global_asm_8067BE30(void) {
     AAD_global_asm_8067BE30 *aaD;
+    u32 new_var;
     s16 i;
 
     aaD = gCurrentActorPointer->additional_actor_data;
@@ -304,7 +301,8 @@ void func_global_asm_8067BE30(void) {
         aaD->unk0 = 0x1A;
     }
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
-        switch (D_global_asm_807FBB70.unk258[i]) {
+        new_var = D_global_asm_807FBB70.unk258[i];
+        switch (new_var) {
             case 1:
                 aaD->unk0 = 0x60;
                 break;
@@ -315,8 +313,8 @@ void func_global_asm_8067BE30(void) {
                 aaD->unk0 = 0x1A;
                 break;
         }
-        continue;
     }
+
     if (aaD->unk0) {
         if (func_global_asm_8067BF84(aaD->unk0, &aaD->unk2, &aaD->unk3, &aaD->unk4)) {
             aaD->unk0 = 0x1A;
@@ -328,7 +326,6 @@ void func_global_asm_8067BE30(void) {
         renderActor(gCurrentActorPointer, 0);
     }
 }
-*/
 
 typedef struct {
     u8 unk0;
