@@ -3099,7 +3099,7 @@ us,asm,func_global_asm_806FB218,120,yes
 us,asm,func_global_asm_806C8D2C,180,yes
 us,asm,func_global_asm_8067E43C,152,yes
 us,asm,n_alEnvmixerParam,324,yes
-us,asm,func_global_asm_806689F0,312,no
+us,asm,func_global_asm_806689F0,312,yes
 us,asm,func_global_asm_8060EC54,44,yes
 us,asm,func_global_asm_806D32C0,108,yes
 us,asm,func_global_asm_806E4C6C,168,yes
