@@ -175,23 +175,20 @@ void func_global_asm_8072A920(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, 
     func_global_asm_8072A86C(arg0, arg2, arg4, arg7, arg8);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072AA80.s")
-
-/*
 void func_global_asm_8072AA80(void) {
     s16 phi_a0;
+    s32 new_var;
+    s32 new_var2;
 
     if (D_global_asm_807FDC9C->unkA_s16) {
-        phi_a0 = D_global_asm_807FDC9C->unk6 + gCurrentActorPointer->unk15E + D_global_asm_807FDC9C->unkA_s16;
+        phi_a0 = (D_global_asm_807FDC9C->unk6 + gCurrentActorPointer->unk15E) + D_global_asm_807FDC9C->unkA_s16;
     } else {
-        phi_a0 = (s16)gCurrentActorPointer->unkAC - gCurrentActorPointer->unk15E;
+        phi_a0 = ((s16) gCurrentActorPointer->unkAC) - gCurrentActorPointer->unk15E;
     }
-    D_global_asm_807FDC90->unkC = (RandClamp(32767)
-        % ((phi_a0 - D_global_asm_807FDC9C->unk6 + gCurrentActorPointer->unk15E) + 1))
-        + D_global_asm_807FDC9C->unk6 + gCurrentActorPointer->unk15E;
+    new_var = RandClamp(32767);
+    new_var2 = D_global_asm_807FDC9C->unk6 + gCurrentActorPointer->unk15E;
+    D_global_asm_807FDC90->unkC = (new_var % ((phi_a0 - new_var2) + 1)) + new_var2;
 }
-*/
 
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072AB74.s")
