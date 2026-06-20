@@ -1539,7 +1539,7 @@ void func_global_asm_8066A584(Struct8066AC10 *arg0, f32 arg1);
 // TODO: func_global_asm_8066A834 has no documented signature
 // TODO: func_global_asm_8066A988 has no documented signature
 // TODO: func_global_asm_8066AC10 has no documented signature
-void func_global_asm_8066ACA4(s32 arg0, s32 arg1, s32 arg2);
+void func_global_asm_8066ACA4(s32 arg0, Struct8066AC10 *arg1, s32 arg2);
 void func_global_asm_8066ADA0(void);
 void func_global_asm_8066AEE4(void *arg0, s32 arg1);
 void func_global_asm_8066AF40(void);

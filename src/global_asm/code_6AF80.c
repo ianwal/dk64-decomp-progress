@@ -1202,8 +1202,21 @@ s32 func_global_asm_8066AC10(Struct8066AC10 *arg0) {
     return 0;
 }
 
-// TODO: Similar to above ^^ same struct arg1?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066ACA4.s")
+void func_global_asm_8066ACA4(s32 arg0, Struct8066AC10 *arg1, s32 arg2) {
+    f32 sp3C[3][3];
+    s32 new_var = (u8) arg2;
+
+    sp3C[2][0] = arg1->unk2C - arg1->unk24;
+    sp3C[2][1] = arg1->unk38 - arg1->unk30;
+    sp3C[2][2] = arg1->unk44 - arg1->unk3C;
+    sp3C[1][0] = arg1->unk28 - arg1->unk24;
+    sp3C[1][1] = arg1->unk34 - arg1->unk30;
+    sp3C[1][2] = arg1->unk40 - arg1->unk3C;
+    sp3C[0][0] = (sp3C[2][1] * sp3C[1][2]) - (sp3C[2][2] * sp3C[1][1]);
+    sp3C[0][1] = (sp3C[2][2] * sp3C[1][0]) - (sp3C[2][0] * sp3C[1][2]);
+    sp3C[0][2] = (sp3C[2][0] * sp3C[1][1]) - (sp3C[2][1] * sp3C[1][0]);
+    func_global_asm_80666AF8(arg0, sp3C[0][0], sp3C[0][1], sp3C[0][2], 1, new_var, 2);
+}
 
 extern s32 *D_global_asm_807F9520;
 extern s32 *D_global_asm_807F9528[];

@@ -1351,7 +1351,7 @@ us,asm,func_global_asm_8070CA2C,68,yes
 us,asm,func_global_asm_806871DC,548,yes
 us,asm,func_global_asm_806D37CC,224,yes
 us,asm,_n_loadOutputBuffer,792,yes
-us,asm,func_global_asm_8066ACA4,252,no
+us,asm,func_global_asm_8066ACA4,252,yes
 us,asm,func_global_asm_8072C870,168,yes
 us,asm,func_global_asm_806787EC,8,yes
 us,asm,func_global_asm_8070DA28,76,yes
