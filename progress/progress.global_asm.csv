@@ -952,7 +952,7 @@ us,asm,func_global_asm_806E8A8C,100,yes
 us,asm,func_global_asm_8061B840,12,yes
 us,asm,func_global_asm_806C9E40,48,yes
 us,asm,func_global_asm_8064F804,72,yes
-us,asm,func_global_asm_8070DA74,264,no
+us,asm,func_global_asm_8070DA74,264,yes
 us,asm,func_global_asm_806EBC60,144,yes
 us,asm,func_global_asm_8060A634,60,yes
 us,asm,func_global_asm_80692940,1296,yes

@@ -1209,7 +1209,8 @@ typedef struct {
     u16 unk0; // Used
     s16 unk2;
     s32 unk4;
-    s32 unk8;
+    u16 unk8; // Used
+    u16 unkA;
     Struct806A57C0_2 *unkC; // Used
     u8 unk10;
     u8 unk11;

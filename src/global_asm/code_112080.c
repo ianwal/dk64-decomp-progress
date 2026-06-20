@@ -149,11 +149,19 @@ Temp8070D6D8 *func_global_asm_8070D6D8(void *arg0) {
 }
 
 typedef struct Struct8070D754_temp_v0 Struct8070D754_temp_v0;
+typedef struct Struct8070D754_unk8 Struct8070D754_unk8;
+
+struct Struct8070D754_unk8 {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    struct Struct8070D754_unk8 *unk4;
+};
 
 struct Struct8070D754_temp_v0 {
     Actor *unk0; // Wrinkly
     Actor *unk4; // Textbox
-    s32 unk8;
+    Struct8070D754_unk8 *unk8;
     Struct8070D754_temp_v0 *next;
 };
 
@@ -318,7 +326,44 @@ void func_global_asm_8070DA28(AAD_global_asm_806A4DDC *arg0) {
     arg0->unk10 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070DA74.s")
+void func_global_asm_8070DA74(Actor *arg0) {
+    Actor *sp2C;
+    AAD_global_asm_806A4DDC *sp28;
+    Struct8070D754_temp_v0 *temp_v0;
+    Struct8070D754_temp_v0 *var_s2;
+    Struct8070D754_temp_v0 **var_v1;
+    Struct8070D754_unk8 *temp_a0_2;
+    Struct8070D754_unk8 *var_s0;
+
+    var_v1 = &D_global_asm_807550C4;
+    var_s2 = NULL;
+    while ((*var_v1 != NULL) && (arg0 != (*var_v1)->unk0)) {
+        var_v1 = &(*var_v1)->next;
+    }
+    temp_v0 = *var_v1;
+    if (temp_v0 != NULL) {
+        var_s2 = temp_v0;
+        *var_v1 = temp_v0->next;
+    }
+    if (var_s2 != NULL) {
+        sp2C = var_s2->unk4;
+        sp28 = (AAD_global_asm_806A4DDC *) sp2C->AAD_as_array[0];
+        func_global_asm_8070DA28(sp28);
+        func_global_asm_8070D970(sp28->unk8);
+        var_s0 = var_s2->unk8;
+        if (var_s0 != NULL) {
+            do {
+                temp_a0_2 = var_s0;
+                var_s0 = var_s0->unk4;
+                func_global_asm_8061134C(temp_a0_2);
+            } while (var_s0 != NULL);
+        }
+        func_global_asm_8061134C(var_s2);
+        func_global_asm_8061134C(sp28->unk34);
+        deleteActor(sp2C);
+        arg0->object_properties_bitfield &= 0xFDFFFFFF;
+    }
+}
 
 typedef struct Struct8070DB9C Struct8070DB9C;
 
@@ -598,13 +643,6 @@ typedef struct {
     u8 unk0[0x54 - 0x0];
     u8 unk54;
 } AAD_global_asm_8070E808;
-
-typedef struct {
-    u16 unk0;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-} Struct8070D754_unk8;
 
 typedef struct {
     s32 unk0;
