@@ -2743,7 +2743,7 @@ us,asm,func_global_asm_807130D4,148,yes
 us,asm,func_global_asm_8067C2B8,964,yes
 us,asm,__n_initFromBank,232,yes
 us,asm,func_global_asm_806B02EC,104,yes
-us,asm,func_global_asm_8064F97C,256,no
+us,asm,func_global_asm_8064F97C,256,yes
 us,asm,initializeCharacterSpawnerActor,876,no
 us,asm,func_global_asm_806B6600,856,yes
 us,asm,func_global_asm_806D0430,56,yes
