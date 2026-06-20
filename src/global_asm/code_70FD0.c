@@ -249,17 +249,14 @@ extern s32 D_807FB530;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CB88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CCD8.s")
-
 extern s32 D_global_asm_80747D70;
 extern s16 D_global_asm_80748E40;
 
-/*
-// TODO: Hmm, are Prop_unk28 and Prop_unk48 substructs?
 void func_global_asm_8066CCD8(void) {
-    Prop_unk48 *temp_a0_2;
     Prop *var_v1;
-    Prop_unk28 *temp_a0;
+    Prop_seg28 *new_var;
+    Prop_seg28 *temp_a0;
+    Prop_unk48 *temp_a0_2;
 
     if (D_global_asm_80747D70 != 0) {
         D_global_asm_80748E40 += 1;
@@ -267,22 +264,21 @@ void func_global_asm_8066CCD8(void) {
             D_global_asm_80748E40 = 0;
         }
         var_v1 = &D_global_asm_807F6000[D_global_asm_80748E40];
-        temp_a0 = var_v1->unk28;
-        if (var_v1->unk28->unk15 & 1) {
-            if ((object_timer - var_v1->unk28->unk10) >= 0x1FU) {
-                func_global_asm_8066C904(temp_a0);
+        temp_a0 = &var_v1->unk28;
+        new_var = temp_a0;
+        if (1) {
+            if ((new_var->unk15 & 1) && (((u32) (object_timer - temp_a0->unk10)) >= 0x1FU)) {
+                func_global_asm_8066C904((Prop_unk28 *) new_var);
+                var_v1 = &D_global_asm_807F6000[D_global_asm_80748E40];
             }
+            var_v1 = &D_global_asm_807F6000[D_global_asm_80748E40];
+            temp_a0_2 = &var_v1->unk48;
         }
-        var_v1 = &D_global_asm_807F6000[D_global_asm_80748E40];
-        temp_a0_2 = var_v1->unk48;
-        if (temp_a0_2->unk24 & 1) {
-            if ((object_timer - temp_a0_2->unk8) >= 0x1FU) {
-                func_global_asm_806348B4(temp_a0_2);
-            }
+        if ((temp_a0_2->unk24 & 1) && (((u32) (object_timer - temp_a0_2->unk8)) >= 0x1FU)) {
+            func_global_asm_806348B4(temp_a0_2);
         }
     }
 }
-*/
 
 void func_global_asm_8066CDD0(void) {
     func_global_asm_8066CDF8();
