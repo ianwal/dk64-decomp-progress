@@ -139,8 +139,38 @@ void func_global_asm_806FFF5C(void) {
     getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x138B, 1, 1);
 }
 
-// Doable, matrix arrays
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_806FFF88.s")
+extern s32 D_global_asm_80744470[];
+
+u16 *func_global_asm_806FFF88(void) {
+    u16 *sp34;
+    s16 var_s3;
+    u16 *temp_v0;
+    u16 *var_s1;
+    s32 var_s2;
+    s16 var_s0;
+
+    var_s3 = 7;
+    if (gCurrentActorPointer->unk58 == ACTOR_UNKNOWN_217) {
+        func_global_asm_806FFF5C();
+        return;
+    }
+    temp_v0 = malloc(0xA000);
+    sp34 = temp_v0;
+    var_s1 = temp_v0;
+    var_s2 = (D_global_asm_80744470[D_global_asm_807444FC] + (var_s3 * (16 * D_global_asm_80744490))) + 0xA0;
+    var_s3 = 0;
+    do {
+        var_s0 = 0;
+        do {
+            var_s1 = func_global_asm_806FFEAC(var_s1, ((var_s0 << 1) << 5) + var_s2);
+            var_s0 += 1;
+        } while (var_s0 < 5);
+        var_s2 += (D_global_asm_80744490 << 3) << 4;
+        var_s3 += 1;
+    } while (var_s3 < 2);
+
+    return sp34;
+}
 
 // Haha what, some crazy one liner
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700088.s")
