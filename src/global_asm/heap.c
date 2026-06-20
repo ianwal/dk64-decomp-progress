@@ -56,7 +56,26 @@ void func_global_asm_806109EC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610A88.s")
+// word-wise memmove
+void func_global_asm_80610A88(s32 *src, s32 *dest, u32 count) {
+    s32 *curr = src;
+    s32 *curr_dst = dest;
+    u32 curr_count = count >> 2;
+
+    if (dest < src) {
+        while (curr_count != 0) {
+            *(curr_dst++) = *(curr++);
+            curr_count--;
+        }
+    } else {
+        curr_dst += curr_count;
+        curr += curr_count;
+        while (curr_count != 0) {
+            *(--curr_dst) = *(--curr);
+            curr_count--;
+        }
+    }
+}
 
 // TODO: Datatypes are sus
 void func_global_asm_80610B84(s32 arg0, s32 arg1, u32 arg2) {
