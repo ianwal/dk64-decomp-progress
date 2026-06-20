@@ -178,28 +178,30 @@ void func_global_asm_806306D0(Chunk14 *current) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_8063070C.s")
-
-/*
 Chunk14 *func_global_asm_8063070C(Chunk14 *arg0) {
-    while (arg0) {
-        if ((arg0->unk22 == 1) && (arg0->unk23 == 0)) {
-            if (arg0->next2) {
-                arg0->next2->next = arg0->next;
-            } else {
-                arg0 = arg0->next;
+    Chunk14 *temp_v1;
+    Chunk14 *var_s2;
+
+    var_s2 = arg0;
+    if (arg0 != NULL) {
+        do {
+            if ((arg0->unk22 == 1) && (arg0->unk23 == 0)) {
+                temp_v1 = arg0->next2;
+                if (temp_v1 != NULL) {
+                    temp_v1->next = arg0->next;
+                } else {
+                    var_s2 = arg0->next;
+                }
+                if (arg0->next != NULL) {
+                    arg0->next->next2 = arg0->next2;
+                }
+                free(arg0);
             }
-            if (arg0->next) {
-                arg0->next->next2 = arg0->next2;
-            }
-            free(arg0);
-        }
-        arg0 = arg0->next;
+            arg0 = arg0->next;
+        } while (arg0 != NULL);
     }
-    return arg0;
+    return var_s2;
 }
-*/
 
 void func_global_asm_806307AC(Chunk14 *current) {
     while (current) {
