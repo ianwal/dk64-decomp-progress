@@ -1064,8 +1064,46 @@ void func_global_asm_8066A584(Struct8066AC10 *arg0, f32 arg1) {
     }
 }
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A64C.s")
+extern Actor *D_global_asm_807F9470;
+extern f32 D_global_asm_807F9474;
+extern f32 D_global_asm_807F9478;
+extern f32 D_global_asm_807F947C;
+extern u32 D_global_asm_807F9480;
+extern s8 D_global_asm_807F94B2;
+
+void func_global_asm_8066A64C(s32 arg0, Actor *arg1, LedgeInfo98 *arg2, f32 arg3, f32 arg4, f32 arg5) {
+    f32 sp78[4][4];
+    f32 sp38[4][4];
+    Mtx *temp;
+    u8 var_v1;
+    u32 temp_v0;
+    LedgeInfo *temp_a3;
+
+    D_global_asm_807F9470 = arg1;
+    temp_a3 = arg1->ledge_info_pointer;
+    if (object_timer == temp_a3->unk88) {
+        var_v1 = D_global_asm_807444FC;
+    } else {
+        var_v1 = D_global_asm_807444FC;
+        var_v1 ^= 1;
+    }
+    temp = temp_a3->unk74[var_v1];
+    temp_v0 = arg2->unk48;
+    if ((temp_v0 != arg2->unk4C) || (temp_v0 != arg2->unk50)) {
+        D_global_asm_807F94B2 = 1;
+    }
+
+    temp_v0 = arg2->unk48;
+    D_global_asm_807F9480 = temp_v0;
+    temp_v0 = arg2->unk48;
+    if (temp_v0 == (-1U)) {
+        memcpy(sp78, temp_a3->unk70, sizeof(Mtx));
+    } else {
+        guMtxL2F(sp78, &temp[temp_v0 >> 6]);
+    }
+    func_global_asm_8062FF10(sp38, sp78);
+    guMtxXFMF(sp38, arg3, arg4, arg5, &D_global_asm_807F9474, &D_global_asm_807F9478, &D_global_asm_807F947C);
+}
 
 void func_global_asm_8066A75C(Actor *arg0, u32 arg1, f32 *arg2, f32 arg3, f32 *arg4) {
     Mtx *temp;
