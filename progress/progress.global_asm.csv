@@ -1399,7 +1399,7 @@ us,asm,func_global_asm_80611850,172,yes
 us,asm,func_global_asm_80636A8C,92,yes
 us,asm,func_global_asm_806FAB20,324,yes
 us,asm,func_global_asm_8060CB74,40,yes
-us,asm,func_global_asm_80715908,308,no
+us,asm,func_global_asm_80715908,308,yes
 us,asm,func_global_asm_8067BA3C,64,yes
 us,asm,func_global_asm_8060C830,124,yes
 us,asm,func_global_asm_80737B2C,44,yes

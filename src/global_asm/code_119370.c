@@ -372,6 +372,8 @@ void func_global_asm_8071509C(otherSpriteControl *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715270.s")
 
+void func_global_asm_80715908(Struct80717D84 *arg0);
+
 void func_global_asm_8071586C(Actor *arg0) {
     Struct807FDB04 *var_s0;
 
@@ -396,47 +398,42 @@ void func_global_asm_807158C0(void) {
     }
 }
 
-// OSTime
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715908.s")
-
-/*
 extern s32 D_80000310;
-extern void *D_global_asm_807FDB04;
-extern void *D_global_asm_807FDB08;
 
-void func_global_asm_80715908(void *arg0) {
+void func_global_asm_80715908(Struct80717D84 *arg0) {
+    Struct80717D84 *temp_s1;
+    Struct80717D84 *new_var;
     u8 sp3F;
+    Struct80717D84 *temp_s0;
+    s32 temp_v0;
     s32 var_s1;
-    void *temp_a0;
-    void *temp_s0;
-    void *temp_s1;
-    void *var_s0;
+    Struct80717D84_unk0 *var_s0;
 
     if (arg0->unk36F == 0) {
         if (arg0->unk38C & 4) {
-            func_global_asm_80630588(0, arg0, 4, &sp3F);
+            func_global_asm_80630588(0, (PropModel *) arg0, 4U, &sp3F);
         } else {
-            func_global_asm_8062D26C(arg0);
+            func_global_asm_8062D26C((Actor *) arg0);
         }
     } else {
-        func_global_asm_80630588(0, arg0, 3, &sp3F);
+        func_global_asm_80630588(0, (PropModel *) arg0, 3U, &sp3F);
     }
-    temp_a0 = arg0->unk384;
-    if (temp_a0 != NULL) {
-        func_global_asm_8061134C(temp_a0);
+    if (arg0->unk384 != NULL) {
+        func_global_asm_8061134C(arg0->unk384);
     }
     var_s1 = 0;
-    var_s0 = arg0;
+    var_s0 = arg0->unk0;
     if (arg0->unk20 > 0) {
         do {
             func_global_asm_8061134C(var_s0->unk0);
             func_global_asm_8061134C(var_s0->unk4);
             var_s1 += 1;
-            var_s0 += 8;
-        } while (var_s1 < arg0->unk20);
+            var_s0 += 1;
+        } while (var_s1 < ((s32) arg0->unk20));
     }
     if (D_80000310 != 0x17D9) {
-        osSetTime(func_global_asm_806119A0());
+        temp_v0 = func_global_asm_806119A0();
+        osSetTime(temp_v0);
     }
     temp_s0 = arg0->unk398;
     temp_s1 = arg0->unk39C;
@@ -447,12 +444,12 @@ void func_global_asm_80715908(void *arg0) {
         D_global_asm_807FDB04 = temp_s1;
     }
     if (temp_s1 != NULL) {
-        temp_s1->unk398 = temp_s0;
+        new_var = temp_s1;
+        new_var->unk398 = temp_s0;
         return;
     }
     D_global_asm_807FDB08 = temp_s0;
 }
-*/
 
 typedef struct {
     void *unk0;

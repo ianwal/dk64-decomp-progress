@@ -3530,7 +3530,7 @@ Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, 
 // TODO: func_global_asm_80715270 has no documented signature
 void func_global_asm_8071586C(Actor *arg0);
 void func_global_asm_807158C0(void);
-void func_global_asm_80715908(void *arg0);
+void func_global_asm_80715908(Struct80717D84 *arg0);
 // TODO: func_global_asm_80715A3C has no documented signature
 // TODO: func_global_asm_80715B30 has no documented signature
 void func_global_asm_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
