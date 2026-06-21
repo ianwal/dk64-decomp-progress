@@ -64,33 +64,35 @@ u8 func_global_asm_80663FCC(s16 propIndex) {
     return FALSE;
 }
 
-// close
-// https://decomp.me/scratch/Gh4Ur
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68AA0/func_global_asm_80664044.s")
-
-/*
 void func_global_asm_80664044(u8 arg0, u8 arg1, u8 arg2, f32 arg3) {
+    s32 new_var;
     s32 found;
     s32 j;
     s32 i;
 
     for (i = 0; i < D_global_asm_807F9424; i++) {
         if (arg0 == D_global_asm_807F9420[i].unk6) {
-            found = FALSE;
+            new_var = TRUE;
             j = 0;
+            found = FALSE;
             while (TRUE) {
-                if (D_global_asm_807F9420[i].unk7[j] == character_change_array->chunk) {
-                    found = TRUE;
+                if (D_global_asm_807F9420[i].unk7[j] == (*character_change_array).chunk) {
+                    found = new_var;
                 }
+
+                // fake match
+                if (1) {
+                }
+
                 j++;
-                if (j >= 5 || found || D_global_asm_807F9420[i].unk7[j] == -1) {
+                if (((j >= 5) || found) || (D_global_asm_807F9420[i].unk7[j] == -1)) {
                     break;
                 }
             }
+
             if (found) {
                 func_global_asm_80603340(D_global_asm_807F9420[i].unk0, D_global_asm_807F9420[i].unk2, D_global_asm_807F9420[i].unk4, arg1, arg2, arg3);
             }
         }
     }
 }
-*/
