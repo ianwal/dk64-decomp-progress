@@ -1034,9 +1034,6 @@ void func_global_asm_80605314(Actor *arg0, u8 arg1) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80605380.s")
-
 extern s32 D_global_asm_807705A0[];
 extern s16 D_global_asm_807705F8[];
 extern s16 D_global_asm_80770658[];
@@ -1049,19 +1046,16 @@ typedef struct {
 
 extern Struct807707A0 D_global_asm_807707A0[];
 
-/*
-// TODO: Close, maybe needs some temp variables?
 void func_global_asm_80605380(s16 arg0) {
-    if (--D_global_asm_80770740[D_global_asm_80770628[arg0]] != 0) {
+    if ((--D_global_asm_80770740[D_global_asm_80770628[arg0]]) != 0) {
         D_global_asm_80770658[D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770740[D_global_asm_80770628[arg0]]]] = D_global_asm_80770658[D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770658[arg0]]];
         D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770658[arg0]] = D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770740[D_global_asm_80770628[arg0]]];
     } else {
         D_global_asm_80770710[D_global_asm_80770628[arg0]] = 0;
         D_global_asm_807706F8[D_global_asm_80770628[arg0]] = 0;
     }
-    if (D_global_asm_80770740[D_global_asm_80770628[arg0]] < 0 || D_global_asm_80770740[D_global_asm_80770628[arg0]] >= 0x17) {
-        s32 temp = D_global_asm_80770740[D_global_asm_80770628[arg0]];
-        raiseException(9, temp, 0, 0);
+    if ((D_global_asm_80770740[D_global_asm_80770628[arg0]] < 0) || (D_global_asm_80770740[D_global_asm_80770628[arg0]] >= 0x17)) {
+        raiseException(9, (s32) (u32) D_global_asm_80770740[D_global_asm_80770628[arg0]], 0, 0);
     }
     D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770740[D_global_asm_80770628[arg0]]] = -1;
     D_global_asm_807705F8[arg0] = -1;
@@ -1069,7 +1063,6 @@ void func_global_asm_80605380(s16 arg0) {
     D_global_asm_80770628[arg0] = -1;
     D_global_asm_80770658[arg0] = -1;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80605510.s")
 

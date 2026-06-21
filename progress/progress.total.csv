@@ -2061,7 +2061,7 @@ us,asm,func_global_asm_80644D50,220,yes
 us,asm,func_global_asm_80611594,8,yes
 us,asm,func_global_asm_806E8DB4,76,yes
 us,asm,func_global_asm_8068BBF8,1160,yes
-us,asm,func_global_asm_80605380,400,no
+us,asm,func_global_asm_80605380,400,yes
 us,asm,func_global_asm_806BFBB4,64,yes
 us,asm,_bnkfPatchWaveTable,152,yes
 us,asm,func_global_asm_80602D4C,120,yes
