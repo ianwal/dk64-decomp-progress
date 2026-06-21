@@ -358,21 +358,29 @@ void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 a
     );
 }
 
-// doable, close, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C6A8.s")
-
-/*
-void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 arg10) {
+void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 arg10) {
+    AAD_8061C464 *new_var3;
+    Actor *new_var2;
+    AAD_8061C464 *new_var;
     f32 scale;
     AAD_8061C464_unk44 *aaD44;
     AAD_8061C464 *aaD;
 
-    aaD = arg0->additional_actor_data;
+    new_var3 = arg0->additional_actor_data;
+    new_var = new_var3;
+    aaD = new_var;
     if (arg1 != NULL) {
         aaD44 = &aaD->unk44;
+        new_var2 = arg1;
+
+        // fake match
+        if (0) {
+        }
+
+        scale = new_var2->animation_state->scale_y / 0.15;
+
         aaD44->unk0 = arg1;
         aaD44->unk4 = arg1;
-        scale = arg1->animation_state->scale_y / 0.15;
         aaD44->unk8 = arg3;
         aaD44->unkA = arg4 * scale;
         aaD44->unkC = arg5;
@@ -391,7 +399,6 @@ void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 
         func_global_asm_806224CC(arg0, aaD->unk0);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C804.s")
 

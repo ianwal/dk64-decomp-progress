@@ -3070,7 +3070,7 @@ us,asm,func_global_asm_806B3D18,140,yes
 us,asm,func_global_asm_807370A4,244,yes
 us,asm,func_global_asm_8066C2D0,832,yes
 us,asm,func_global_asm_80711F90,804,no
-us,asm,func_global_asm_8061C6A8,348,no
+us,asm,func_global_asm_8061C6A8,348,yes
 us,asm,func_global_asm_806228BC,512,yes
 us,asm,func_global_asm_80725ED4,656,no
 us,asm,func_global_asm_8066B0DC,16,yes
