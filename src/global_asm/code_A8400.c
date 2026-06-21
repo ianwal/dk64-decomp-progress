@@ -444,16 +444,12 @@ void func_global_asm_806A5868(void) {
     }
 }
 
-// TODO: Progress made, kinda fiddly, last loop is sus
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5C60.s")
-
-/*
 void func_global_asm_806A5C60(Actor *arg0) {
     s32 var_a1;
     s32 j;
     s16 var_s3;
+    s16 step;
     s32 i;
-    u8 temp_v0;
 
     i = 0;
     var_a1 = FALSE;
@@ -470,11 +466,11 @@ void func_global_asm_806A5C60(Actor *arg0) {
             if (D_global_asm_80750400[i].unk4 != 0) {
                 playSong(D_global_asm_80750400[i].unk4, 1.0f);
             }
+            step = 0xFFF / D_global_asm_80750400[i].unk5;
             for (j = 0; j < D_global_asm_80750400[i].unk5; j++) {
-                var_s3 += (0xFFF / D_global_asm_80750400[i].unk5);
                 func_global_asm_806A5DF0(D_global_asm_80750400[i].unk2, arg0->x_position, arg0->y_position, arg0->z_position, var_s3, 1, -1, 0);
+                var_s3 += step;
             }
         }
     }
 }
-*/
