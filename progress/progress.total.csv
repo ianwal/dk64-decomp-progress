@@ -978,7 +978,7 @@ us,asm,getPointerTableFile,812,yes
 us,asm,func_global_asm_8070E34C,508,no
 us,asm,func_global_asm_8066BECC,64,yes
 us,asm,func_global_asm_80604D70,724,no
-us,asm,func_global_asm_8066F06C,396,no
+us,asm,func_global_asm_8066F06C,396,yes
 us,asm,func_global_asm_806C9DE0,48,yes
 us,asm,func_global_asm_806E1864,8,yes
 us,asm,func_global_asm_80632FCC,248,yes

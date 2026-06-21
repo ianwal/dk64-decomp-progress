@@ -910,32 +910,30 @@ s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     return TRUE;
 }
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066F06C.s")
-
-/*
 void func_global_asm_8066F06C(LedgeInfo *arg0) {
-    s32 temp;
+    LedgeInfo98 **new_var;
     s32 i;
+    s32 j;
+    LedgeInfo98 *base;
     LedgeInfo98 *spB0;
-    float sp6C[4][4];
+    f32 sp6C[4][4];
+    Mtx *temp_s6;
     s32 *var_s1;
     s32 *var_s2;
     s32 *var_s3;
-    s32 temp_s6;
-    s32 temp_t2;
-    s32 j;
     u8 var_v1;
 
+    new_var = &base;
     if (arg0->unk98 != NULL) {
         if (object_timer == arg0->unk88) {
             var_v1 = D_global_asm_807444FC;
         } else {
             var_v1 = D_global_asm_807444FC ^ 1;
         }
-        temp_s6 = &arg0->unk74[var_v1];
-        spB0 = arg0->unk98;
+        temp_s6 = arg0->unk74[var_v1];
+        base = arg0->unk98;
         for (i = 0; i < arg0->unk94; i++) {
+            spB0 = *new_var;
             var_s1 = &spB0->unk24;
             var_s2 = &spB0->unk30;
             var_s3 = &spB0->unk3C;
@@ -944,18 +942,18 @@ void func_global_asm_8066F06C(LedgeInfo *arg0) {
                     memcpy(&sp6C, arg0->unk70, 0x40);
                     guMtxXFMF(&sp6C, spB0->unk0, spB0->unkC, spB0->unk18, var_s1, var_s2, var_s3);
                 } else {
-                    guMtxXFML(((spB0->unk48 >> 6) << 6) + temp_s6, spB0->unk0, spB0->unkC, spB0->unk18, var_s1, var_s2, var_s3);
+                    guMtxXFML((Mtx *) (((((u32) spB0->unk48) >> 6) << 6) + ((s32) temp_s6)), spB0->unk0, spB0->unkC, spB0->unk18, var_s1, var_s2, var_s3);
                 }
-                spB0 += 4;
+                spB0 = (LedgeInfo98 *) (((s32) spB0) + 4);
                 var_s1++;
                 var_s2++;
                 var_s3++;
             }
-            spB0++;
+
+            base++;
         }
     }
 }
-*/
 
 u8 func_global_asm_8066F1F8(Actor *arg0, s16 arg1) {
     s16 sp1E;
