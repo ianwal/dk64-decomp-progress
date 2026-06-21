@@ -923,11 +923,6 @@ void func_global_asm_806E2140(void) {
 // handle gunshots, jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E225C.s")
 
-// close
-// https://decomp.me/scratch/IgLyf
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E2B20.s")
-
-/*
 u8 func_global_asm_806E2B20(Actor *arg0) {
     f32 x;
     f32 y;
@@ -947,22 +942,22 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
     phi_f20 = 0;
     getBonePosition(arg0, 4, &bone4X, &bone4Y, &bone4Z);
     getBonePosition(arg0, 10, &bone10X, &bone10Y, &bone10Z);
-    while (phi_f20 <= 1.0 && !phi_v1) {
-        phi_v1 = func_global_asm_80671E00(
-            bone4X + ((bone10X - bone4X) * phi_f20),
-            bone4Y + ((bone10Y - bone4Y) * phi_f20),
-            bone4Z + ((bone10Z - bone4Z) * phi_f20),
-            10.0f,
-            &sp66,
-            &sp64,
-            NULL,
-            NULL
-        );
+    while ((phi_f20 <= 1.0) && (!phi_v1)) {
+        z = bone4Z;
+        x = bone4X + ((bone10X - bone4X) * phi_f20);
+        y = bone4Y + (phi_f20 * (bone10Y - bone4Y));
+
+        // fake match
+        if (0) {
+        }
+
+        z = z + ((bone10Z - bone4Z) * phi_f20);
+        phi_v1 = func_global_asm_80671E00(x, y, z, 10.0f, &sp66, &sp64, 0, 0);
         phi_f20 += 0.2;
     }
+
     return phi_v1;
 }
-*/
 
 void func_global_asm_806E2C74(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
