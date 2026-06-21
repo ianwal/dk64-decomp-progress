@@ -1151,7 +1151,59 @@ void func_global_asm_8062210C(Struct8062210C *arg0, f32 *arg1, s32 arg2, f32 *ar
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062217C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80622334.s")
+typedef struct {
+    s16 unk0;
+    u16 unk2;
+} Struct80747B60;
+
+extern Struct80747B60 D_global_asm_80747B60[][4];
+extern s32 D_global_asm_807FBB68;
+
+void func_global_asm_80622334(Actor *arg0, s16 arg1) {
+    s16 var_a2;
+    s16 var_a3;
+    s16 var_v0;
+    u8 temp_v0;
+    u8 temp_v0_2;
+    CameraPaad *temp_t0;
+    s32 new_var;
+
+    temp_t0 = arg0->AAD_as_array[0];
+    temp_v0 = temp_t0->unkFB;
+    var_a3 = ((character_change_array[temp_v0].unk2C0 != 1) + (current_character_index[temp_v0] * 2)) + (new_var = 7);
+    var_a2 = 1;
+    if (current_map == MAP_FACTORY_MAD_JACK) {
+        var_a3 = 0;
+    } else if (D_global_asm_807FBB68 & 2) {
+        var_a3 = 2;
+    } else if ((D_global_asm_807FBB64 & 1) && (current_map != MAP_GALLEON_PUFFTOSS)) {
+        var_a3 = 3;
+    } else if (D_global_asm_807FBB64 & 0x80) {
+        var_a3 = 4;
+    } else {
+        if ((temp_t0->unkAC & 0x20000) != 0) {
+            var_a3 = 5;
+        } else if (D_global_asm_807FBB64 & 0x04000000) {
+            var_a3 = 6;
+        } else {
+            temp_v0_2 = temp_t0->unkF3;
+            if (((temp_v0_2 == 5) || (temp_v0_2 == 0xC)) || (temp_v0_2 == 0xA)) {
+                var_a3 = 1;
+            }
+        }
+    }
+
+    // fake match, whitespace matters here so formatting is disabled.
+    // clang-format off
+    var_v0 = 2; do {
+    // clang-format on
+        if (arg1 >= ((s32) D_global_asm_80747B60[var_a3][var_v0].unk2)) {
+            var_a2 = var_v0;
+        }
+        var_v0 += 1;
+    } while (var_v0 < 4);
+    func_global_asm_8062217C(arg0, var_a2);
+}
 
 typedef struct {
     u8 unk0[0xC - 0x0];

@@ -1061,7 +1061,7 @@ us,asm,playActorAnimation,108,yes
 us,asm,func_global_asm_8060DEC8,608,yes
 us,asm,func_global_asm_807412B4,92,yes
 us,asm,func_global_asm_80612800,64,yes
-us,asm,func_global_asm_80622334,408,no
+us,asm,func_global_asm_80622334,408,yes
 us,asm,func_global_asm_806A6094,40,yes
 us,asm,func_global_asm_806ECC48,148,yes
 us,asm,func_global_asm_806F0878,184,yes
