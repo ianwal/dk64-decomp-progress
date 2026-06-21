@@ -1268,8 +1268,31 @@ void func_global_asm_8060956C(f32 arg0, f32 arg1, f32 arg2, s16 arg3, u8 arg4, f
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A1B0.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A398.s")
+extern s16 D_global_asm_807454F0[];
+extern s8 D_global_asm_8074583C;
+extern s8 D_global_asm_80745840;
+
+void func_global_asm_8060A398(s32 arg0) {
+    u8 *new_var;
+    f32 var_f0;
+    u8 temp_v1;
+
+    new_var = &D_global_asm_80770560[arg0];
+    var_f0 = (f32) D_global_asm_80745840;
+    switch (D_global_asm_80745658[D_global_asm_80770560[arg0]] & 0xC00) {
+        case 0x400:
+            var_f0 = (f32) D_global_asm_8074583C;
+            break;
+
+        case 0x800:
+            if (!(D_global_asm_8074583C < var_f0)) {
+                var_f0 = (f32) D_global_asm_8074583C;
+            }
+            break;
+    }
+
+    alSepqSetVol(D_global_asm_8076BF20[arg0], (s16) ((s32) (((((f64) ((((f32) D_global_asm_807454F0[*new_var]) * D_global_asm_80770568[arg0]) * D_global_asm_807457B8[arg0])) * (((f64) var_f0) / 40.0)) * 25000.0) / 32767.0)));
+}
 
 void func_global_asm_8060A4D0(s32 arg0, f32 arg1) {
     D_global_asm_807457B8[arg0] = arg1;
