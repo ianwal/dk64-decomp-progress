@@ -1129,7 +1129,26 @@ void func_global_asm_8061F510(u8 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80620F00.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80621174.s")
+extern s8 D_global_asm_80744530;
+
+u8 func_global_asm_80621174(s32 arg0, PlayerAdditionalActorData *arg1, Actor *arg2) {
+    // Formatting is off here for better manual formatting. Whitespace doesn't affect the match here.
+    // clang-format off
+    return (arg2->control_state == 0x5B) ||
+           ((D_global_asm_807FBB64 & 0x04000004) && (arg2->unkB8 != 0.0f)) ||
+           (D_global_asm_807FBB64 & 0x08000000) ||
+           (arg1->unkAC & 4) ||
+           ((arg1->unkAC & 8) && (arg2->unkB8 != 0.0f)) ||
+           ((D_global_asm_80744530 == 1) && (arg2->unkB8 != 0.0f) && (gameIsInDKTVMode() == 0)) ||
+           (arg1->unkF0_u8[3] == 0xA) ||
+           (arg1->unkF0_u8[3] == 0xD) ||
+           (arg1->unkF0_u8[3] == 5) ||
+           (arg1->unkF0_u8[3] == 0xC) ||
+           (arg1->unkFC && (arg2->unkB8 != 0.0f)) ||
+           (arg2->control_state == 0x6E) ||
+           (arg2->unk58 == 8);
+    // clang-format on
+}
 
 // jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062133C.s")
