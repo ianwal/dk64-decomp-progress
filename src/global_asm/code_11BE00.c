@@ -31,7 +31,6 @@ extern s16 D_global_asm_807FDB3E;
 extern s16 D_global_asm_807FDB40;
 extern s16 D_global_asm_807FDB42;
 
-void func_global_asm_80714778(f32);
 void func_global_asm_80714A9C(void);
 void func_global_asm_80717404(otherSpriteControl *, s8 *);
 void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);

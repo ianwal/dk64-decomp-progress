@@ -31,7 +31,7 @@ extern s16 D_global_asm_807FDB3E;
 extern s16 D_global_asm_807FDB40;
 extern s16 D_global_asm_807FDB42;
 
-void func_global_asm_80714778(f32);
+void func_global_asm_80714778(SpriteData *);
 void func_global_asm_80714A9C(void);
 
 void func_global_asm_80714670(void) {
@@ -81,7 +81,53 @@ void func_global_asm_80714708(u8 *arg0, s16 *arg1, s16 *arg2) {
     *arg2 *= sp1A;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80714778.s")
+void func_global_asm_80714778(SpriteData *arg0) {
+    Struct807FDB00 *tail;
+    Struct807FDB00 *cur;
+    Struct807FDB00 *new_var;
+    s32 count;
+    s32 i;
+
+    tail = NULL;
+    cur = D_global_asm_807FDB00;
+    while (cur != NULL) {
+        tail = cur;
+        if (arg0 == cur->unk0) {
+            return;
+        }
+        cur = cur->next;
+    }
+
+    new_var = malloc(sizeof(*new_var));
+    new_var->next = NULL;
+    cur = new_var;
+    cur->unk0 = arg0;
+    new_var->unk4 = arg0->id;
+    func_global_asm_807146E0((u8 *) arg0, &new_var->unk8, &new_var->unk9);
+    cur->unkA = arg0->unk6;
+    cur->unkB = arg0->codec;
+    cur->unk10 = arg0->unk8;
+    cur->unk11 = arg0->unk9;
+    cur->unk12 = arg0->unkA;
+    cur->unk13 = arg0->unkB;
+    cur->unk14 = arg0->unkC;
+    cur->unk15 = arg0->table;
+    func_global_asm_807146F4((s16 *) arg0, (s16 *) &cur->unkC, (s16 *) &cur->unkE);
+    cur->unk16 = arg0->image_count;
+    cur->unk18 = -1;
+    if (D_global_asm_807FDB00 != NULL) {
+        tail->next = cur;
+    } else {
+        D_global_asm_807FDB00 = cur;
+    }
+    count = (cur->unk8 * cur->unk9) * cur->unk16;
+    cur->unk1C = malloc(count * 8);
+    for (i = 0; i < count; i++) {
+        cur->unk1C[i].unk4 = -1;
+    }
+
+    cur->unk20 = &arg0->images[0];
+}
 
 void func_global_asm_80714944(s32 arg0) {
     D_global_asm_807FDB30 = arg0;
@@ -204,7 +250,7 @@ Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, 
     s32 var_v0;
     Struct807FDB00 *var_s0;
 
-    func_global_asm_80714778(scale);
+    func_global_asm_80714778(sprite);
     var_s0 = D_global_asm_807FDB00;
     var_v0 = 0;
     while (!var_v0 && var_s0 != NULL) {

@@ -3256,6 +3256,11 @@ struct Struct80717D84 {
 
 typedef struct Struct807FDB00 Struct807FDB00;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} Struct807FDB1C;
+
 struct Struct807FDB00 {
     void *unk0;
     s32 unk4;
@@ -3271,8 +3276,13 @@ struct Struct807FDB00 {
     u8 unk11;
     u8 unk12;
     u8 unk13;
-    u8 unk14[0x24 - 0x14];
-    Struct807FDB00 *next;
+    u8 unk14;
+    u8 unk15;
+    s16 unk16;
+    s32 unk18;
+    Struct807FDB1C *unk1C;
+    void *unk20;
+    Struct807FDB00 *next; // 0x24
 };
 
 typedef struct Struct807FDB04 Struct807FDB04;
