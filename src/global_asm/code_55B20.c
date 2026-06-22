@@ -359,19 +359,13 @@ void func_global_asm_806524A0(PropModel *arg0, u8 arg1) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652594.s")
-
-/*
-// Something to do with arg2? Loop condition? Break?
 u8 func_global_asm_80652594(PropModel *arg0, s16 *arg1, u8 arg2) {
     u8 sp4F;
-    s16 i;
-    s32 pad;
+    s32 i;
 
     sp4F = 0;
     i = 0;
-    while (i < D_global_asm_807F6C28 && !sp4F && arg2) {
+    while (i < D_global_asm_807F6C28 && (!sp4F || arg2)) {
         chunk_array_pointer[i].unk14 = func_global_asm_80630588(chunk_array_pointer[i].unk14, arg0, 0, &sp4F);
         if (sp4F) {
             *arg1 = i;
@@ -386,7 +380,6 @@ u8 func_global_asm_80652594(PropModel *arg0, s16 *arg1, u8 arg2) {
     }
     return sp4F;
 }
-*/
 
 void func_global_asm_806526E0(u8 arg0) {
     s32 i;
