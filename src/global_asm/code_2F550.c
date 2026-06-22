@@ -1272,10 +1272,6 @@ f32 func_global_asm_8062E040(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s
     return sqrtf(var_f20);
 }
 
-// regalloc
-// https://decomp.me/scratch/QdSOv
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062E1F8.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -1304,7 +1300,6 @@ typedef struct {
     s32 unk34[3];
 } Struct8062E1F8;
 
-/*
 s32 func_global_asm_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, Struct8062E1F8 *arg7) {
     Struct8062E1F8 *temp_a0;
     s32 pad[1];
@@ -1313,7 +1308,8 @@ s32 func_global_asm_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s
     f32 sp40[4][4];
     s32 sp3C;
     s32 pad2;
-    temp_a0 = &arg7[arg0];
+    // The line below is the same as temp_a0 = &arg7[arg0]; but written explicitly which fixes regalloc.
+    temp_a0 = (Struct8062E1F8 *)((u8 *)arg7 + (arg0 * sizeof(Struct8062E1F8)));
     func_global_asm_8062E3B4(temp_a0, &sp88, temp_a0->unk18, &sp3C, 0, arg1, 0);
     if (sp3C == 0) {
         return FALSE;
@@ -1340,7 +1336,7 @@ s32 func_global_asm_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s
     }
     return FALSE;
 }
-*/
+
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062E3B4.s")
