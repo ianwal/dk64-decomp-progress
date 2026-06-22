@@ -69,7 +69,7 @@ extern u16 D_global_asm_807F5CF4;
 extern s16 D_global_asm_807476F8;
 extern Actor *D_global_asm_807F5D10;
 extern u8 D_global_asm_807476EC;
-extern CutsceneBank D_807F5B10[2];
+extern CutsceneBank D_global_asm_807F5B10[2];
 extern s16 D_global_asm_807F5CEE;
 extern s16 D_global_asm_807F5CF2;
 extern u8 D_global_asm_807F5CF6;
@@ -738,10 +738,11 @@ void func_global_asm_8061D060(Struct_8061D060_arg0 *arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D1FC.s")
 
-// close, doable, 64 bit?
+// Matched but needs .data migrated for D_global_asm_807476C8 to be marked static.
+// https://decomp.me/scratch/olW4u
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D4E4.s")
 
-extern OSTime D_global_asm_807476C8; // TODO: Not 100% on datatype
+extern OSTime D_global_asm_807476C8; // TODO: Not 100% on datatype, needs to be static and initialized to 0.
 extern s32 D_global_asm_8076A068;
 
 typedef struct {
@@ -760,7 +761,7 @@ void func_global_asm_8061D4E4(Actor *arg0) {
     aaD = arg0->additional_actor_data;
     if (is_cutscene_active == 1) {
         if (D_global_asm_807F5CF4 & 4) {
-            D_global_asm_807476FC = &D_807F5B10;
+            D_global_asm_807476FC = &D_global_asm_807F5B10;
         }
         func_global_asm_80602488(0);
         is_cutscene_active = 0;
@@ -778,12 +779,11 @@ void func_global_asm_8061D4E4(Actor *arg0) {
         }
         character_change_array[aaD->unkFB].fov_y = 45.0f;
         arg0->x_rotation = 0;
-        D_global_asm_80770DC9 = D_807F5CF6;
+        D_global_asm_80770DC9 = D_global_asm_807F5CF6;
         D_global_asm_8076A068 += 0x1869F;
         func_global_asm_80600C68();
         D_global_asm_8076A068 += 0xFFFE7961;
         D_global_asm_807F5CF4 = 0;
-        // TODO: Issue here
         D_global_asm_807476C8 = 0;
         gPlayerPointer->object_properties_bitfield &= ~0x400;
     }
