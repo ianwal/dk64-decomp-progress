@@ -3900,7 +3900,7 @@ us,.bonus,func_bonus_8002D6F8,240,yes
 us,.bonus,func_bonus_8002AD10,456,yes
 us,.bonus,func_bonus_8002D010,736,yes
 us,.bonus,func_bonus_8002AAA4,620,yes
-us,.bonus,func_bonus_8002BE44,340,no
+us,.bonus,func_bonus_8002BE44,340,yes
 us,.bonus,func_bonus_80026690,688,yes
 us,.bonus,func_bonus_8002A398,1804,no
 us,.bonus,func_bonus_80026CF0,1220,yes
