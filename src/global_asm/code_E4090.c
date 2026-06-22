@@ -1650,14 +1650,11 @@ s32 func_global_asm_806E527C(void) {
     return var_v1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E52D0.s")
-
 s32 func_global_asm_806E5488(Actor *arg0);
 
-/*
 void func_global_asm_806E52D0(void) {
     u8 temp_v1;
+    u32 temp_v0;
 
     if ((D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS)
         && (object_timer >= 3U)
@@ -1668,8 +1665,9 @@ void func_global_asm_806E52D0(void) {
         && (func_global_asm_806E5488(gCurrentActorPointer) == 0)
         && (func_global_asm_806E527C() == 0)
         && (extra_player_info_pointer->unk245 == 0)) {
-        temp_v1 = func_global_asm_806E560C(gCurrentActorPointer);
-        if (current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v1) {
+        temp_v0 = func_global_asm_806E560C(gCurrentActorPointer);
+        temp_v1 = temp_v0;
+        if (current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v0) {
             if (func_global_asm_806F8AD4(7, cc_player_index) || temp_v1) {
                 setAction(0x53, NULL, extra_player_info_pointer->unk1A4);
                 if (!(D_global_asm_807FBB68 & 2)) {
@@ -1685,7 +1683,6 @@ void func_global_asm_806E52D0(void) {
         }
     }
 }
-*/
 
 s32 func_global_asm_806E5488(Actor *arg0) {
     if (arg0->locked_to_pad == 1) {
