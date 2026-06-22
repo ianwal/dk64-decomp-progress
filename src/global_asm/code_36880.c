@@ -1522,9 +1522,6 @@ block_3:
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636784.s")
 
-// Prop Geometry, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806368F0.s")
-
 extern u8 D_global_asm_80750AB4;
 
 // TODO: Move this to structs.h once the shape is locked in
@@ -1561,10 +1558,11 @@ typedef struct {
     s32 unk5C;
 } PropModelAlt;
 
-/*
 void func_global_asm_806368F0(Prop *arg0, s32 propType) {
+    Prop_unk24 *new_var2;
+    s32 new_var4;
+    Prop_unk24 *new_var3;
     void *sp28;
-    u8 temp_v0;
     PropModelAlt *temp_v0_2;
     PropModel *temp_v0_3;
     Prop_unk24 *temp_v1;
@@ -1575,8 +1573,14 @@ void func_global_asm_806368F0(Prop *arg0, s32 propType) {
     } else {
         var_v0 = getPointerTableFile(4, propType, 1, 0);
     }
-    temp_v1 = arg0->unk24;
     arg0->unk24 = var_v0;
+
+    // fake match
+    if (((!temp_v0_3) && (!temp_v0_3)) && (!temp_v0_3)) {
+    }
+
+    new_var2 = arg0->unk24;
+    temp_v1 = (new_var3 = new_var2);
     arg0->unk8C = 0;
     arg0->unk86 = temp_v1->unk1C;
     arg0->object_type = propType;
@@ -1593,22 +1597,24 @@ void func_global_asm_806368F0(Prop *arg0, s32 propType) {
             temp_v0_2->unk14 = malloc(D_global_asm_80750AB4 << 6);
             temp_v0_2->unk18 = malloc(D_global_asm_80750AB4 << 6);
             break;
+
         case 1:
             temp_v0_3 = malloc(0xC8);
             sp28 = temp_v0_3;
             temp_v0_3->unkB4 = propType;
             temp_v0_3->unkB8 = 0;
-            temp_v0_3->unkA0[0] = temp_v1->unk40 + temp_v1;
-            temp_v0_3->unkA0[2] = temp_v1->unk44 + temp_v1;
+            temp_v0_3->unkA0[0] = temp_v1->unk40 + ((s32) temp_v1);
+            new_var4 = (s32) temp_v1;
+            temp_v0_3->unkA0[2] = temp_v1->unk44 + new_var4;
+            temp_v0_3->unkB0 = temp_v1->unk48 + new_var4;
             temp_v0_3->unkBC = 0;
             temp_v0_3->unkB6 = -1;
-            temp_v0_3->unkB0 = temp_v1->unk48 + temp_v1;
             temp_v0_3->unkC3 = 0;
             break;
     }
+
     arg0->model_pointer = sp28;
 }
-*/
 
 f32 func_global_asm_80636A44(s32 arg0) {
     s32 pad2; // TODO: Why is this needed?
