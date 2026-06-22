@@ -343,7 +343,7 @@ extern void *D_global_asm_807F0570[];
 extern void *D_global_asm_807F0588[];
 
 typedef struct Struct807FB534_sub0 {
-    u8 pad0[0x28];
+    u8 pad0[0x28]; // TODO: Not pad, first byte used by func_global_asm_8066CB88
 } Struct807FB534_sub0;
 
 typedef struct {

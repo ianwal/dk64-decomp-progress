@@ -247,7 +247,65 @@ void func_global_asm_8066C904(Prop_unk28 *arg0) {
 void func_dk64_boot_800024E0(s32 **, s32 **, void *);
 extern s32 D_807FB530;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CB88.s")
+typedef struct {
+    s16 unk0[9];
+    s16 unk12;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+} Struct8066DB40_arg0;
+
+typedef struct {
+    s64 unk0;
+    s64 unk8;
+    s64 unk10;
+    s64 unk18;
+    f32 unk20;
+    s16 unk24;
+    s16 unk26;
+} Struct8066DB40_arg1;
+
+s32 func_global_asm_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg1);
+
+void func_global_asm_8066CB88(s32 arg0) {
+    s32 sp54;
+    Struct8066DB40_arg0 *var_s1;
+    s32 new_var;
+    Struct8066DB40_arg1 *var_s2;
+    s32 temp_t9;
+
+    if ((D_global_asm_807FB534[arg0].unk0 == 0) && (arg0 < D_global_asm_807FB538)) {
+        s32 var_s0;
+        temp_t9 = (sp54 = D_global_asm_807FB534[arg0].unk10);
+        sp54 = temp_t9;
+        if (sp54 != 0) {
+            if (D_global_asm_807FB549 == 0) {
+                D_global_asm_807FB534[arg0].unk4 = malloc(sp54);
+                func_global_asm_8060B140((u32) D_global_asm_807FB534[arg0].unkC, D_global_asm_807FB534[arg0].unk4->pad0, &sp54, 0U, 0U, 0U, sp54 * 0);
+            }
+            var_s0 = D_global_asm_807FB534[arg0].unk14 * 0x28;
+
+            // fake match
+            if (D_global_asm_807FB534[arg0].unk14) {
+            }
+
+            D_global_asm_807FB534[arg0].unk0 = malloc(var_s0);
+            var_s1 = (Struct8066DB40_arg0 *) D_global_asm_807FB534[arg0].unk4;
+            var_s2 = (Struct8066DB40_arg1 *) D_global_asm_807FB534[arg0].unk0;
+            if (var_s0 != 0) {
+                do {
+                    new_var = func_global_asm_8066DB40(var_s1, var_s2) != 0;
+                    var_s0 -= 0x28;
+                    if (new_var) {
+                        var_s2++;
+                    }
+                    var_s1++;
+                } while (var_s0 != 0);
+            }
+        }
+    }
+    D_global_asm_807FB534[arg0].unk8 = (s32) object_timer;
+}
 
 extern s32 D_global_asm_80747D70;
 extern s16 D_global_asm_80748E40;
@@ -444,24 +502,6 @@ s8 func_global_asm_8066D2F4(Struct8066D250 *arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066D4DC.s")
-
-typedef struct {
-    s16 unk0[9];
-    s16 unk12;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-} Struct8066DB40_arg0;
-
-typedef struct {
-    s64 unk0;
-    s64 unk8;
-    s64 unk10;
-    s64 unk18;
-    f32 unk20;
-    s16 unk24;
-    s16 unk26;
-} Struct8066DB40_arg1;
 
 typedef struct {
     s32 sp4C[9];
