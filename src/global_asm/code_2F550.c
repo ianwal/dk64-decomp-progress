@@ -1530,10 +1530,6 @@ Gfx *func_global_asm_8062EDA8(Gfx *dl, u8 arg1) {
     return dl;
 }
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EE48.s")
-
-/*
 void func_global_asm_8062EE48(u8 arg0) {
     s32 i;
     s32 var_v1;
@@ -1550,6 +1546,7 @@ void func_global_asm_8062EE48(u8 arg0) {
                 if (D_global_asm_807F5FC4[i].unk5 == D_global_asm_807F5FC4[i].unk3) {
                     D_global_asm_807F5FC4[i].unk5 = 0;
                 }
+                var_v1 = TRUE;
             }
             if (D_global_asm_807F5FC4[i].unk8 == NULL) {
                 var_v1 = TRUE;
@@ -1563,7 +1560,6 @@ void func_global_asm_8062EE48(u8 arg0) {
         }
     }
 }
-*/
 
 void func_global_asm_8062EFA0(void) {
     s32 i;
