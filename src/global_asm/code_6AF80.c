@@ -1132,42 +1132,30 @@ void func_global_asm_8066A75C(Actor *arg0, u32 arg1, f32 *arg2, f32 arg3, f32 *a
     guMtxXFMF(sp28, sp78, arg3, sp74, arg2, &sp70, arg4);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A834.s")
-
-// TODO: Hmmm, matrix?
-
-
-/*
 s32 func_global_asm_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
+    f32 var_f12;
     f32 sp20;
     f32 sp1C;
     f32 var_f0;
-    f32 var_f12;
 
     var_f12 = MIN(arg0->unk24, arg0->unk28);
-    if (!(var_f12 < arg0->unk2C)) {
-        var_f12 = arg0->unk2C;
-    }
+    var_f12 = MIN(var_f12, arg0->unk2C);
+
     sp20 = MIN(arg0->unk3C, arg0->unk40);
-    if (!(sp20 < arg0->unk44)) {
-        sp20 = arg0->unk44;
+    sp20 = MIN(sp20, arg0->unk44);
+
+    sp1C = MAX(arg0->unk24, arg0->unk28);
+    sp1C = MAX(sp1C, arg0->unk2C);
+
+    var_f0 = MAX(arg0->unk3C, arg0->unk40);
+    var_f0 = MAX(var_f0, arg0->unk44);
+
+    if (arg1 < var_f12 || arg1 > sp1C || arg2 < sp20 || arg2 > var_f0) {
+        return 0;
     }
-    sp1C = MIN(arg0->unk28, arg0->unk24);
-    if (!(arg0->unk2C < sp1C)) {
-        sp1C = arg0->unk2C;
-    }
-    var_f0 = MIN(arg0->unk40, arg0->unk3C);
-    if (!(arg0->unk44 < var_f0)) {
-        var_f0 = arg0->unk44;
-    }
-    return (
-        !(arg1 < var_f12) &&
-        !(sp1C < arg1) &&
-        !(arg2 < sp20) &&
-        var_f0 < arg2) ? 1 : 0;
+
+    return 1;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A988.s")
 

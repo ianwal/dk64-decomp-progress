@@ -3283,7 +3283,7 @@ us,asm,func_global_asm_80659620,80,yes
 us,asm,func_global_asm_8071DC90,920,yes
 us,asm,func_global_asm_806D38AC,396,yes
 us,asm,func_global_asm_8066C958,560,no
-us,asm,func_global_asm_8066A834,340,no
+us,asm,func_global_asm_8066A834,340,yes
 us,asm,func_global_asm_8066E990,92,yes
 us,asm,clearPermanentFlags,80,yes
 us,asm,func_global_asm_806D4758,452,yes
