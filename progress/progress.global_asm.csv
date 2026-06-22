@@ -1019,7 +1019,7 @@ us,asm,func_global_asm_806F1EB0,1016,no
 us,asm,func_global_asm_806787F4,8,yes
 us,asm,func_global_asm_80650A04,108,yes
 us,asm,func_global_asm_80618D68,228,yes
-us,asm,func_global_asm_8062E040,440,no
+us,asm,func_global_asm_8062E040,440,yes
 us,asm,func_global_asm_806BB400,516,yes
 us,asm,func_global_asm_806ED050,172,yes
 us,asm,func_global_asm_806A4284,1752,no
