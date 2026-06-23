@@ -114,29 +114,22 @@ void func_global_asm_8062AC68(void *arg0) {
     }
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062AD28.s")
-
 void func_global_asm_8062B220(GlobalASMStruct64 *);
 
-/*
 void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *arg3, f32 *arg4) {
-    f32 x;
+    s32 i;
     f32 sp78[5];
     f32 sp64[5];
     f32 sp50[5];
+    f64 temp_fv0;
     GlobalASMStruct64 *var_s0;
-    s32 i;
 
-    var_s0 = arg3;
-    for (i = 0; i < 4; i++) {
-        var_s0++;
-        var_s0[-1].unk0 = arg0;
-        var_s0[-1].unk2 = arg1;
-        var_s0[-1].unk4 = arg2;
-        var_s0[-1].unk18 = 3;
+    for (i = 0, var_s0 = arg3; i < 4; var_s0++, i++) {
+        var_s0->unk0 = arg0;
+        var_s0->unk2 = arg1;
+        var_s0->unk4 = arg2;
+        var_s0->unk18 = 3;
     }
-    var_s0 = arg3;
 
     arg3[0].unk6 = arg4[0];
     arg3[0].unk8 = arg4[1];
@@ -187,6 +180,7 @@ void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *a
     arg3[4].unkA = arg4[11];
     arg3[4].unkC = arg4[0];
     arg3[4].unkE = arg4[1];
+
     arg3[4].unk10 = arg4[2];
     arg3[4].unk12 = arg4[3];
     arg3[4].unk14 = arg4[4];
@@ -194,20 +188,16 @@ void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *a
     sp50[4] = arg2;
     sp64[4] = arg1;
     sp78[4] = arg0;
-    for (i = 0; i < 5; i++) {
+
+    for (i = 0, var_s0 = arg3; i < 5; var_s0++, i++) {
         func_global_asm_8062B220(var_s0);
-        if ((
-            (var_s0->unk20 * sp78[i]) +
-            (var_s0->unk30 * sp50[i]) +
-            (var_s0->unk28 * sp64[i]) +
-            var_s0->unk38) < 0.0) {
+        temp_fv0 = (((var_s0->unk20 * sp78[i]) + (var_s0->unk28 * sp64[i])) + (var_s0->unk30 * sp50[i])) + (0,var_s0)->unk38;
+        if (temp_fv0 < 0.0) {
             func_global_asm_8062B194(var_s0);
             func_global_asm_8062B220(var_s0);
         }
-        var_s0++;
     }
 }
-*/
 
 void func_global_asm_8062B194(GlobalASMStruct64 *arg0) {
     s16 temp1;

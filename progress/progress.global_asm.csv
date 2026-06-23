@@ -338,7 +338,7 @@ us,asm,_n_timeToSamples,56,yes
 us,asm,func_global_asm_806CEE64,116,yes
 us,asm,func_global_asm_806E35D8,220,yes
 us,asm,func_global_asm_806BE6F0,460,yes
-us,asm,func_global_asm_8062AD28,1132,no
+us,asm,func_global_asm_8062AD28,1132,yes
 us,asm,func_global_asm_8070FC40,140,yes
 us,asm,func_global_asm_806F0624,128,yes
 us,asm,func_global_asm_80627878,16,yes
