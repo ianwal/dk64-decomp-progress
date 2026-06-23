@@ -580,7 +580,77 @@ void func_global_asm_80632FCC(s16 arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806330C4.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+} Struct806330C4_Inner; // size 0x14
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16; // inner element count ?
+    u8 unk17;
+    Struct806330C4_Inner inner[8];
+} Struct806330C4_Entry; // size 0xB8
+
+typedef struct {
+    s32 count;
+    Struct806330C4_Entry entries[1];
+} Struct806330C4_Anim; // name is a guess, might not be animation related
+
+void func_global_asm_806330C4(s16 arg0, void *arg1, f32 arg2) {
+    s32 count;
+    Struct806330C4_Entry *entries;
+    s32 i;
+    s32 j;
+    f32 spC4;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 var_f20;
+
+    count = ((Struct806330C4_Anim *) ((u8 *) arg1 + *(s32 *) ((u8 *) arg1 + 0x5C)))->count;
+    entries = ((Struct806330C4_Anim *) ((u8 *) arg1 + *(s32 *) ((u8 *) arg1 + 0x5C)))->entries;
+    for (i = 1; i <= count; i++) {
+        var_f20 = 0.0f;
+
+        for (j = 0; j < entries[i - 1].unk16; j++) {
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk10, &spC0, &spB8, &spB0);
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk11, &spC4, &spBC, &spB4);
+
+            var_f20 += sqrtf(SQ(spB0 - spB4) + (SQ(spC0 - spC4) + SQ(spB8 - spBC)));
+        }
+
+        func_global_asm_8072EE7C(arg0, 1, i, 1, entries[i - 1].unk16, 0.0f, var_f20, entries[i - 1].unk0 * arg2,
+                                 entries[i - 1].unkC * arg2, entries[i - 1].unk10 * arg2, entries[i - 1].unk10 * arg2,
+                                 entries[i - 1].unk14, entries[i - 1].unk4, entries[i - 1].unk8, entries[i - 1].unk15);
+
+        for (j = 0; j < entries[i - 1].unk16; j++) {
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk10, &spC0, &spB8, &spB0);
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk11, &spC4, &spBC, &spB4);
+            func_global_asm_8072EF7C(
+                arg0, i, j, entries[i - 1].inner[j].unk10, entries[i - 1].inner[j].unk11,
+                sqrtf(SQ(spB0 - spB4) + (SQ(spC0 - spC4) + SQ(spB8 - spBC))), entries[i - 1].inner[j].unk0 * arg2,
+                entries[i - 1].inner[j].unk4 * arg2, entries[i - 1].inner[j].unk12, entries[i - 1].inner[j].unk8,
+                entries[i - 1].inner[j].unkC, entries[i - 1].inner[j].unkA, entries[i - 1].inner[j].unkE);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806333F8.s")
 
