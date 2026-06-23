@@ -845,11 +845,6 @@ void func_global_asm_8071A038(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 3;
 }
 
-// regalloc, rodata
-// https://decomp.me/scratch/4v0Sn
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071A1E4.s")
-
-/*
 void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
     tuple_f *var_v0;
     s32 pad;
@@ -861,18 +856,24 @@ void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
     s8 sp49;
     s8 sp48;
     s16 sp46;
+    s8 new_var;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
 
     if (arg0->unk384_tuplef == NULL) {
-        sp48 = -(func_global_asm_806119A0() / 10000U) % 30;
+        sp48 = (-(func_global_asm_806119A0() / 10000U)) % 30;
+        new_var = 0xFFFFU;
         sp46 = (func_global_asm_806119A0() / 10000U) % 180;
         guRotateF(&sp8C, sp48, 0.0f, 1.0f, 0.0f);
-        // TODO: Regalloc here, arg0->unk35C is using v0 instead of t5
         sp4B = arg0->unk35C >> 0x10;
-        sp4A = arg0->unk35C >> 8;
-        sp49 = arg0->unk35C;
+        sp4A = (arg0->unk35C >> 8) & 0xFF;
+        // Extremely permuted.
+        sp49 = ((((((((((arg0->unk35C & 0xFFFFU) & new_var) & new_var) & new_var) & new_var) & 0xFFFFU) & 0xFFFFU) &
+                  new_var) &
+                 0xFFFFU) &
+                new_var) &
+               new_var;
         arg0->unk384_tuplef = malloc(sizeof(tuple_f));
         guAlignF(sp4C, sp46, sp4B, sp4A, sp49);
         guMtxCatF(sp8C, sp4C, sp8C);
@@ -897,7 +898,6 @@ void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
         arg0->transparency4 = 0;
     }
 }
-*/
 
 void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1) {
     f32 var_f0;
