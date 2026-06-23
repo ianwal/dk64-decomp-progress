@@ -1032,21 +1032,14 @@ void func_global_asm_806FB290(void) {
     func_global_asm_806F95C8();
 }
 
-// Quite fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FB2B8.s")
-
-/*
 void func_global_asm_806FB2B8(void) {
     GlobalASMStruct71 **var_s1;
-    GlobalASMStruct71 *current;
     s32 i;
 
     var_s1 = &D_global_asm_80754284;
-    current = D_global_asm_80754284;
     if (D_global_asm_80754284) {
-        while (current->unk4) {
-            var_s1 = &current->unk4;
-            current = current->unk4;
+        while ((*var_s1)->unk4) {
+            var_s1 = &(*var_s1)->unk4;
         }
         for (i = 0; i != 0xF; i++) {
             if ((*var_s1)->unk0 & (1 << i)) {
@@ -1057,7 +1050,6 @@ void func_global_asm_806FB2B8(void) {
         *var_s1 = NULL;
     }
 }
-*/
 
 // setHudItemAsInfinite(hudItemIndex, playerIndex, unknownValue)
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {

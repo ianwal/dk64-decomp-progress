@@ -3039,7 +3039,7 @@ us,asm,func_global_asm_80632630,560,yes
 us,asm,func_global_asm_806A5C60,400,yes
 us,asm,func_global_asm_8064E5C0,156,yes
 us,asm,func_global_asm_80704130,360,yes
-us,asm,func_global_asm_806FB2B8,184,no
+us,asm,func_global_asm_806FB2B8,184,yes
 us,asm,func_global_asm_8060E958,40,yes
 us,asm,func_global_asm_806307AC,32,yes
 us,asm,func_global_asm_806C7260,8,yes
