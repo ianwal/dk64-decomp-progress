@@ -1302,7 +1302,7 @@ void func_global_asm_80658BD0(void);
 void func_global_asm_80658C10(s32 arg0, s16 arg1, s16 arg2, s16 arg3);
 void func_global_asm_80658CCC(void);
 u8 func_global_asm_80658DAC(s32 arg0);
-void func_global_asm_80658E58(u16 arg0, u16 arg1, u16 arg2, u16 arg3);
+void func_global_asm_80658E58(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 // TODO: func_global_asm_80658E8C has no documented signature
 
 // global_asm/done/code_5DE10.c

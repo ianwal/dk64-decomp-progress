@@ -755,9 +755,6 @@ void func_global_asm_8062C22C(void) {
     func_global_asm_806364C4();
 }
 
-// Displaylist Stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062C29C.s")
-
 typedef struct Struct8062CA70_arg1 Struct8062CA70_arg1;
 
 struct Struct8062CA70_arg1 {
@@ -800,8 +797,8 @@ Gfx *func_global_asm_8062CA70(Gfx *, Struct8062CA70_arg1 *, Struct8062CA70_arg2 
 void func_global_asm_8062D620(s32, s32, s32, f32, f32, f32, s32, s32, s32);
 s32 *func_global_asm_8070835C(Gfx *, u8);
 s32 *func_global_asm_80722294(void *, Actor *, s16);
-extern void *D_807F5DE8;
-extern void *D_807F5DEC;
+extern void *D_global_asm_807F5DE8;
+extern void *D_global_asm_807F5DEC;
 extern s32 D_807F5E64;
 extern u8 D_global_asm_80750AB4;
 extern f32 D_global_asm_807F5E68;
@@ -813,29 +810,33 @@ extern f32 D_global_asm_807F5FDC;
 extern f32 D_global_asm_807F5FE0;
 extern s32 D_global_asm_807F5FF0;
 
-/*
-Gfx *func_global_asm_8062C29C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
-    void *temp_s3;
+extern s32 D_global_asm_807F5E64;
 
+void func_global_asm_8062F420(Struct8062F420 *arg0, s32 arg1, s32 arg2);
+
+Gfx *func_global_asm_8062C29C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
+    s32 pad[25];
+    Gfx *temp_s3;
+
+    temp_s3 = &character_change_array[cc_player_index].unk1F0[D_global_asm_807444FC];
     D_global_asm_807F5E64 = 0;
     D_global_asm_807F5FB4 = arg7;
     D_global_asm_807F5FB0 = arg8;
     D_global_asm_807F5FAC = arg9;
     D_global_asm_807F5FA8 = D_global_asm_807F5FAC;
-    temp_s3 = &character_change_array[cc_player_index].unk1F0[D_global_asm_807444FC];
     D_global_asm_807F5FE0 = func_global_asm_80612D10(arg7 * 0.017453292f);
     D_global_asm_807F5FE0 = (((D_global_asm_807F5FE0 - D_global_asm_807F5FDC) * 3.0) + D_global_asm_807F5FDC);
     func_global_asm_8062DB70(arg1, arg2, arg3, arg4, arg5, arg6);
     func_global_asm_8062A944(D_global_asm_807F5FB4, D_global_asm_807F5FB0, D_global_asm_807F5FA8);
     func_global_asm_8062AC68(&character_change_array[cc_player_index].unk8[D_global_asm_807444FC]);
     func_global_asm_8062AD28(arg1, arg2, arg3, &D_global_asm_807F5E68, &D_global_asm_807F5E20);
-    func_global_asm_8062D620(D_global_asm_807F5DE4, D_global_asm_807F5E60, D_global_asm_807F5FF0, arg1, arg2, arg3, 0, D_global_asm_807F5FEC == 0, ((s32) D_global_asm_80750AB4 < 2) ^ 1);
-    gSPSegment(dl++, 0x06, osVirtualToPhysical(D_807F5DE8));
-    gSPSegment(dl++, 0x07, osVirtualToPhysical(D_807F5DEC));
+    func_global_asm_8062D620(D_global_asm_807F5DE4, D_global_asm_807F5E60, D_global_asm_807F5FF0, arg1, arg2, arg3, 0, !D_global_asm_807F5FEC, (D_global_asm_80750AB4 >= 2));
+    gSPSegment(dl++, 0x06, osVirtualToPhysical(D_global_asm_807F5DE8));
+    gSPSegment(dl++, 0x07, osVirtualToPhysical(D_global_asm_807F5DEC));
     dl = func_global_asm_80722294(dl, character_change_array[cc_player_index].playerPointer, cc_player_index);
     gSPSegment(dl++, 0x05, osVirtualToPhysical(temp_s3));
-    gDPSetHilite1Tile(dl++, G_TX_RENDERTILE, &character_change_array[cc_player_index].unk1D0[D_global_asm_807444FC], 32, 32);
-    gSPEndDisplayList(dl++);
+    gDPSetHilite1Tile(temp_s3++, G_TX_RENDERTILE, &character_change_array[cc_player_index].unk1D0[D_global_asm_807444FC], 32, 32);
+    gSPEndDisplayList(temp_s3++);
     func_global_asm_8062C99C(&character_change_array[cc_player_index].unk250[D_global_asm_807444FC], character_change_array[cc_player_index].unk270[0], character_change_array[cc_player_index].unk270[1], character_change_array[cc_player_index].unk270[2], character_change_array[cc_player_index].unk270[3]);
     gSPPerspNormalize(dl++, character_change_array[cc_player_index].unk188);
     gSPViewport(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk250[D_global_asm_807444FC]));
@@ -851,7 +852,6 @@ Gfx *func_global_asm_8062C29C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f
     gDPPipeSync(dl++);
     return dl;
 }
-*/
 
 void func_global_asm_8062C99C(CharacterChange250 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     arg0->unk0 = (arg3 - arg1) * 2;
