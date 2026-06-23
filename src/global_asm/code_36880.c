@@ -196,24 +196,40 @@ s32 func_global_asm_80631EB8(u16 arg0) {
     return FALSE;
 }
 
-// regalloc, close, doable
-// https://decomp.me/scratch/L4Vuz
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631F58.s")
-
-/*
+// TODO: This is heavily permuted to fix regalloc. There should be a better match possible somehow.
 void func_global_asm_80631F58(SetupFile *arg0, PropData **arg1, ActorData **arg2) {
     MysteryData *temp;
+    s32 new_var4;
+    MysterySetup *new_var;
+    SetupFile *new_var2;
+
+    new_var4 = 0;
+
     if (arg0 == NULL) {
         *arg1 = NULL;
         *arg2 = NULL;
         return;
     }
     *arg1 = arg0;
-    temp = &arg0->props.setup[arg0->props.count];
-    arg0 = &temp->setup[temp->count];
+
+    new_var = &temp->setup[temp->count];
+    new_var2 = arg0;
+
+    // fake match
+    if (1) {
+    }
+
+    new_var4 = new_var2->props.count;
+    temp = &new_var2->props.setup[new_var4];
+
+    // fake match
+    if (1) {
+    }
+
+    new_var = &temp->setup[temp->count];
+    arg0 = new_var;
     *arg2 = arg0;
 }
-*/
 
 extern s16 D_global_asm_807F614A;
 
