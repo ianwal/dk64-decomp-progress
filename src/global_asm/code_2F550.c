@@ -1561,15 +1561,12 @@ void func_global_asm_8062EFA0(void) {
     }
 }
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F050.s")
-
 extern MapGeometryHeader *D_global_asm_807FB5E0;
 extern s32 D_global_asm_807F5FC8;
 extern void *D_global_asm_807F5FCC;
 extern s32 D_global_asm_807F5FD0;
 extern f32 D_global_asm_807F5FDC;
-extern s16 D_global_asm_807FB5E4;
+extern s32 D_global_asm_807FB5E4;
 extern s16 D_global_asm_807F5FE6;
 extern s16 D_global_asm_807FB5E8;
 extern s16 D_global_asm_807FB5EA;
@@ -1578,7 +1575,7 @@ extern s16 D_global_asm_807F9452;
 extern s16 D_global_asm_807F9454;
 extern s16 D_global_asm_807F9456;
 extern MapGeometryHeader *D_global_asm_807F5DE0;
-extern s32 D_global_asm_807F5FE4;
+extern s16 D_global_asm_807F5FE4;
 extern s16 D_global_asm_807F5FE8;
 extern s16 D_global_asm_807F5FEA;
 extern u8 D_global_asm_807F5FED;
@@ -1590,7 +1587,6 @@ extern s16 D_global_asm_807FD578;
 extern void *D_global_asm_807F5DE8;
 extern void *D_global_asm_807F5DEC;
 
-/*
 void func_global_asm_8062F3A0(Gfx *arg0, void *arg1);
 
 void func_global_asm_8062F050(MapGeometryHeader *arg0) {
@@ -1599,13 +1595,13 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     s32 sp4C;
     s32 *temp_a0;
     s32 sp44;
+    s32 sp40;
+    s32 sp3C;
     s32 *temp_a1;
     s32 *temp_v1;
-    s32 *temp_0;
-    s32 *temp_1;
-    s32 *temp_2;
-    s32 pad;
+    s32 pad[2];
     s32 sp28;
+    
     sp28 = 0;
     D_global_asm_807F5DE0 = arg0;
     D_global_asm_807F5FDC = func_global_asm_80612D10(0.7853981853);
@@ -1627,13 +1623,15 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     D_global_asm_807F5FE6 = arg0->unk28;
     D_global_asm_807F5FE8 = arg0->unk2A;
     D_global_asm_807F5FEA = arg0->unk2C;
+    sp44 = arg0->unk40;
     sp54 = arg0->unk30;
     sp50 = arg0->unk34;
     sp4C = arg0->unk38;
-    sp44 = arg0->unk40;
+    sp40 = arg0->unk44;
+    sp3C = arg0->unk48;
     temp_v1 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp44);
-    temp_a0 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, arg0->unk44);
-    temp_a1 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, arg0->unk48);
+    temp_a0 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp40);
+    temp_a1 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp3C);
     D_global_asm_807F5FD0 = *temp_v1 + 1;
     D_global_asm_807F5FD4 = temp_v1 + 1;
     D_global_asm_807F5FC8 = *temp_a0;
@@ -1661,7 +1659,6 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     func_global_asm_806637C0(arg0);
     func_global_asm_8062F318();
 }
-*/
 
 void func_global_asm_8062F318(void) {
     D_global_asm_807F5FED = 1;
