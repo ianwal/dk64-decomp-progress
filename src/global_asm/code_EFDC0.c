@@ -92,31 +92,27 @@ void func_global_asm_806EB364(void) {
     playAnimation(gCurrentActorPointer, 0xD);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806EB400.s")
-
-/*
-int func_global_asm_806EB400(Actor *arg0) {
-    int phi_v1;
+s32 func_global_asm_806EB400(Actor *arg0) {
+    s32 phi_v1;
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
 
-    phi_v1 = PaaD->unkD4 == 0
-        || character_change_array[cc_player_index].action_initiated == 0x3F;
-
-    if ((current_character_index[cc_player_index] != 7) && PaaD->unk1F0 & 0x8000) {
+    phi_v1 = (PaaD->unkD4 == 0) || (character_change_array[cc_player_index].action_initiated == 0x3F);
+    if ((current_character_index[cc_player_index] == 7) || (PaaD->unk1F0 & 0x8000)) {
         return 0;
     }
     switch (arg0->control_state) {
         case 0x34:
         case 0x36:
+            phi_v1 = 0;
+            break;
+
+        default:
             phi_v1 &= 1;
             break;
-        default:
-            phi_v1 = 0;
     }
+
     return phi_v1;
 }
-*/
 
 void func_global_asm_806EB4B4(void) {
     gCurrentActorPointer->control_state = 0x23;
