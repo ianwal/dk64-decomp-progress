@@ -561,7 +561,8 @@ u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
     return !(D_global_asm_8076A0B1 & 0x10) && !D_global_asm_8076A0B3;
 }
 
-// rodata, doable
+// Matches, but requires .data migration for D_global_asm_807445CC
+// https://decomp.me/scratch/x0zMT
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FCA94.s")
 
 extern f32 D_global_asm_807444CC;
@@ -570,7 +571,6 @@ extern f32 D_global_asm_807444D4;
 extern f32 D_global_asm_807444D8;
 extern f32 D_global_asm_807444DC;
 extern f32 D_global_asm_807444E0;
-extern s32 D_global_asm_807445CC;
 extern u8 D_global_asm_80750AB4;
 extern u8 D_global_asm_80750AB8;
 extern u16 D_global_asm_8076A09C;
@@ -591,16 +591,16 @@ typedef struct Struct805FD088 {
 
 /*
 void func_global_asm_805FCA94(Struct805FD088 *arg0) {
-    s32 pad[4];
-    f32 var_f6;
+    static s32 D_global_asm_807445CC; // TODO: Does this need initialization?
+    CameraPaad *camera_aad;
+    Actor *player_aad_unk104;
+    PlayerAdditionalActorData *player_aad;
+    f32 temp0;
     f32 var_f20; // AC
     f32 fov; // A8;
     f32 offset; // A4
+    f32 var_f6;
     s32 i;
-    CameraPaad *camera_aad;
-    CharacterChange *cc;
-    PlayerAdditionalActorData *player_aad;
-    f32 temp0;
 
     fov = func_global_asm_8062A850();
     if ((cc_number_of_players > 1) && (D_global_asm_80750AB8 == 1)) {
@@ -608,29 +608,25 @@ void func_global_asm_805FCA94(Struct805FD088 *arg0) {
         func_global_asm_8062754C(temp0);
     }
     for (i = 0; i < D_global_asm_80750AB4; i++) {
-        cc = &character_change_array[i];
-        if (cc->does_player_exist) {
-            if (ABS(cc->look_at_eye_x - cc->look_at_at_x) < 0.5) {
-                offset = 0.0f;
-                if (ABS(cc->look_at_eye_z - cc->look_at_at_z) < 0.5) {
-                    offset = 1.0f;
-                }
+        if (character_change_array[i].does_player_exist) {
+            if (ABS(character_change_array[i].look_at_eye_x - character_change_array[i].look_at_at_x) < 0.5 && ABS(character_change_array[i].look_at_eye_z - character_change_array[i].look_at_at_z) < 0.5) {
+                offset = 1.0f;
             } else {
                 offset = 0.0f;
             }
             guLookAtHilite(
-                &cc->unk8[D_global_asm_807444FC],
-                &cc->unk190[D_global_asm_807444FC],
-                &cc->unk1D0[D_global_asm_807444FC],
-                cc->look_at_eye_x + offset,
-                cc->look_at_eye_y,
-                cc->look_at_eye_z + offset,
-                cc->look_at_at_x,
-                cc->look_at_at_y,
-                cc->look_at_at_z,
-                cc->look_at_up_x,
-                cc->look_at_up_y,
-                cc->look_at_up_z,
+                &character_change_array[i].unk8[D_global_asm_807444FC],
+                &character_change_array[i].unk190[D_global_asm_807444FC],
+                &character_change_array[i].unk1D0[D_global_asm_807444FC],
+                character_change_array[i].look_at_eye_x + offset,
+                character_change_array[i].look_at_eye_y,
+                character_change_array[i].look_at_eye_z + offset,
+                character_change_array[i].look_at_at_x,
+                character_change_array[i].look_at_at_y,
+                character_change_array[i].look_at_at_z,
+                character_change_array[i].look_at_up_x,
+                character_change_array[i].look_at_up_y,
+                character_change_array[i].look_at_up_z,
                 D_global_asm_807444CC,
                 D_global_asm_807444D0,
                 D_global_asm_807444D4,
@@ -639,7 +635,8 @@ void func_global_asm_805FCA94(Struct805FD088 *arg0) {
                 D_global_asm_807444E0, 0x20, 0x20);
             var_f20 = character_change_array[i].unk280;
             player_aad = character_change_array[i].playerPointer->PaaD;
-            camera_aad = player_aad->unk104->CaaD;
+            player_aad_unk104 = player_aad->unk104;
+            camera_aad = player_aad_unk104->CaaD;
             if (player_aad->unk1F0 & 0x100) {
                 var_f20 += 0.5 * func_global_asm_80612D1C(D_global_asm_807445CC * 0.1);
             } else if (player_aad->unk1F0 & 0x02000000) {
@@ -655,12 +652,8 @@ void func_global_asm_805FCA94(Struct805FD088 *arg0) {
                 character_change_array[i].near, character_change_array[i].far, 1.0f);
         }
     }
-    if (ABS(character_change_array[0].look_at_eye_x - character_change_array[0].look_at_at_x) < 0.5) {
-        if (ABS(character_change_array[0].look_at_eye_z - character_change_array[0].look_at_at_z) < 0.5) {
-            offset = 1.0f;
-        } else {
-            offset = 0.0f;
-        }
+    if (ABS(character_change_array[0].look_at_eye_x - character_change_array[0].look_at_at_x) < 0.5 && ABS(character_change_array[0].look_at_eye_z - character_change_array[0].look_at_at_z) < 0.5) {
+        offset = 1.0f;
     } else {
         offset = 0.0f;
     }
