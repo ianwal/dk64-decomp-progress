@@ -49,18 +49,16 @@ static f32 D_global_asm_80755674 = -0.1f;
 static f32 D_global_asm_80755678 = 2.0f;
 static s8 D_global_asm_8075567C = 1;
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_80717100.s")
-
-/*
 void func_global_asm_80717100(otherSpriteControl *arg0, s8 *arg1) {
+    s32 new_var;
     Struct80717D84_unk384_80717100 *var_v1;
 
     if (arg0->unk384 == NULL) {
-        var_v1 = arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80717100));
-        var_v1->unk0 = (rand() >> 0xF) % 4095;
-        var_v1->unk2 = arg0->unk35C;
-        var_v1->unk4 = arg0->unk35C >> 0x10;
+        var_v1 = (arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80717100)));
+        var_v1->unk0 = RandClamp(4095);
+        new_var = (arg0->unk35C & 0xFFFF) & 0xFFFF;
+        var_v1->unk2 = new_var;
+        var_v1->unk4 = (arg0->unk35C >> 0x10) & 0xFFFF;
         var_v1->unk6 = arg0->xPos;
         var_v1->unk8 = arg0->zPos;
     }
@@ -69,7 +67,6 @@ void func_global_asm_80717100(otherSpriteControl *arg0, s8 *arg1) {
     arg0->xPos = var_v1->unk6 + (var_v1->unk2 * func_global_asm_80612794(var_v1->unk0));
     arg0->zPos = var_v1->unk8 + (var_v1->unk2 * func_global_asm_80612790(var_v1->unk0));
 }
-*/
 
 void func_global_asm_8071720C(Struct80717D84 *arg0, s32 arg1) {
     Struct80717D84_unk384_8071720C *var_v1;
