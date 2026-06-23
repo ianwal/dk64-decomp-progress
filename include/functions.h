@@ -1337,7 +1337,7 @@ void func_global_asm_8065A660(f32 arg0, f32 arg1);
 void func_global_asm_8065A6F8(u16 arg0);
 void createLight(f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2, f32 radius, u8 arg7, u8 red, u8 green, u8 blue);
 // TODO: func_global_asm_8065A884 has no documented signature
-s16 func_global_asm_8065BAA0(f32 arg0, f32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s8 *argA);
+s16 func_global_asm_8065BAA0(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s8 *argA);
 void func_global_asm_8065BE74(s16 arg0);
 // TODO: func_global_asm_8065BF18 has no documented signature
 // TODO: func_global_asm_8065C240 has no documented signature but has been matched
