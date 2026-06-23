@@ -1009,7 +1009,7 @@ us,asm,func_global_asm_8066EBF4,120,yes
 us,asm,func_global_asm_8061670C,100,yes
 us,asm,__n_vsDelta,68,yes
 us,asm,func_global_asm_8063B758,384,no
-us,asm,func_global_asm_806C75A4,1372,no
+us,asm,func_global_asm_806C75A4,1360,yes
 us,asm,func_global_asm_80600B10,172,yes
 us,asm,func_global_asm_8065EB10,1248,no
 us,asm,func_global_asm_8065D244,16,yes
