@@ -687,10 +687,6 @@ void func_global_asm_806F1C04(Actor *arg0, AnimationStateUnk1C *arg1, s32 *arg2)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F22A8.s")
 
-// regalloc
-// https://decomp.me/scratch/nTpwl
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F2754.s")
-
 typedef struct {
     s8 unk0;
     u8 unk1;
@@ -699,16 +695,17 @@ typedef struct {
     s16 unk6;
 } Struct806F2754;
 
-/*
 void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     f32 dz;
     s16 angle;
     f32 temp_f0_2;
     f32 dx;
+    PlayerAdditionalActorData *paad;
 
-    dz = (character_change_array[cc_player_index].look_at_eye_z - character_change_array[cc_player_index].look_at_at_z);
-    dx = (character_change_array[cc_player_index].look_at_eye_x - character_change_array[cc_player_index].look_at_at_x);
-    angle = (arg0->PaaD->unk104->PaaD->unkB2 - arg0->y_rotation) - 0x800;
+    paad = arg0->PaaD->unk104->PaaD;
+    angle = (paad->unkB2 - arg0->y_rotation) - 0x800;
+    dz = character_change_array[cc_player_index].look_at_eye_z - character_change_array[cc_player_index].look_at_at_z;
+    dx = character_change_array[cc_player_index].look_at_eye_x - character_change_array[cc_player_index].look_at_at_x;
     temp_f0_2 = func_global_asm_80611BB4(
         character_change_array[cc_player_index].look_at_eye_y - character_change_array[cc_player_index].look_at_at_y,
         sqrtf(SQ(dz) + SQ(dx))
@@ -728,7 +725,6 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     arg1[*arg2].unk6 = 0;
     *arg2 += 1;
 }
-*/
 
 void func_global_asm_806F2A40(Actor *arg0, Struct806F2EDC *arg1, s32 *arg2) {
     f32 var_f0;

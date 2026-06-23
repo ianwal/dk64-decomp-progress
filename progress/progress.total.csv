@@ -1862,7 +1862,7 @@ us,asm,func_global_asm_806E6FF0,96,yes
 us,asm,func_global_asm_80684D98,648,yes
 us,asm,n_alFxParamHdl,1312,yes
 us,asm,func_global_asm_806ECA74,80,yes
-us,asm,func_global_asm_806F2754,748,no
+us,asm,func_global_asm_806F2754,748,yes
 us,asm,func_global_asm_806DDAB0,1972,no
 us,asm,func_global_asm_8064EC60,264,yes
 us,asm,func_global_asm_80690190,556,yes
