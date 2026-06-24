@@ -118,27 +118,24 @@ void func_global_asm_806F8170(s32 HUDItemIndex, f32 *xOut, f32 *yOut, f32 *zOut)
     *zOut = D_global_asm_80754280->hud_item[HUDItemIndex].unk_18;
 }
 
-// Close
-// https://decomp.me/scratch/bxVyL
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F8278.s")
-
-void func_global_asm_806F8278(u8 playerIndex);
-
-/*
 void func_global_asm_806F8278(u8 playerIndex) {
+    s32 new_var;
+    PlayerProgress *new_var2;
     s32 levelIndex;
     s32 totalGBs;
     s32 kong;
 
     totalGBs = 0;
-    for (levelIndex = 0; levelIndex < 14; levelIndex++) {
+    new_var2 = &D_global_asm_807FC950[playerIndex];
+    new_var = 14;
+    for (levelIndex = 0; levelIndex < new_var; levelIndex++) {
         for (kong = 0; kong < 5; kong++) {
-            totalGBs += D_global_asm_807FC950[playerIndex].character_progress[kong].golden_bananas[levelIndex];
+            totalGBs += new_var2->character_progress[kong].golden_bananas[levelIndex];
         }
     }
-    D_global_asm_80754280->hud_item[playerIndex * 0xF + 9].hud_count = totalGBs;
+
+    D_global_asm_80754280->hud_item[(playerIndex * 0xF) + 9].hud_count = totalGBs;
 }
-*/
 
 void func_global_asm_806F833C(s32 arg0) {
     u32 HUDItemIndex;
@@ -419,6 +416,7 @@ s32 func_global_asm_806F8EB4(void) {
     return countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT);
 }
 
+// getMaxItemCapacity ?
 u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
     s32 kong;
     u16 var_a0;
@@ -486,10 +484,6 @@ u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
     return var_a0;
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/changeCollectableCount.s")
-
-/*
 void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
     HUDDisplay *HUDItem;
     CharacterProgress *sp48;
@@ -502,33 +496,36 @@ void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
 
     sp48 = &D_global_asm_807FC950[playerIndex].character_progress[func_global_asm_806C8DE0(playerIndex)];
     HUDItem = func_global_asm_806F7FD0(playerIndex);
-    if ((HUDItem[HUDItemIndex].unk_2d == 0 || amount >= 0) && HUDItem[HUDItemIndex].unk_2c == 0) {
+    if (((HUDItem[HUDItemIndex].unk_2d == 0) || (amount >= 0)) && (HUDItem[HUDItemIndex].unk_2c == 0)) {
         if ((HUDItemIndex != 0xA) && (HUDItemIndex != 0xC)) {
-            if ((*HUDItem[HUDItemIndex].actual_count_pointer + amount) < 0) {
+            if (((*HUDItem[HUDItemIndex].actual_count_pointer) + amount) < 0) {
                 *HUDItem[HUDItemIndex].actual_count_pointer = 0;
             } else {
                 *HUDItem[HUDItemIndex].actual_count_pointer += amount;
-                // getMaxItemCapacity(HUDItemIndex, playerIndex)
                 maxItemCapacity = func_global_asm_806F8EDC(HUDItemIndex, playerIndex);
-                if (maxItemCapacity < *HUDItem[HUDItemIndex].actual_count_pointer) {
+                if (maxItemCapacity < (*HUDItem[HUDItemIndex].actual_count_pointer)) {
                     *HUDItem[HUDItemIndex].actual_count_pointer = maxItemCapacity;
                 }
-                if (HUDItemIndex == 8 && (func_global_asm_805FEF10(&flagIndex) != 0)) {
+                if ((HUDItemIndex == 8) && (func_global_asm_805FEF10(&flagIndex) != 0)) {
                     setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
                 }
-                if (amount > 0 && HUDItemIndex == 0) {
+                if ((amount > 0) && (HUDItemIndex == 0)) {
                     levelIndex = getLevelIndex(D_global_asm_8076A0AB, 1);
                     amountBefore = sp48->coloured_bananas[levelIndex] + sp48->coloured_bananas_fed_to_tns[levelIndex];
-                    if (amountBefore >= 75 && ((amountBefore - amount) < 75)) {
+                    if ((amountBefore >= 75) && ((amountBefore - amount) < 75)) {
                         // Award banana medal
                         setFlag(func_global_asm_807319D8(PERMFLAG_ITEM_MEDAL_JAPES_DK, levelIndex, current_character_index[playerIndex]), TRUE, FLAG_TYPE_PERMANENT);
                         func_global_asm_80687C48();
                     }
-                    if (amountBefore == 100 && (amountBefore - amount) < 100) {
+                    if ((amountBefore == 100) && ((amountBefore - amount) < 100)) {
                         // Play 100 bananas collected jingle
                         playSong(0xAC, 1.0f);
                     }
                 }
+            }
+
+            // fake match
+            if (0) {
             }
         }
         if (HUDItemIndex == 8) {
@@ -536,7 +533,6 @@ void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
         }
     }
 }
-*/
 
 void func_global_asm_806F93EC(u16 *arg0, Maps map) {
     *arg0 |= 1 << getLevelIndex(map, TRUE);
@@ -1036,21 +1032,14 @@ void func_global_asm_806FB290(void) {
     func_global_asm_806F95C8();
 }
 
-// Quite fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FB2B8.s")
-
-/*
 void func_global_asm_806FB2B8(void) {
     GlobalASMStruct71 **var_s1;
-    GlobalASMStruct71 *current;
     s32 i;
 
     var_s1 = &D_global_asm_80754284;
-    current = D_global_asm_80754284;
     if (D_global_asm_80754284) {
-        while (current->unk4) {
-            var_s1 = &current->unk4;
-            current = current->unk4;
+        while ((*var_s1)->unk4) {
+            var_s1 = &(*var_s1)->unk4;
         }
         for (i = 0; i != 0xF; i++) {
             if ((*var_s1)->unk0 & (1 << i)) {
@@ -1061,7 +1050,6 @@ void func_global_asm_806FB2B8(void) {
         *var_s1 = NULL;
     }
 }
-*/
 
 // setHudItemAsInfinite(hudItemIndex, playerIndex, unknownValue)
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {

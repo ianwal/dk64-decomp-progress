@@ -154,10 +154,8 @@ s32 func_global_asm_8065FB04(GlobalASMStruct81 *arg0) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065FB64.s")
-
 void func_global_asm_8065C990(s32 arg0, s32 arg1, s32 arg2, void *arg3, s32 arg26, s32 arg27);
-extern f32 D_global_asm_8076A0B4[];
+extern f32 *D_global_asm_8076A0B4;
 extern s32 D_global_asm_807F78C0;
 extern f32 D_807F7EEC[];
 
@@ -168,31 +166,34 @@ typedef struct {
     s32 unkC;
 } Struct8065FB64;
 
-/*
-void func_global_asm_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
-    u8 sp8F;
+extern f32 *D_global_asm_8076A0B8;
+extern f32 *D_global_asm_8076A0BC;
+extern f32 D_global_asm_807F7EEC;
+extern f32 D_global_asm_807F7EF0;
+extern f32 D_global_asm_807F7EF4;
+
+void func_global_asm_8065FB64(f32 arg0, f32 arg1, f32 arg2) {
     GlobalASMStruct58 *current;
-    GlobalASMStruct58_unk0 *temp_v0_2;
     f32 temp_f0;
+    u8 sp8F;
     f32 temp_f2;
     s16 temp_s1;
     Struct8065FB64 *temp_a0;
     s32 temp_v0_3;
-    u8 temp_v0;
 
     current = D_global_asm_807F93C0;
-    while (current != NULL) {
-        if (current->unk4C & 1 && !(current->unk4C & 2)) {
-            temp_v0_2 = current->unk0;
-            temp_s1 = temp_v0_2->unk50[0];
-            if (temp_v0_2->unk68 != 0) {
-                temp_f2 = temp_v0_2->unk10 + temp_v0_2->unkC;
-                temp_f0 = temp_v0_2->unk4E + current->unk4;
-                temp_v0_3 = func_global_asm_8065BAA0(arg0, arg1, arg2, temp_v0_2->unk46, temp_f0 - temp_f2, temp_v0_2->unk48, temp_v0_2->unk4A, temp_f0 + temp_f2, temp_v0_2->unk4C, temp_s1, &sp8F);
-                // TODO: For loop?
-                D_807F7EEC[0] = D_global_asm_8076A0B4[temp_s1];
-                D_807F7EEC[1] = D_global_asm_8076A0B4[temp_s1 + 1];
-                D_807F7EEC[2] = D_global_asm_8076A0B4[temp_s1 + 2];
+    while (current != 0) {
+        if ((current->unk4C & 1) && (!(current->unk4C & 2))) {
+            temp_s1 = current->unk0->unk50[0];
+            if (current->unk0->unk68 != 0) {
+                temp_f0 = current->unk0->unk4E + current->unk4;
+                temp_f2 = current->unk0->unk10 + current->unk0->unkC;
+                temp_v0_3 = func_global_asm_8065BAA0(arg0, arg1, arg2, current->unk0->unk46, temp_f0 - temp_f2,
+                                                     current->unk0->unk48, current->unk0->unk4A, temp_f0 + temp_f2,
+                                                     current->unk0->unk4C, temp_s1, &sp8F);
+                D_global_asm_807F7EEC = D_global_asm_8076A0B4[temp_s1];
+                D_global_asm_807F7EF0 = D_global_asm_8076A0B8[temp_s1];
+                D_global_asm_807F7EF4 = D_global_asm_8076A0BC[temp_s1];
                 if (global_properties_bitfield & 0x10) {
                     temp_a0 = current->unk1C[D_global_asm_807444FC];
                     func_global_asm_8065C990(temp_a0, &temp_a0[current->unk48], 1, &D_global_asm_807F78C0, temp_v0_3, chunk_array_pointer[temp_s1].unk3 == 1);
@@ -203,7 +204,6 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
         current = current->next;
     }
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065FD88.s")

@@ -923,11 +923,6 @@ void func_global_asm_806E2140(void) {
 // handle gunshots, jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E225C.s")
 
-// close
-// https://decomp.me/scratch/IgLyf
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E2B20.s")
-
-/*
 u8 func_global_asm_806E2B20(Actor *arg0) {
     f32 x;
     f32 y;
@@ -947,22 +942,22 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
     phi_f20 = 0;
     getBonePosition(arg0, 4, &bone4X, &bone4Y, &bone4Z);
     getBonePosition(arg0, 10, &bone10X, &bone10Y, &bone10Z);
-    while (phi_f20 <= 1.0 && !phi_v1) {
-        phi_v1 = func_global_asm_80671E00(
-            bone4X + ((bone10X - bone4X) * phi_f20),
-            bone4Y + ((bone10Y - bone4Y) * phi_f20),
-            bone4Z + ((bone10Z - bone4Z) * phi_f20),
-            10.0f,
-            &sp66,
-            &sp64,
-            NULL,
-            NULL
-        );
+    while ((phi_f20 <= 1.0) && (!phi_v1)) {
+        z = bone4Z;
+        x = bone4X + ((bone10X - bone4X) * phi_f20);
+        y = bone4Y + (phi_f20 * (bone10Y - bone4Y));
+
+        // fake match
+        if (0) {
+        }
+
+        z = z + ((bone10Z - bone4Z) * phi_f20);
+        phi_v1 = func_global_asm_80671E00(x, y, z, 10.0f, &sp66, &sp64, 0, 0);
         phi_f20 += 0.2;
     }
+
     return phi_v1;
 }
-*/
 
 void func_global_asm_806E2C74(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
@@ -1655,14 +1650,11 @@ s32 func_global_asm_806E527C(void) {
     return var_v1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E52D0.s")
-
 s32 func_global_asm_806E5488(Actor *arg0);
 
-/*
 void func_global_asm_806E52D0(void) {
     u8 temp_v1;
+    u32 temp_v0;
 
     if ((D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS)
         && (object_timer >= 3U)
@@ -1673,8 +1665,9 @@ void func_global_asm_806E52D0(void) {
         && (func_global_asm_806E5488(gCurrentActorPointer) == 0)
         && (func_global_asm_806E527C() == 0)
         && (extra_player_info_pointer->unk245 == 0)) {
-        temp_v1 = func_global_asm_806E560C(gCurrentActorPointer);
-        if (current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v1) {
+        temp_v0 = func_global_asm_806E560C(gCurrentActorPointer);
+        temp_v1 = temp_v0;
+        if (current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v0) {
             if (func_global_asm_806F8AD4(7, cc_player_index) || temp_v1) {
                 setAction(0x53, NULL, extra_player_info_pointer->unk1A4);
                 if (!(D_global_asm_807FBB68 & 2)) {
@@ -1690,7 +1683,6 @@ void func_global_asm_806E52D0(void) {
         }
     }
 }
-*/
 
 s32 func_global_asm_806E5488(Actor *arg0) {
     if (arg0->locked_to_pad == 1) {

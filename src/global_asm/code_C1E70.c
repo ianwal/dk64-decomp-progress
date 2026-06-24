@@ -82,7 +82,7 @@ extern s8 D_global_asm_807506A8[];
 
 extern s16 D_global_asm_8076A0A6; // Probably static
 
-extern f32 D_807FC8D4;
+extern f32 D_global_asm_807FC8D4;
 
 s32 areAllKeysTurnedIn(void);
 
@@ -182,9 +182,6 @@ void func_global_asm_806BD3E4(void) {
 }
 */
 
-// Jumptable, doable, close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_global_asm_806BD7B0.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -217,7 +214,6 @@ typedef struct {
     Actor *unk0;
 } A178_806BD7B0;
 
-/*
 void func_global_asm_806BD7B0(void) {
     AAD_806BD7B0 *aaD;
     f32 sp48;
@@ -227,11 +223,11 @@ void func_global_asm_806BD7B0(void) {
     s32 sp38;
     Struct807506B8 sp30;
     f32 temp;
-
     aaD = gCurrentActorPointer->additional_actor_data;
     switch (gCurrentActorPointer->control_state) {
         case 0:
             break;
+
         case 5:
             if (D_global_asm_807506A4 && !func_global_asm_8061CB50()) {
                 aaD->unk0++;
@@ -243,12 +239,14 @@ void func_global_asm_806BD7B0(void) {
                 aaD->unk0 = 0;
             }
             break;
+
         case 1:
             aaD->unk0 = 0;
             gCurrentActorPointer->control_state = 2;
             break;
+
         case 2:
-            if (D_807FC8D4 < SQ(400.0)) {
+            if (D_global_asm_807FC8D4 < SQ(400.0)) {
                 gCurrentActorPointer->control_state = 3;
                 aaD->unk0 = 0;
                 playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
@@ -259,6 +257,7 @@ void func_global_asm_806BD7B0(void) {
                 gCurrentActorPointer->unk146 = 1;
             }
             break;
+
         case 3:
             if (gCurrentActorPointer->control_state_progress == 1) {
                 gCurrentActorPointer->control_state_progress++;
@@ -302,6 +301,7 @@ void func_global_asm_806BD7B0(void) {
                 break;
             }
             break;
+
         case 4:
             if (areAllKeysTurnedIn()) {
                 AAD178 = aaD->unk4->unk178;
@@ -328,6 +328,10 @@ void func_global_asm_806BD7B0(void) {
                         D_global_asm_807506A4 = 1;
                     }
                 } else {
+                    // fake match
+                    if (gCurrentActorPointer->y_position && gCurrentActorPointer->y_position) {
+                    }
+
                     func_global_asm_80712524(
                         D_global_asm_80750664[aaD->unk2].unk0,
                         D_global_asm_80750664[aaD->unk2].unk2);
@@ -335,10 +339,10 @@ void func_global_asm_806BD7B0(void) {
             }
             break;
     }
+
     gCurrentActorPointer->unk15E = 0x28;
     renderActor(gCurrentActorPointer, 0);
 }
-*/
 
 s32 areAllKeysTurnedIn(void) {
     s32 key;

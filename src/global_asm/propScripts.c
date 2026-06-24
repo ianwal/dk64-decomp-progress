@@ -472,13 +472,10 @@ void func_global_asm_8064431C(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg
     createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806443E4.s")
-
 void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
-extern f32 D_80770DCC;
-extern f32 D_80770DD0;
-extern f32 D_80770DD4;
+extern f32 D_global_asm_80770DCC;
+extern f32 D_global_asm_80770DD0;
+extern f32 D_global_asm_80770DD4;
 extern f32 D_global_asm_807480DC;
 extern s8 D_global_asm_8077058C;
 extern u8 D_global_asm_80770DC9;
@@ -493,12 +490,15 @@ typedef struct InstanceData806443E4 {
     f32 unkC;
 } InstanceData806443E4;
 
-/*
 void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData806443E4 *var_v1;
     f32 var_f16;
     f32 var_f14;
     f32 dx, dy, dz;
+
+    // fake match
+    if (gPlayerPointer->PaaD) {
+    }
 
     if (gPlayerPointer->PaaD->unk1F0 & 0x20000000) {
         return;
@@ -521,10 +521,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     } else if (character_change_array->chunk == 7) {
         var_f14 = 0.0f;
     } else {
-        dx = D_global_asm_807F621C - 1714.0f;
-        dy = D_global_asm_807F6220 - 226.0f;
-        dz = D_global_asm_807F6224 - 3410.0f;
-        var_f16 -= sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
+        var_f16 -= sqrtf(SQ(D_global_asm_807F621C - 1714.0f) + SQ(D_global_asm_807F6220 - 226.0f) + SQ(D_global_asm_807F6224 - 3410.0f));
         if (var_f16 < 0.0) {
             var_f16 = 0.0f;
         }
@@ -547,8 +544,13 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         if (RandClamp(10) == 5) {
             if (var_f16 < 2200.0f) {
                 if (D_global_asm_80770DC9 != 0) {
-                    if (D_80770DD4 < 600.0f) {
-                        playSound(0x9C, (s32) ((((var_f14 * 32767.0f * 60.0f) / 255.0f) * (600.0 - D_80770DD4)) / 1000.0), D_80770DCC, 0.8f, 0x1E, (u32) D_80770DD0);
+                    if (D_global_asm_80770DD4 < 600.0f) {
+                        playSound(0x9C,
+                            (s32) ((((var_f14 * 32767.0f * 60.0f) / 255.0f) * (600.0 - D_global_asm_80770DD4)) / 1000.0),
+                                  D_global_asm_80770DCC,
+                                  0.8f,
+                                  0x1E,
+                                  (u32) D_global_asm_80770DD0);
                     }
                 } else {
                     func_global_asm_80608DA8(0x9C, var_f14 * 60.0f, 0x7F, 0x1E, (rand() >> 0xF) % 3);
@@ -564,7 +566,6 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     var_v1->unkC = ((0.3 - var_v1->unkC) * 0.2) + var_v1->unkC;
     func_global_asm_80659670(var_v1->unk4, var_v1->unk8, var_v1->unkC, 0xE);
 }
-*/
 
 void func_global_asm_806449C0(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
@@ -898,15 +899,11 @@ void func_global_asm_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646058.s")
 
-// doable, rodata, close, regalloc s registers
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646770.s")
-
 extern f32 D_global_asm_807480F0;
 typedef struct InstanceData80646770 {
     s32 unk0;
 } InstanceData80646770;
 
-/*
 void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 old;
     s32 count;
@@ -919,8 +916,8 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
         var_v1->unk0 = 0;
     }
     var_v1 = arg0->unk0;
-    count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
     old = var_v1->unk0;
+    count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
     if (count == ++var_v1->unk0) {
         var_v1->unk0 = 0;
     }
@@ -943,14 +940,12 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
                 D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8
             );
         } else {
-            old = ++var_v1->unk0;
-            if (count == var_v1->unk0) {
+            if (count == ++var_v1->unk0) {
                 var_v1->unk0 = 0;
             }
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646978.s")
 
@@ -1396,52 +1391,45 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806485A0.s")
-
-/*
 void func_global_asm_806485A0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
-    f32 sp80;
-    f32 sp70;
-    f32 sp6C;
     f32 temp_f0;
     f32 temp_f20;
     f32 temp_f22;
     f32 temp_f26;
-    f32 temp_f28;
-    f32 temp_f2;
+    s32 pad;
     f32 temp_f30;
+    s16 temp_v0;
     s32 temp_v1;
     s32 i;
+    f32 sp80;
 
+    temp_v0 = arg2 >> 8;
+    temp_f30 = arg2 & 0xFF;
     temp_v1 = arg3 & 0xFF;
-    switch (arg2 >> 8) {
+    switch (temp_v0) {
         case 0:
-            sp80 = 1.0f;
+            sp80 = 1; // doesn't match if 1.0f for some reason
             break;
         case 1:
             sp80 = 4.0f;
             break;
     }
-        temp_f30 = arg2 & 0xFF;
-        sp70 = arg3 >> 8;
-        temp_f28 = 0.05f;
-    for (i = 0; i != temp_v1; i++) {
-        sp6C = sp80 * 1.5;
-            func_global_asm_8071496C(func_global_asm_806119FC() * sp70);
-loop_8:
+    for (i = 0; i < temp_v1; i++) {
+        func_global_asm_8071496C(func_global_asm_806119FC() * (arg3 >> 8));
+        do {
             temp_f22 = (2.0f * func_global_asm_806119FC()) - 1.0f;
             temp_f20 = (2.0f * func_global_asm_806119FC()) - 1.0f;
             temp_f26 = (2.0f * func_global_asm_806119FC()) - 1.0f;
-            temp_f0 = sqrtf((temp_f22 * temp_f22) + (temp_f20 * temp_f20) + (temp_f26 * temp_f26));
-            if (temp_f0 < temp_f28) {
-                goto loop_8;
-            }
-            temp_f2 = temp_f30 / temp_f0;
-            drawSpriteAtPosition(&D_global_asm_8071FF18, sp6C, D_global_asm_807F621C + (temp_f22 * temp_f2), D_global_asm_807F6220 + ((temp_f20 * temp_f2) + temp_f30), D_global_asm_807F6224 + (temp_f26 * temp_f2));
+            temp_f0 = sqrtf(SQ(temp_f22) + SQ(temp_f20) + SQ(temp_f26));
+        } while (temp_f0 < 0.05f);
+        temp_f0 = temp_f30 / temp_f0;
+        temp_f22 *= temp_f0;
+        temp_f20 *= temp_f0;
+        temp_f20 += temp_f30;
+        temp_f26 *= temp_f0;
+        drawSpriteAtPosition(&D_global_asm_8071FF18, sp80 * 1.5, D_global_asm_807F621C + temp_f22, D_global_asm_807F6220 + temp_f20, D_global_asm_807F6224 + temp_f26);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806487C4.s")
 

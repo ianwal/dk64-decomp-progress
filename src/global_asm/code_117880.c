@@ -356,40 +356,48 @@ Gfx *func_global_asm_80713AA8(Gfx *dl) {
     return dl;
 }
 
-// Displaylist stuff, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80713B40.s")
+extern const char D_global_asm_80755378[]; // "GAME OVER"
 
-extern s32 D_global_asm_80755378; // TODO: Datatype
-
-/*
 Gfx *func_global_asm_80713B40(Gfx *dl) {
-    f32 temp_f0;
     s16 temp_t0;
-    s16 temp_v0;
+    s8 new_var;
     s16 alpha;
+    f32 temp_f0;
+    s16 temp_v0;
+    s32 diff;
 
-    temp_t0 = (D_global_asm_8075531C - 140);
-    if (temp_t0 >= 0 && temp_t0 < 150) {
-        temp_v0 = (temp_t0 - 90);
+    temp_t0 = D_global_asm_8075531C - 140;
+    new_var = 5;
+    if ((temp_t0 >= 0) && (temp_t0 < 150)) {
+        temp_v0 = temp_t0 - 90;
         if (temp_v0 < 0) {
             alpha = 0xFF;
         } else {
-            alpha = (60 - temp_v0) * 5;
+
+            temp_v0 = 60 - temp_v0;
+            diff = temp_v0;
+            temp_v0 = 60 - temp_v0;
+
+            // fake match
+            if (1) {
+            }
+
+            alpha = ((((((((((diff & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) * new_var;
         }
         if (temp_t0 < 60) {
-            alpha = temp_t0 * 5;
+            alpha = temp_t0 * new_var;
         }
         if (alpha >= 0x100) {
             alpha = 0xFF;
         }
         dl = func_global_asm_80713AA8(dl);
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
-        temp_f0 = ((150 - temp_t0) / 40.0);
+        temp_f0 = (150 - temp_t0) / 40.0;
+        // print "GAME OVER"
         dl = printText(dl, 640, 480.0 - (temp_f0 * 32.0), temp_f0, &D_global_asm_80755378);
     }
     return dl;
 }
-*/
 
 extern OSTime D_global_asm_807445B0;
 extern Struct80755340 D_global_asm_80755340;

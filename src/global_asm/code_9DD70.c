@@ -216,26 +216,27 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
 
 extern u8 D_global_asm_807FBBA9;
 
+// Always returns 0. Probably debug code.
 s32 func_global_asm_8069A750(void) {
-    GlobalASMStruct35 *var_a0;
-    s32 temp_v0;
-    Actor *temp_t8;
     s32 i;
-    s32 a_type;
 
     for (i = 0; i < D_global_asm_807FBBA9; i++) {
         switch (D_global_asm_807FBB70.unk7C[i]->unk58) {
             case 2:
+                // Does nothing
+                if (!D_global_asm_807FBB70.unk7C) {
+                }
+
+                // Does nothing
+                if (&D_global_asm_807FBB70 && &D_global_asm_807FBB70) {
+                }
             case 3:
                 break;
             default:
-                // regalloc fixes
-                if (((!D_global_asm_807FBB70.unk7C) && (!D_global_asm_807FBB70.unk7C)) && (!D_global_asm_807FBB70.unk7C));
-                if ((!(&D_global_asm_807FBB70)));
-
                 break;
         }
     }
+
     if (gCurrentActorPointer->unk58 == ACTOR_CASTLE_BRIDGE) {
         return 0;
     }

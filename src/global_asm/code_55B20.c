@@ -359,19 +359,13 @@ void func_global_asm_806524A0(PropModel *arg0, u8 arg1) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652594.s")
-
-/*
-// Something to do with arg2? Loop condition? Break?
 u8 func_global_asm_80652594(PropModel *arg0, s16 *arg1, u8 arg2) {
     u8 sp4F;
-    s16 i;
-    s32 pad;
+    s32 i;
 
     sp4F = 0;
     i = 0;
-    while (i < D_global_asm_807F6C28 && !sp4F && arg2) {
+    while (i < D_global_asm_807F6C28 && (!sp4F || arg2)) {
         chunk_array_pointer[i].unk14 = func_global_asm_80630588(chunk_array_pointer[i].unk14, arg0, 0, &sp4F);
         if (sp4F) {
             *arg1 = i;
@@ -386,7 +380,6 @@ u8 func_global_asm_80652594(PropModel *arg0, s16 *arg1, u8 arg2) {
     }
     return sp4F;
 }
-*/
 
 void func_global_asm_806526E0(u8 arg0) {
     s32 i;
@@ -1097,23 +1090,23 @@ void func_global_asm_80655BF0(void) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80655CF8.s")
+extern s16 D_global_asm_807F6C30[];
 
-extern s16 D_807F6C30[];
-
-/*
-// It's an unrolled loop
 s32 func_global_asm_80655CF8(s16 arg0, s32 arg1) {
     s32 i;
+
     for (i = 0; i < arg1; i++) {
-        if (arg0 == D_807F6C30[i]) {
+        if (arg0 == D_global_asm_807F6C30[i]) {
             return TRUE;
         }
+
+        // fake match
+        if (0) {
+        }
     }
+
     return FALSE;
 }
-*/
 
 // Displaylist stuff, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80655DD0.s")
@@ -1580,7 +1573,7 @@ u8 func_global_asm_80658DAC(s32 arg0) {
     return 0;
 }
 
-void func_global_asm_80658E58(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
+void func_global_asm_80658E58(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_global_asm_807F7358 = arg0;
     D_global_asm_807F735A = arg1;
     D_global_asm_807F735C = arg2;

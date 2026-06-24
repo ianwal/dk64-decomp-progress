@@ -139,8 +139,38 @@ void func_global_asm_806FFF5C(void) {
     getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x138B, 1, 1);
 }
 
-// Doable, matrix arrays
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_806FFF88.s")
+extern s32 D_global_asm_80744470[];
+
+u16 *func_global_asm_806FFF88(void) {
+    u16 *sp34;
+    s16 var_s3;
+    u16 *temp_v0;
+    u16 *var_s1;
+    s32 var_s2;
+    s16 var_s0;
+
+    var_s3 = 7;
+    if (gCurrentActorPointer->unk58 == ACTOR_UNKNOWN_217) {
+        func_global_asm_806FFF5C();
+        return;
+    }
+    temp_v0 = malloc(0xA000);
+    sp34 = temp_v0;
+    var_s1 = temp_v0;
+    var_s2 = (D_global_asm_80744470[D_global_asm_807444FC] + (var_s3 * (16 * D_global_asm_80744490))) + 0xA0;
+    var_s3 = 0;
+    do {
+        var_s0 = 0;
+        do {
+            var_s1 = func_global_asm_806FFEAC(var_s1, ((var_s0 << 1) << 5) + var_s2);
+            var_s0 += 1;
+        } while (var_s0 < 5);
+        var_s2 += (D_global_asm_80744490 << 3) << 4;
+        var_s3 += 1;
+    } while (var_s3 < 2);
+
+    return sp34;
+}
 
 // Haha what, some crazy one liner
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700088.s")
@@ -210,7 +240,45 @@ s16 func_global_asm_807009F4(s16 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700AE4.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} Struct80754BC4_unk0;
+
+typedef struct {
+    Struct80754BC4_unk0 unk0[8];
+} Struct80754BC4;
+
+extern Struct80754BC4 D_global_asm_80754BC4;
+extern u16 *D_global_asm_8076A060;
+
+u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
+    Struct80754BC4 sp18;
+    u16 *new_var;
+    s32 new_var3;
+    u16 new_var2;
+    u16 new_var4;
+    u16 temp_a2;
+    Struct80754BC4_unk0 *temp_t1;
+
+    sp18 = D_global_asm_80754BC4;
+    new_var3 = 7;
+    new_var = D_global_asm_8076A060;
+    if ((((arg0 < character_change_array->unk270[0]) || (character_change_array->unk270[2] < arg0)) || (arg1 < character_change_array->unk270[1])) || (character_change_array->unk270[3] < arg1)) {
+        return 0xFFFF;
+    }
+    new_var += (D_global_asm_80744490 * arg1) + arg0;
+    temp_a2 = new_var[0];
+    new_var2 = (temp_a2 >> 0xD) & new_var3;
+    temp_t1 = &sp18.unk0[new_var2];
+    // These & 0xFFFF force t7 -> t6, but there's probably a better way to do this.
+    new_var4 =
+        ((((((temp_t1->unk4 + ((((temp_a2 >> 2) & 0xFFFFu) & 0x7FF) << temp_t1->unk0)) >> 3) & 0xFFFFu) & 0xFFFFu) &
+          0xFFFFu) &
+         0xFFFFu) &
+        0xFFFFu;
+    return new_var4 & 0xFFFF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700BF4.s")
 

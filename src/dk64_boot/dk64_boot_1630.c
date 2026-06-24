@@ -3,7 +3,7 @@
 
 void func_dk64_boot_80000AA0(void);
 void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, const u8 *arg3);
-void func_dk64_boot_80000EEC(s16* arg0[8][8], s32 arg1, s32 arg2, u8 arg3);
+void func_dk64_boot_80000EEC(s16* arg0, s32 arg1, s32 arg2, u8 arg3);
 
 extern u8 D_dk64_boot_8000ED24[]; // "          NOT INSTALLED"
 extern u8 D_dk64_boot_8000ED40[]; // "          NOT INSTALLED"
@@ -88,99 +88,27 @@ void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, const u8 *arg3) {
     osWritebackDCache(arg0, 0x25800);
 }
 
-// close
-// https://decomp.me/scratch/IV2xv
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000EEC.s")
-
-/*
-void func_dk64_boot_80000EEC(s16* dst, s32 x, s32 y, u8 chr) {
-    s32 row;
-    s32 col;
-    s32 mask;
-    s32 a1;
-    s32 v0;
-    s32 a2;
+void func_dk64_boot_80000EEC(s16 *dst, s32 x, s32 y, u8 chr) {
     u8 *glyph;
-    s32 notmask;
-    u8 byte;
-    s32 off;
+    u8 mask;
 
-    // Adjust character index if >= 0x79 (?)
-    if (chr >= 0x79) {
-        chr = (u8)((chr + 2) & 0xFF);
+    glyph = NULL;
+
+    if (chr > 120) {
+        chr += 2;
     }
 
-    // Compute starting dst position (?)
-    off = (y * 5) * 64; // TODO: Might be << 6 instead of * 64?
-    off += x;
-    dst += off;
+    dst += (((y * 5) * 64) + x);
+    glyph = (u8 *) (0x8037FEFC + (chr << 2));
 
-    // Lookup glyph base in font table (?)
-    v0 = (chr << 2) + 0x8037FEFC;
-    glyph = v0;
-
-    a2 = 0;
-    while (a2 != 8) { // rows
+    for (y = 0; y < 8; y++, glyph += 0x100, dst += 0x138) {
         mask = 0xF0;
-        a1 = 0;
-        while (a1 != 8) { // columns
-            {
-                // 1st pixel pair
-                byte = glyph[a1 >> 1];
-                if (byte & mask) {
-                    *dst = -1;
-                } else {
-                    *dst = 1;
-                }
-            }
-
-            {
-                // 2nd pixel pair
-                byte = glyph[(a1 + 1) >> 1];
-                notmask = (~mask) & 0xFF;
-                dst++;
-                if (byte & notmask) {
-                    *dst = -1;
-                } else {
-                    *dst = 1;
-                }
-                mask = (~notmask) & 0xFF;
-            }
-
-            {
-                // 3rd pixel pair
-                byte = glyph[(a1 + 2) >> 1];
-                dst++;
-                if (byte & mask) {
-                    *dst = -1;
-                } else {
-                    *dst = 1;
-                }
-                notmask = (~mask) & 0xFF;
-            }
-
-            {
-                // 4th pixel pair
-                byte = glyph[(a1 + 3) >> 1];
-                dst++;
-                if (byte & notmask) {
-                    *dst = -1;
-                } else {
-                    *dst = 1;
-                }
-                mask = (~notmask) & 0xFF;
-            }
-
-            a1 += 4;
-            dst++;
+        for (x = 0; x < 8; x++) {
+            *dst++ = (glyph[x >> 1] & mask) ? 0xFFFF : 1;
+            mask = (~mask);
         }
-
-        a2++;
-        glyph += 0x100;   // advance to next glyph row (?)
-        dst += 0x138;     // stride to next framebuffer row (?)
     }
 }
-*/
 
 void func_dk64_boot_8000102C(s32 offset, s32 size, void *dramAddr) {
     while(size & 0xf)

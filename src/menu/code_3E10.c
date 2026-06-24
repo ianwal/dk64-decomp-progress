@@ -2030,13 +2030,9 @@ void func_menu_8002F6C8(Actor *arg0, s32 arg1) {
     }
 }
 
-// Doable, unrolled loop
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002F75C.s")
-
 extern s8 D_menu_800339A8;
 extern s16 D_global_asm_80744518;
 
-/*
 void func_menu_8002F75C(void) {
     MenuStruct7 *var_v0;
     s32 var_a2;
@@ -2047,16 +2043,14 @@ void func_menu_8002F75C(void) {
     } else {
         var_v0 = &D_global_asm_80744568;
     }
-    for (i = 0; i < 4; i++) {
+
+    for (i = 0; i < 5; i++) {
         if (D_global_asm_80744518 >= var_v0[i].unk0) {
-            for (var_a2 = 0; var_a2 <= 4; var_a2++) {
-                // var_v0[var_a2] = var_v0[var_a2 + 1];
-                var_v0[var_a2].unk0 = var_v0[var_a2 + 1].unk0;
-                var_v0[var_a2].unk2 = var_v0[var_a2 + 1].unk2;
-                var_v0[var_a2].unk3 = var_v0[var_a2 + 1].unk3;
-                var_v0[var_a2].unk4 = var_v0[var_a2 + 1].unk4;
-                var_v0[var_a2].unk5 = var_v0[var_a2 + 1].unk5;
-            }
+            // fake match, whitespace matters here so formatting is disabled.
+            // clang-format off
+            for (var_a2 = 4; var_a2 > i; var_a2--) { var_v0[var_a2].unk0 = var_v0[var_a2 - 1].unk0; var_v0[var_a2].unk2 = var_v0[var_a2 - 1].unk2; var_v0[var_a2].unk3 = var_v0[var_a2 - 1].unk3; var_v0[var_a2].unk4 = var_v0[var_a2 - 1].unk4; }
+            // clang-format on 
+
             var_v0[i].unk0 = D_global_asm_80744518;
             var_v0[i].unk2 = 0x2E;
             var_v0[i].unk3 = 0x2E;
@@ -2066,9 +2060,9 @@ void func_menu_8002F75C(void) {
             return;
         }
     }
+
     D_menu_80033F60 = -1;
 }
-*/
 
 void func_menu_8002F8EC(void) {
     character_change_array->look_at_eye_x = gPlayerPointer->x_position;

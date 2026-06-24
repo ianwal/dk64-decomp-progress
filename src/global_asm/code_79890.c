@@ -5,11 +5,34 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_global_asm_80674E14.s")
 
+typedef struct Struct80675478_node {
+    u8 unk0[0x20 - 0x0];
+    u32 unk20;
+    u8 unk24[0x28 - 0x24];
+    struct Struct80675478_node *unk28;
+} Struct80675478_node;
+
 typedef struct {
     u8 unk0[0x70 - 0x0];
     Mtx *unk70;
-    Mtx *unk74[1];
+    Mtx *unk74[2];
+    u8 unk7C[0x8C - 0x7C];
+    Struct80675478_node *unk8C;
 } Struct80675180_arg0;
+
+typedef struct {
+    u8 unk0[0x140 - 0x0];
+    Struct80675180_arg0 *unk140;
+} Struct80675478_arg0;
+
+typedef struct {
+    u8 unk0[0x4 - 0x0];
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[0x14 - 0x10];
+    s32 unk14;
+} Struct80675478_arg1;
 
 typedef struct {
     u8 unk0[0x20 - 0x0];
@@ -117,8 +140,36 @@ void func_global_asm_80675380(Actor *arg0, Actor *arg1) {
     func_global_asm_80679200(arg1, arg0, 0x8000, 0, D_global_asm_807FB628, var_s1);
 }
 
-// Matrix nonsense
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_global_asm_80675478.s")
+void func_global_asm_80675478(Struct80675478_arg0 *arg0, Struct80675478_arg1 *arg1, f32 *arg2, f32 *arg3) {
+    Struct80675180_arg0 *temp_t0;
+    s32 var_v1;
+    u32 temp_v1;
+    f32 sp4C[4][4];
+    Struct80675478_node *var_v0;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    Mtx *temp;
+
+    temp_t0 = arg0->unk140;
+    var_v1 = arg1->unk14 - 1;
+    var_v0 = temp_t0->unk8C;
+    while (var_v1 != 0) {
+        var_v0 = var_v0->unk28;
+        var_v1 -= 1;
+    }
+
+    temp = temp_t0->unk74[D_global_asm_807444FC ^ 1];
+    temp_v1 = var_v0->unk20;
+    if (temp_v1 == -1) {
+        memcpy(sp4C, temp_t0->unk70, 0x40);
+        guMtxXFMF(sp4C, arg1->unk4, arg1->unk8, arg1->unkC, &sp44, &sp40, &sp3C);
+    } else {
+        guMtxXFML(&temp[temp_v1 >> 6], arg1->unk4, arg1->unk8, arg1->unkC, &sp44, &sp40, &sp3C);
+    }
+    *arg2 = sp44;
+    *arg3 = sp3C;
+}
 
 s32 func_global_asm_806742C0(s16, s16, s32, s32);
 

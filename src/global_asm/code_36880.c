@@ -196,24 +196,40 @@ s32 func_global_asm_80631EB8(u16 arg0) {
     return FALSE;
 }
 
-// regalloc, close, doable
-// https://decomp.me/scratch/L4Vuz
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631F58.s")
-
-/*
+// TODO: This is heavily permuted to fix regalloc. There should be a better match possible somehow.
 void func_global_asm_80631F58(SetupFile *arg0, PropData **arg1, ActorData **arg2) {
     MysteryData *temp;
+    s32 new_var4;
+    MysterySetup *new_var;
+    SetupFile *new_var2;
+
+    new_var4 = 0;
+
     if (arg0 == NULL) {
         *arg1 = NULL;
         *arg2 = NULL;
         return;
     }
     *arg1 = arg0;
-    temp = &arg0->props.setup[arg0->props.count];
-    arg0 = &temp->setup[temp->count];
+
+    new_var = &temp->setup[temp->count];
+    new_var2 = arg0;
+
+    // fake match
+    if (1) {
+    }
+
+    new_var4 = new_var2->props.count;
+    temp = &new_var2->props.setup[new_var4];
+
+    // fake match
+    if (1) {
+    }
+
+    new_var = &temp->setup[temp->count];
+    arg0 = new_var;
     *arg2 = arg0;
 }
-*/
 
 extern s16 D_global_asm_807F614A;
 
@@ -564,7 +580,77 @@ void func_global_asm_80632FCC(s16 arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806330C4.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+} Struct806330C4_Inner; // size 0x14
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16; // inner element count ?
+    u8 unk17;
+    Struct806330C4_Inner inner[8];
+} Struct806330C4_Entry; // size 0xB8
+
+typedef struct {
+    s32 count;
+    Struct806330C4_Entry entries[1];
+} Struct806330C4_Anim; // name is a guess, might not be animation related
+
+void func_global_asm_806330C4(s16 arg0, void *arg1, f32 arg2) {
+    s32 count;
+    Struct806330C4_Entry *entries;
+    s32 i;
+    s32 j;
+    f32 spC4;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 var_f20;
+
+    count = ((Struct806330C4_Anim *) ((u8 *) arg1 + *(s32 *) ((u8 *) arg1 + 0x5C)))->count;
+    entries = ((Struct806330C4_Anim *) ((u8 *) arg1 + *(s32 *) ((u8 *) arg1 + 0x5C)))->entries;
+    for (i = 1; i <= count; i++) {
+        var_f20 = 0.0f;
+
+        for (j = 0; j < entries[i - 1].unk16; j++) {
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk10, &spC0, &spB8, &spB0);
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk11, &spC4, &spBC, &spB4);
+
+            var_f20 += sqrtf(SQ(spB0 - spB4) + (SQ(spC0 - spC4) + SQ(spB8 - spBC)));
+        }
+
+        func_global_asm_8072EE7C(arg0, 1, i, 1, entries[i - 1].unk16, 0.0f, var_f20, entries[i - 1].unk0 * arg2,
+                                 entries[i - 1].unkC * arg2, entries[i - 1].unk10 * arg2, entries[i - 1].unk10 * arg2,
+                                 entries[i - 1].unk14, entries[i - 1].unk4, entries[i - 1].unk8, entries[i - 1].unk15);
+
+        for (j = 0; j < entries[i - 1].unk16; j++) {
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk10, &spC0, &spB8, &spB0);
+            func_global_asm_806335B0(arg0, 1, entries[i - 1].inner[j].unk11, &spC4, &spBC, &spB4);
+            func_global_asm_8072EF7C(
+                arg0, i, j, entries[i - 1].inner[j].unk10, entries[i - 1].inner[j].unk11,
+                sqrtf(SQ(spB0 - spB4) + (SQ(spC0 - spC4) + SQ(spB8 - spBC))), entries[i - 1].inner[j].unk0 * arg2,
+                entries[i - 1].inner[j].unk4 * arg2, entries[i - 1].inner[j].unk12, entries[i - 1].inner[j].unk8,
+                entries[i - 1].inner[j].unkC, entries[i - 1].inner[j].unkA, entries[i - 1].inner[j].unkE);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806333F8.s")
 
@@ -1522,9 +1608,6 @@ block_3:
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636784.s")
 
-// Prop Geometry, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806368F0.s")
-
 extern u8 D_global_asm_80750AB4;
 
 // TODO: Move this to structs.h once the shape is locked in
@@ -1561,10 +1644,11 @@ typedef struct {
     s32 unk5C;
 } PropModelAlt;
 
-/*
 void func_global_asm_806368F0(Prop *arg0, s32 propType) {
+    Prop_unk24 *new_var2;
+    s32 new_var4;
+    Prop_unk24 *new_var3;
     void *sp28;
-    u8 temp_v0;
     PropModelAlt *temp_v0_2;
     PropModel *temp_v0_3;
     Prop_unk24 *temp_v1;
@@ -1575,8 +1659,14 @@ void func_global_asm_806368F0(Prop *arg0, s32 propType) {
     } else {
         var_v0 = getPointerTableFile(4, propType, 1, 0);
     }
-    temp_v1 = arg0->unk24;
     arg0->unk24 = var_v0;
+
+    // fake match
+    if (((!temp_v0_3) && (!temp_v0_3)) && (!temp_v0_3)) {
+    }
+
+    new_var2 = arg0->unk24;
+    temp_v1 = (new_var3 = new_var2);
     arg0->unk8C = 0;
     arg0->unk86 = temp_v1->unk1C;
     arg0->object_type = propType;
@@ -1593,22 +1683,24 @@ void func_global_asm_806368F0(Prop *arg0, s32 propType) {
             temp_v0_2->unk14 = malloc(D_global_asm_80750AB4 << 6);
             temp_v0_2->unk18 = malloc(D_global_asm_80750AB4 << 6);
             break;
+
         case 1:
             temp_v0_3 = malloc(0xC8);
             sp28 = temp_v0_3;
             temp_v0_3->unkB4 = propType;
             temp_v0_3->unkB8 = 0;
-            temp_v0_3->unkA0[0] = temp_v1->unk40 + temp_v1;
-            temp_v0_3->unkA0[2] = temp_v1->unk44 + temp_v1;
+            temp_v0_3->unkA0[0] = temp_v1->unk40 + ((s32) temp_v1);
+            new_var4 = (s32) temp_v1;
+            temp_v0_3->unkA0[2] = temp_v1->unk44 + new_var4;
+            temp_v0_3->unkB0 = temp_v1->unk48 + new_var4;
             temp_v0_3->unkBC = 0;
             temp_v0_3->unkB6 = -1;
-            temp_v0_3->unkB0 = temp_v1->unk48 + temp_v1;
             temp_v0_3->unkC3 = 0;
             break;
     }
+
     arg0->model_pointer = sp28;
 }
-*/
 
 f32 func_global_asm_80636A44(s32 arg0) {
     s32 pad2; // TODO: Why is this needed?
@@ -2198,30 +2290,50 @@ void func_global_asm_8063D288(void) {
     }
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063D2E4.s")
+typedef struct {
+    void *unk0;
+    s32 unk4;
+} GlobalASMStruct78;
 
-/*
+extern GlobalASMStruct78 D_global_asm_80747E10[];
+
+// TODO: Several fake matches in this function that can be cleaned up.
 Gfx *func_global_asm_8063D2E4(Gfx *dl) {
+    s8 new_var4;
+    void *new_var5;
+    s32 new_var2;
+    s32 new_var3;
+    void *new_var;
+    new_var2 = G_TL_LOD;
     gDPPipeSync(dl++);
+    new_var3 = 0;
     gDPSetCycleType(dl++, G_CYC_2CYCLE);
-    gDPSetTextureLOD(dl++, G_TL_LOD);
-    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
-    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetTextureLOD(dl++, new_var2);
+    gSPClearGeometryMode(dl++, (((((((((G_ZBUFFER | G_SHADE) | G_CULL_BOTH) | G_FOG) | G_LIGHTING) | G_TEXTURE_GEN) | G_TEXTURE_GEN_LINEAR) | G_LOD) | G_SHADING_SMOOTH) | G_CLIPPING) | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, ((G_ZBUFFER | G_SHADE) | G_CULL_BACK) | G_SHADING_SMOOTH);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, new_var3, G_TX_RENDERTILE, G_ON);
     gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, D_global_asm_80747E0C[D_global_asm_807F6194].unk4);
-    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+    gDPSetPrimColor(dl++, 0, new_var3, 0xFF, 0xFF, 0xFF, 0xFF);
+    new_var5 = D_global_asm_80747E10[D_global_asm_807F6194].unk0;
+    new_var = (void *) (((u32) new_var5) + 0x80000000);
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, new_var);
+    new_var4 = 5;
+
+    // fake match
+    if (((!G_IM_SIZ_16b) && (!G_IM_SIZ_16b)) && (!G_IM_SIZ_16b)) {
+    }
+
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, new_var4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
     gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, new_var3, 1023, 256);
     gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
-    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
-    return dl;
+
+    // fake match, whitespace matters here so formatting is disabled.
+    // clang-format off
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, new_var3, G_TX_NOMIRROR | G_TX_WRAP, new_var4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD); gDPSetTileSize(dl++, G_TX_RENDERTILE, new_var3, 0, 0x00FC, 0x007C); return dl;
+    // clang-format on
 }
-*/
 
 void func_global_asm_8063D468(void) {
     D_global_asm_807F6194++;

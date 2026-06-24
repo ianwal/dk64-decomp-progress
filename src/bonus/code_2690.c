@@ -1509,13 +1509,11 @@ void func_bonus_8002B920(void) {
 }
 */
 
-// rodata, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002BE44.s")
+void func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
 
-/*
-void func_global_asm_80614644(Actor *, ActorAnimationState *, s32);
 extern f32 D_bonus_8002DE50;
 extern f64 D_bonus_8002DE58;
+
 typedef struct BonusStruct1 {
     s32 unk0;
     s32 unk4;
@@ -1525,7 +1523,7 @@ typedef struct BonusStruct1 {
 } BonusStruct1;
 
 typedef struct bonus_additional_actor_data {
-    s32 unk0;
+    Actor* unk0;
     BonusStruct1* unk4;
     s32 unk8;
     s32 unkC;
@@ -1537,25 +1535,29 @@ typedef struct bonus_additional_actor_data {
 } BonusAdditionalActorData;
 
 void func_bonus_8002BE44(void) {
-    ActorAnimationState *sp24;
     BonusAdditionalActorData *temp_a0;
-    BonusStruct1 *temp_t8;
+    Actor *new_var7;
+    AnimationStateUnk0 *sp24;
+    AnimationStateUnk0 *temp_t8;
+    f32 temp_f0;
     s16 phi_a1;
 
-    temp_a0 = ((BonusAdditionalActorData*)gCurrentActorPointer->additional_data_pointer);
-    sp24 = gCurrentActorPointer->animation_state;
-    temp_t8 = temp_a0->unk4;
+    temp_a0 = (BonusAdditionalActorData *) gCurrentActorPointer->additional_data_pointer;
+    new_var7 = temp_a0->unk0;
+    sp24 = gCurrentActorPointer->animation_state->unk0;
+    temp_t8 = new_var7->animation_state->unk0;
     if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->z_rotation = 0;
         gCurrentActorPointer->y_rotation = 0x800;
-        func_global_asm_80613C48(temp_a0, 0x5FB, 0, 0);
-        gCurrentActorPointer->animation_state->scale_x =// D_bonus_8002DE50;
-        gCurrentActorPointer->animation_state->scale_z =// D_bonus_8002DE50;
-        gCurrentActorPointer->animation_state->scale_y = D_bonus_8002DE50;
+        func_global_asm_80613C48(gCurrentActorPointer, 0x5FB, 0, 0);
+        temp_f0 = D_bonus_8002DE50;
+        gCurrentActorPointer->animation_state->scale_x = temp_f0;
+        gCurrentActorPointer->animation_state->scale_y = temp_f0;
+        gCurrentActorPointer->animation_state->scale_z = temp_f0;
     }
-    gCurrentActorPointer->x_position = temp_a0->x_position;
-    gCurrentActorPointer->y_position = temp_a0->y_position - D_bonus_8002DE58;
-    gCurrentActorPointer->z_position = temp_a0->z_position;
+    gCurrentActorPointer->x_position = new_var7->x_position;
+    gCurrentActorPointer->y_position = new_var7->y_position - D_bonus_8002DE58;
+    gCurrentActorPointer->z_position = new_var7->z_position;
     if (sp24 && temp_t8) {
         phi_a1 = temp_t8->unk10;
         if (phi_a1 == 0x5FD) {
@@ -1568,7 +1570,6 @@ void func_bonus_8002BE44(void) {
     }
     renderActor(gCurrentActorPointer, 0);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002BF98.s")
