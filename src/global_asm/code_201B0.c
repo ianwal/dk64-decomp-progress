@@ -1212,15 +1212,12 @@ void func_global_asm_80622334(Actor *arg0, s16 arg1) {
         }
     }
 
-    // fake match, whitespace matters here so formatting is disabled.
-    // clang-format off
-    var_v0 = 2; do {
-    // clang-format on
+    for (var_v0 = 2; var_v0 < 4; var_v0++) {
         if (arg1 >= ((s32) D_global_asm_80747B60[var_a3][var_v0].unk2)) {
             var_a2 = var_v0;
         }
-        var_v0 += 1;
-    } while (var_v0 < 4);
+    }
+
     func_global_asm_8062217C(arg0, var_a2);
 }
 
