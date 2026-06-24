@@ -173,10 +173,8 @@ void func_global_asm_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
     s32 i;
     Struct8070A848 *src = arg1;
     Struct8070A848 *dst = arg0;
-    // fake match, whitespace matters here so formatting is disabled.
-    // clang-format off
-    i = 0; while (i < ((D_global_asm_80744490 * D_global_asm_80744494) / 16)) {
-        // clang-format on
+
+    for (i = 0; i < ((D_global_asm_80744490 * D_global_asm_80744494) / 16); i++) {
         dst->unk0 = src->unk0 | 0x10001;
         dst->unk4 = src->unk4 | 0x10001;
         dst->unk8 = src->unk8 | 0x10001;
@@ -187,7 +185,6 @@ void func_global_asm_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
         dst->unk1C = src->unk1C | 0x10001;
         dst++;
         src++;
-        i++;
     }
 }
 

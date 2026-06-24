@@ -252,6 +252,12 @@ typedef struct {
 extern Struct80754BC4 D_global_asm_80754BC4;
 extern u16 *D_global_asm_8076A060;
 
+// Matches, but it's a fake match that is too low quality to be integrated.
+// Do not uncomment unless there's a significantly better match found.
+// https://decomp.me/scratch/C465q
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700AE4.s")
+
+/*
 u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
     Struct80754BC4 sp18;
     u16 *new_var;
@@ -279,6 +285,7 @@ u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
         0xFFFFu;
     return new_var4 & 0xFFFF;
 }
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700BF4.s")
 

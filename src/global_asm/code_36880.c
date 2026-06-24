@@ -2297,7 +2297,13 @@ typedef struct {
 
 extern GlobalASMStruct78 D_global_asm_80747E10[];
 
+// Matches, but it's a fake match that is too low quality to be integrated.
+// Do not uncomment unless there's a significantly better match found.
+// https://decomp.me/scratch/kHxq6
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063D2E4.s")
+
 // TODO: Several fake matches in this function that can be cleaned up.
+/*
 Gfx *func_global_asm_8063D2E4(Gfx *dl) {
     s8 new_var4;
     void *new_var5;
@@ -2334,6 +2340,7 @@ Gfx *func_global_asm_8063D2E4(Gfx *dl) {
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, new_var3, G_TX_NOMIRROR | G_TX_WRAP, new_var4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD); gDPSetTileSize(dl++, G_TX_RENDERTILE, new_var3, 0, 0x00FC, 0x007C); return dl;
     // clang-format on
 }
+*/
 
 void func_global_asm_8063D468(void) {
     D_global_asm_807F6194++;

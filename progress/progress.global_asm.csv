@@ -520,7 +520,7 @@ us,asm,func_global_asm_80689958,296,yes
 us,asm,func_global_asm_8060EC80,236,yes
 us,asm,func_global_asm_80676A70,72,yes
 us,asm,func_global_asm_80731A04,164,yes
-us,asm,func_global_asm_8063D2E4,388,yes
+us,asm,func_global_asm_8063D2E4,388,no
 us,asm,func_global_asm_8067B4C8,1396,no
 us,asm,func_global_asm_8061796C,84,yes
 us,asm,func_global_asm_806F0D68,736,yes
@@ -1048,7 +1048,7 @@ us,asm,playerCanThrowOrange,292,yes
 us,asm,func_global_asm_806C7268,8,yes
 us,asm,func_global_asm_806EB544,132,yes
 us,asm,func_global_asm_8071F8E4,400,yes
-us,asm,func_global_asm_8071A1E4,604,yes
+us,asm,func_global_asm_8071A1E4,604,no
 us,asm,func_global_asm_8070CC54,56,yes
 us,asm,func_global_asm_80690C60,720,no
 us,asm,func_global_asm_80612BC0,112,yes
@@ -2202,7 +2202,7 @@ us,asm,func_global_asm_80615DA4,208,yes
 us,asm,func_global_asm_806A8158,4044,no
 us,asm,func_global_asm_806A7B04,36,yes
 us,asm,func_global_asm_8070943C,40,yes
-us,asm,func_global_asm_80700AE4,272,yes
+us,asm,func_global_asm_80700AE4,272,no
 us,asm,func_global_asm_806EE1C4,168,yes
 us,asm,func_global_asm_806F37BC,176,yes
 us,asm,func_global_asm_80632F74,88,yes
