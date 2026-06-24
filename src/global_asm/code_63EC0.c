@@ -181,8 +181,7 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, f32 arg2) {
     Struct8065FB64 *temp_a0;
     s32 temp_v0_3;
 
-    current = D_global_asm_807F93C0;
-    while (current != 0) {
+    for (current = D_global_asm_807F93C0; current != NULL; current = current->next) {
         if ((current->unk4C & 1) && (!(current->unk4C & 2))) {
             temp_s1 = current->unk0->unk50[0];
             if (current->unk0->unk68 != 0) {
@@ -201,7 +200,6 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, f32 arg2) {
                 current->unk4C |= 2;
             }
         }
-        current = current->next;
     }
 }
 
