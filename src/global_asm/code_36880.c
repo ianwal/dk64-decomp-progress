@@ -2297,50 +2297,27 @@ typedef struct {
 
 extern GlobalASMStruct78 D_global_asm_80747E10[];
 
-// Matches, but it's a fake match that is too low quality to be integrated.
-// Do not uncomment unless there's a significantly better match found.
-// https://decomp.me/scratch/kHxq6
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063D2E4.s")
-
-// TODO: Several fake matches in this function that can be cleaned up.
-/*
 Gfx *func_global_asm_8063D2E4(Gfx *dl) {
-    s8 new_var4;
-    void *new_var5;
-    s32 new_var2;
-    s32 new_var3;
-    void *new_var;
-    new_var2 = G_TL_LOD;
+    s32 new_var;
     gDPPipeSync(dl++);
-    new_var3 = 0;
     gDPSetCycleType(dl++, G_CYC_2CYCLE);
-    gDPSetTextureLOD(dl++, new_var2);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
     gSPClearGeometryMode(dl++, (((((((((G_ZBUFFER | G_SHADE) | G_CULL_BOTH) | G_FOG) | G_LIGHTING) | G_TEXTURE_GEN) | G_TEXTURE_GEN_LINEAR) | G_LOD) | G_SHADING_SMOOTH) | G_CLIPPING) | 0x0040F9FA);
     gSPSetGeometryMode(dl++, ((G_ZBUFFER | G_SHADE) | G_CULL_BACK) | G_SHADING_SMOOTH);
-    gSPTexture(dl++, 0xFFFF, 0xFFFF, new_var3, G_TX_RENDERTILE, G_ON);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-    gDPSetPrimColor(dl++, 0, new_var3, 0xFF, 0xFF, 0xFF, 0xFF);
-    new_var5 = D_global_asm_80747E10[D_global_asm_807F6194].unk0;
-    new_var = (void *) (((u32) new_var5) + 0x80000000);
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, new_var);
-    new_var4 = 5;
-
-    // fake match
-    if (((!G_IM_SIZ_16b) && (!G_IM_SIZ_16b)) && (!G_IM_SIZ_16b)) {
-    }
-
-    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, new_var4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    new_var = D_global_asm_80747E10[D_global_asm_807F6194].unk0;
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (void *) (new_var + 0x80000000));
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
     gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, new_var3, 1023, 256);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
     gDPPipeSync(dl++);
-
-    // fake match, whitespace matters here so formatting is disabled.
-    // clang-format off
-    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, new_var3, G_TX_NOMIRROR | G_TX_WRAP, new_var4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD); gDPSetTileSize(dl++, G_TX_RENDERTILE, new_var3, 0, 0x00FC, 0x007C); return dl;
-    // clang-format on
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);\
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
+    return dl;
 }
-*/
 
 void func_global_asm_8063D468(void) {
     D_global_asm_807F6194++;

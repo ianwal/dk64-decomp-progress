@@ -520,7 +520,7 @@ us,asm,func_global_asm_80689958,296,yes
 us,asm,func_global_asm_8060EC80,236,yes
 us,asm,func_global_asm_80676A70,72,yes
 us,asm,func_global_asm_80731A04,164,yes
-us,asm,func_global_asm_8063D2E4,388,no
+us,asm,func_global_asm_8063D2E4,388,yes
 us,asm,func_global_asm_8067B4C8,1396,no
 us,asm,func_global_asm_8061796C,84,yes
 us,asm,func_global_asm_806F0D68,736,yes
