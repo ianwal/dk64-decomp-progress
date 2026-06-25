@@ -560,21 +560,14 @@ Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
 }
 
 Struct80026FA4 *func_multiplayer_80025378(void) {
-    Struct80026FA4 *entry = 0;
-    s32 *new_var;
-    u32 new_var2;
+    Struct80026FA4 *entry = NULL;
     s32 i;
 
-    // fake match, whitespace matters here
-    // clang-format off
- new_var = &i; i = 0; do { new_var2 = 4; do {
-    // clang-format on
-            if (current_map == D_multiplayer_80026FA4[*new_var].map) {
-                entry = &D_multiplayer_80026FA4[*new_var];
-            }
-            i++;
-        } while (((*new_var) < new_var2) && (entry == 0));
-    } while (0);
+    for (i = 0; (i < ARRAY_COUNT(D_multiplayer_80026FA4)) && (entry == NULL); i++) {
+        if (current_map == D_multiplayer_80026FA4[i].map) {
+            entry = &D_multiplayer_80026FA4[i];
+        }
+    }
 
     return entry;
 }

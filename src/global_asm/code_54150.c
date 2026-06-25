@@ -97,7 +97,16 @@ void func_global_asm_8064F954(s32 arg0) {
 
 void func_global_asm_8064FB64(u8 arg0, s32 arg1, s32 *arg2, void *arg3, s32 arg4);
 
-// TODO: Several fake matches in this function that can be cleaned up.
+typedef struct {
+    u8 unk0[0x24]; // unknown fields (if any) until func_global_asm_8064FB64 is decompiled
+} Struct8064F97C_unk8;
+
+typedef struct {
+    u8* unk0; // used
+    s32 unk4;
+    Struct8064F97C_unk8 unk8[]; // TODO: How many elements?
+} Struct8064F97C;
+
 void func_global_asm_8064F97C(Struct807FDB00 *arg0) {
     s16 temp_s4;
     s32 new_var3;
@@ -105,43 +114,25 @@ void func_global_asm_8064F97C(Struct807FDB00 *arg0) {
     s32 temp_s5;
     s32 temp_s6;
     s32 temp_v0;
-    s32 var_s2;
-    s8 *var_s0;
+    s32 i;
+    Struct8064F97C *var_s0;
     GlobalASMStruct35 *temp_s3;
-
+    u8 *new_var;
+  
     temp_s3 = (GlobalASMStruct35 *) arg0->unk0;
-    temp_s4 = (temp_s3->unk0 * 0x24) + 8;
+    temp_s4 = (temp_s3->unk0 * (sizeof(Struct8064F97C_unk8))) + (sizeof(Struct8064F97C));
     temp_s5 = D_global_asm_807F6BE0;
     temp_s6 = D_global_asm_807F6BE4;
-    var_s2 = 0;
-    var_s0 = ((s8 *) temp_s3) + 0x3C;
-    if ((temp_s3->unk39) > 0) {
-        do {
-            func_global_asm_8064FB64(arg0->unk11, arg0->unk4, (s32 *) var_s0, var_s0 + 8, (s32) arg0->unk13);
-            temp_v0 = *((s32 *) var_s0);
-            new_var2 = temp_v0 + temp_s5;
-            new_var3 = temp_v0 + temp_s6;
-            if (arg0->unkE == 0) {
-                // fake match
-                if (!new_var2) {
-                }
-
-                func_global_asm_8065054C(D_global_asm_807F6BE8, new_var2, new_var3);
-            } else {
-                // fake match
-                if (1) {
-                }
-
-                new_var2 = (Prop_unk78 *) new_var3;
-                func_global_asm_806505F0(new_var2);
-            }
-            var_s2 += 1;
-            var_s0 += temp_s4;
-        } while (var_s2 < ((s32) temp_s3->unk39));
+    for (i = 0, var_s0 = &temp_s3->unk3C; i < temp_s3->unk39; i++, var_s0 = ((s8 *) var_s0) + temp_s4) {
+        func_global_asm_8064FB64(arg0->unk11, arg0->unk4, &var_s0->unk0, &var_s0->unk8, arg0->unk13);
+        new_var3 = &var_s0->unk0[temp_s6];
+        if (arg0->unkE == 0) {
+            new_var = &var_s0->unk0[temp_s5];
+            func_global_asm_8065054C(D_global_asm_807F6BE8, new_var, new_var3);
+        } else {
+            func_global_asm_806505F0(new_var3);
+        }
     }
-
-    // fake match
-    new_var2 = (Prop_unk78 *) new_var3;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064FA7C.s")

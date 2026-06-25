@@ -1266,13 +1266,6 @@ extern s8 D_global_asm_8074583C;
 extern s8 D_global_asm_80745840;
 extern s8 D_global_asm_80745844;
 
-typedef struct MenuStruct7 {
-    s16 unk0;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-    u8 unk5;
-} MenuStruct7;
 extern Struct80757044 D_global_asm_80744548[];
 extern Struct80757044 D_global_asm_80744568[];
 
@@ -2034,27 +2027,31 @@ extern s8 D_menu_800339A8;
 extern s16 D_global_asm_80744518;
 
 void func_menu_8002F75C(void) {
-    MenuStruct7 *var_v0;
+    Struct80757044 *var_v0;
     s32 var_a2;
     s32 i;
 
     if (D_menu_800339A8 == 0) {
-        var_v0 = &D_global_asm_80744548;
+        var_v0 = D_global_asm_80744548;
     } else {
-        var_v0 = &D_global_asm_80744568;
+        var_v0 = D_global_asm_80744568;
     }
 
     for (i = 0; i < 5; i++) {
-        if (D_global_asm_80744518 >= var_v0[i].unk0) {
-            // fake match, whitespace matters here so formatting is disabled.
+        if (D_global_asm_80744518 >= var_v0[i].score) {
             // clang-format off
-            for (var_a2 = 4; var_a2 > i; var_a2--) { var_v0[var_a2].unk0 = var_v0[var_a2 - 1].unk0; var_v0[var_a2].unk2 = var_v0[var_a2 - 1].unk2; var_v0[var_a2].unk3 = var_v0[var_a2 - 1].unk3; var_v0[var_a2].unk4 = var_v0[var_a2 - 1].unk4; }
-            // clang-format on 
+            for (var_a2 = 4; var_a2 > i; var_a2--) {\
+                var_v0[var_a2].score = var_v0[var_a2 - 1].score;\
+                var_v0[var_a2].initials[0] = var_v0[var_a2 - 1].initials[0];\
+                var_v0[var_a2].initials[1] = var_v0[var_a2 - 1].initials[1];\
+                var_v0[var_a2].initials[2] = var_v0[var_a2 - 1].initials[2];
+            }
+            // clang-format on
 
-            var_v0[i].unk0 = D_global_asm_80744518;
-            var_v0[i].unk2 = 0x2E;
-            var_v0[i].unk3 = 0x2E;
-            var_v0[i].unk4 = 0x2E;
+            var_v0[i].score = D_global_asm_80744518;
+            var_v0[i].initials[0] = '.';
+            var_v0[i].initials[1] = '.';
+            var_v0[i].initials[2] = '.';
             D_menu_80033F60 = i;
             D_menu_80033F61 = 0;
             return;

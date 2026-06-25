@@ -255,11 +255,11 @@ extern u16 *D_global_asm_8076A060;
 u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
     Struct80754BC4 sp18;
     u16 *new_var;
-    s32 new_var3;
+    u16 new_var3;
     u16 new_var2;
-    u16 new_var4;
     u16 temp_a2;
     Struct80754BC4_unk0 *temp_t1;
+    u32 new_var4;
 
     sp18 = D_global_asm_80754BC4;
     new_var3 = 7;
@@ -271,13 +271,8 @@ u16 func_global_asm_80700AE4(s16 arg0, s16 arg1) {
     temp_a2 = new_var[0];
     new_var2 = (temp_a2 >> 0xD) & new_var3;
     temp_t1 = &sp18.unk0[new_var2];
-    // These & 0xFFFF force t7 -> t6, but there's probably a better way to do this.
-    new_var4 =
-        ((((((temp_t1->unk4 + ((((temp_a2 >> 2) & 0xFFFFu) & 0x7FF) << temp_t1->unk0)) >> 3) & 0xFFFFu) & 0xFFFFu) &
-          0xFFFFu) &
-         0xFFFFu) &
-        0xFFFFu;
-    return new_var4 & 0xFFFF;
+    new_var4 = temp_t1->unk4 + ((((u16) (temp_a2 >> 2)) & 0x7FF) << temp_t1->unk0);
+    return new_var4 >> 3;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80700BF4.s")
