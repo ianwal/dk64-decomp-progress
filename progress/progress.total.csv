@@ -1048,7 +1048,7 @@ us,asm,playerCanThrowOrange,292,yes
 us,asm,func_global_asm_806C7268,8,yes
 us,asm,func_global_asm_806EB544,132,yes
 us,asm,func_global_asm_8071F8E4,400,yes
-us,asm,func_global_asm_8071A1E4,604,no
+us,asm,func_global_asm_8071A1E4,604,yes
 us,asm,func_global_asm_8070CC54,56,yes
 us,asm,func_global_asm_80690C60,720,no
 us,asm,func_global_asm_80612BC0,112,yes
