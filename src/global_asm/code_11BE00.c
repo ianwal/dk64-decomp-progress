@@ -847,8 +847,7 @@ void func_global_asm_8071A038(Struct80717D84 *arg0, s32 arg1) {
 
 void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
     tuple_f *var_v0;
-    s32 pad;
-    s32 pad2;
+    u8 pad[8];
     f32 sp8C[4][4];
     f32 sp4C[4][4];
     s8 sp4B;
@@ -856,24 +855,17 @@ void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
     s8 sp49;
     s8 sp48;
     s16 sp46;
-    s8 new_var;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
 
     if (arg0->unk384_tuplef == NULL) {
         sp48 = (-(func_global_asm_806119A0() / 10000U)) % 30;
-        new_var = 0xFFFFU;
         sp46 = (func_global_asm_806119A0() / 10000U) % 180;
         guRotateF(&sp8C, sp48, 0.0f, 1.0f, 0.0f);
         sp4B = arg0->unk35C >> 0x10;
         sp4A = (arg0->unk35C >> 8) & 0xFF;
-        // Extremely permuted.
-        sp49 = ((((((((((arg0->unk35C & 0xFFFFU) & new_var) & new_var) & new_var) & new_var) & 0xFFFFU) & 0xFFFFU) &
-                  new_var) &
-                 0xFFFFU) &
-                new_var) &
-               new_var;
+        sp49 = (arg0->unk35C) & 0xFF;
         arg0->unk384_tuplef = malloc(sizeof(tuple_f));
         guAlignF(sp4C, sp46, sp4B, sp4A, sp49);
         guMtxCatF(sp8C, sp4C, sp8C);
