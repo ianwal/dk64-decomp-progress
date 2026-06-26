@@ -1,50 +1,65 @@
-name: sync dk64
+name: sync from gitlab
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    # Once a day. GitLab can't notify GitHub of new commits, so we poll.
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
   actions: write
 
+concurrency:
+  group: gitlab-sync
+  cancel-in-progress: false
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout this repo
+    - name: Checkout main (full history)
       uses: actions/checkout@v7
       with:
+        ref: main
         fetch-depth: 0
 
-    - name: Fetch upstream dk64
-      run: |
-        git remote add dk64-upstream https://gitlab.com/ianwal/dk64.git
-        git fetch dk64-upstream test
-
-    - name: Check for changes
-      id: check
-      run: |
-        UPSTREAM_SHA=$(git rev-parse dk64-upstream/test)
-        CURRENT_SHA=$(git rev-parse origin/dk64 2>/dev/null || echo "none")
-        if [ "$UPSTREAM_SHA" != "$CURRENT_SHA" ]; then
-          echo "changed=true" >> $GITHUB_OUTPUT
-        else
-          echo "changed=false" >> $GITHUB_OUTPUT
-          echo "No changes detected, skipping build."
-        fi
-
-    - name: Update dk64 branch
-      if: steps.check.outputs.changed == 'true'
+    - name: Configure git
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git checkout -B dk64 dk64-upstream/test
-        git push origin dk64 --force
+        # Enable the "ours" merge driver referenced by .gitattributes so our
+        # CI/config overlay always survives the merge with upstream.
+        git config merge.ours.driver true
+
+    - name: Fetch GitLab mirror
+      run: |
+        git remote add gitlab https://gitlab.com/ianwal/dk64.git 2>/dev/null \
+          || git remote set-url gitlab https://gitlab.com/ianwal/dk64.git
+        git fetch gitlab test
+
+    - name: Merge upstream into main
+      id: merge
+      run: |
+        BEFORE=$(git rev-parse HEAD)
+        # Bring upstream commits in with their original SHAs. Content conflicts
+        # outside our overlay are resolved in favour of upstream (-X theirs);
+        # overlay paths are protected by the `ours` merge driver above.
+        git merge --no-edit --allow-unrelated-histories -X theirs gitlab/test
+        AFTER=$(git rev-parse HEAD)
+        if [ "$BEFORE" = "$AFTER" ]; then
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+          echo "Already up to date with upstream."
+        else
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Push to main
+      if: steps.merge.outputs.changed == 'true'
+      run: git push origin main
 
     - name: Trigger build
-      if: steps.check.outputs.changed == 'true'
-      run: gh workflow run dk64-build.yaml
+      if: steps.merge.outputs.changed == 'true'
+      run: gh workflow run dk64-build.yaml --ref main
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

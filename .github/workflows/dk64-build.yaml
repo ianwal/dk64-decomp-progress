@@ -7,19 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout main
+    - name: Checkout
       uses: actions/checkout@v7
       with:
         ref: main
-
-    - name: Checkout dk64 branch
-      uses: actions/checkout@v7
-      with:
-        ref: dk64
-        path: dk64
-
-    - name: Update submodules
-      run: git -C dk64 submodule update --init --recursive --depth 1 || true
+        submodules: recursive
 
     - name: Checkout baserom repo
       uses: actions/checkout@v7
@@ -35,12 +27,12 @@ jobs:
         echo "$BASEROM_US_KEY" | openssl enc -d -aes-256-cbc -salt \
           -pass stdin \
           -in dk64-private/baserom.us.enc.z64 \
-          -out dk64/baserom.us.z64
+          -out baserom.us.z64
 
     - name: Build dk64
       run: |
         docker run --rm \
-          -v "${{ github.workspace }}/dk64:/dk64" \
+          -v "${{ github.workspace }}:/dk64" \
           -w /dk64 \
           registry.gitlab.com/ianwal/dk64-ci:latest \
           make -j$(nproc) 2>&1 | tee make.log
@@ -64,14 +56,11 @@ jobs:
         uv pip install -r requirements.txt
 
     - name: Generate objdiff report
-      run: |
-        cp decomp.yaml dk64/decomp.yaml
-        cd dk64
-        uv run mapfile_parser objdiff_report report.json --version us
+      run: uv run mapfile_parser objdiff_report report.json --version us
 
     - name: Upload progress report artifact
       uses: actions/upload-artifact@v7
       with:
         name: us_report
-        path: dk64/report.json
+        path: report.json
         if-no-files-found: error
