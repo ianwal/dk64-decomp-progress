@@ -20,13 +20,13 @@ jobs:
 
     - name: Fetch upstream dk64
       run: |
-        git remote add dk64-upstream https://gitlab.com/dk64_decomp/dk64.git
-        git fetch dk64-upstream main
+        git remote add dk64-upstream https://gitlab.com/ianwal/dk64.git
+        git fetch dk64-upstream test
 
     - name: Check for changes
       id: check
       run: |
-        UPSTREAM_SHA=$(git rev-parse dk64-upstream/main)
+        UPSTREAM_SHA=$(git rev-parse dk64-upstream/test)
         CURRENT_SHA=$(git rev-parse origin/dk64 2>/dev/null || echo "none")
         if [ "$UPSTREAM_SHA" != "$CURRENT_SHA" ]; then
           echo "changed=true" >> $GITHUB_OUTPUT
@@ -40,7 +40,7 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git checkout -B dk64 dk64-upstream/main
+        git checkout -B dk64 dk64-upstream/test
         git push origin dk64 --force
 
     - name: Trigger build
