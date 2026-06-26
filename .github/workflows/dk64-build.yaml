@@ -1,0 +1,75 @@
+name: dk64 build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v7
+
+    - name: Clone dk64 repo
+      run: git clone --depth 1 --branch main https://gitlab.com/dk64_decomp/dk64.git dk64
+
+    - name: Update submodules
+      run: git -C dk64 submodule update --init --recursive --depth 1 || true
+
+    - name: Checkout baserom repo
+      uses: actions/checkout@v7
+      with:
+        repository: ianwal/dk64-private
+        token: ${{ secrets.PRIVATE_REPO_ACCESS }}
+        path: dk64-private
+
+    - name: Decrypt baserom
+      env:
+        BASEROM_US_KEY: ${{ secrets.BASEROM_US_KEY }}
+      run: |
+        echo "$BASEROM_US_KEY" | openssl enc -d -aes-256-cbc -salt \
+          -pass stdin \
+          -in dk64-private/baserom.us.enc.z64 \
+          -out dk64/baserom.us.z64
+
+    - name: Build dk64
+      run: |
+        docker run --rm \
+          -v "${{ github.workspace }}/dk64:/dk64" \
+          -w /dk64 \
+          registry.gitlab.com/ianwal/dk64-ci:latest \
+          make -j$(nproc) 2>&1 | tee make.log
+
+    - name: Verify build output
+      run: |
+        if grep -F -q "differs" make.log; then
+          echo "FAIL: build output contains 'differs' (ROM does not match)."
+          exit 1
+        fi
+        if ! grep -F -q "OK" make.log; then
+          echo "FAIL: build output does not contain 'OK'."
+          exit 1
+        fi
+        echo "SUCCESS - ROM matches (found 'OK', no 'differs')."
+
+    - name: Install progress report dependencies
+      run: |
+        pip install uv
+        uv venv --python=3.12
+        uv pip install -r requirements.txt
+
+    - name: Generate objdiff report
+      run: |
+        cp decomp.yaml dk64/decomp.yaml
+        cd dk64
+        uv run mapfile_parser objdiff_report report.json --version us
+
+    - name: Upload progress report artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: us_report
+        path: dk64/report.json
+        if-no-files-found: error

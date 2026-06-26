@@ -1,0 +1,132 @@
+name: Donkey Kong 64
+repo: https://gitlab.com/dk64_decomp/dk64
+platform: n64
+versions:
+- name: us
+  fullname: us
+  sha1: cf806ff2603640a748fca5026ded28802f1f4a50
+  paths:
+    target: "baserom.us.z64"
+    build_dir: "build/us"
+    asm: "asm"
+    nonmatchings: "asm/nonmatchings"
+    map: "build/us/donkeykong64.us.map"
+    compiled_target: "build/us/donkeykong64.us.uncompressed.z64"
+    elf: "build/us/donkeykong64.us.elf"
+
+tools:
+  decompme:
+    preset: 30
+  permuter:
+    decompme_compilers:
+      tools/ido7.1/cc: ido7.1
+      tools/ido5.3/cc: ido5.3
+
+  mapfile_parser:
+    progress_report:
+      # output: report.json # Optional
+      # If you don't have .NON_MATCHING markers in all your function and data
+      # symbols then you should set `check_asm_paths: True` and
+      # `report_data: False`, otherwise those progress will get a fake boost.
+      check_asm_paths: True
+      report_data: False
+      # Change if the asm path in the build folder is deeper than two subfolders.
+      # i.e.: "build/us/asm/header.o" -> `path_index: 3`.
+      # i.e.: "build/us/asm/us/header.o" -> `path_index: 4`.
+      path_index: 3
+      prefixes_to_trim:
+        - build/us/lib/
+        - build/us/src/
+        - build/us/asm/data/
+        - build/us/asm/
+        - build/us/
+      # List of categories. `id`s must be unique, but each path may be
+      # duplicated across categories.
+      categories:
+        # Categories by path
+        - id: us
+          name: us
+          paths:
+            - us/
+
+        # Categories by segment
+        - id: segment_.header
+          name: Segment .header
+          paths:
+            - us/asm/header
+        - id: segment_.boot
+          name: Segment .boot
+          paths:
+            - us/bin/boot
+        - id: segment_.entry
+          name: Segment .entry
+          paths:
+            - us/src/entry
+        - id: segment_.dk64_boot
+          name: Segment .dk64_boot
+          paths:
+            - us/src/dk64_boot
+            - us/asm/data/dk64_boot
+        - id: segment_.rspText
+          name: Segment .rspText
+          paths:
+            - us/bin/rspText
+        - id: segment_.assets
+          name: Segment .assets
+          paths:
+            - us/bin/assets
+        - id: segment_.assets2
+          name: Segment .assets2
+          paths:
+            - us/bin/assets2
+        - id: segment_.global_asm
+          name: Segment .global_asm
+          paths:
+            - us/src/global_asm
+            - us/bin/global_asm
+            - us/asm/data/global_asm
+        - id: segment_.menu
+          name: Segment .menu
+          paths:
+            - us/src/menu
+            - us/asm/data/menu
+        - id: segment_.multiplayer
+          name: Segment .multiplayer
+          paths:
+            - us/src/multiplayer
+            - us/asm/data/multiplayer
+        - id: segment_.minecart
+          name: Segment .minecart
+          paths:
+            - us/src/minecart
+            - us/asm/data/minecart
+        - id: segment_.bonus
+          name: Segment .bonus
+          paths:
+            - us/src/bonus
+            - us/asm/data/bonus
+        - id: segment_.race
+          name: Segment .race
+          paths:
+            - us/src/race
+            - us/asm/data/race
+        - id: segment_.critter
+          name: Segment .critter
+          paths:
+            - us/src/critter
+            - us/asm/data/critter
+        - id: segment_.boss
+          name: Segment .boss
+          paths:
+            - us/src/boss
+            - us/asm/data/boss
+        - id: segment_.arcade
+          name: Segment .arcade
+          paths:
+            - us/src/arcade
+            - us/asm/data/arcade
+        - id: segment_.jetpac
+          name: Segment .jetpac
+          paths:
+            - us/src/jetpac
+            - us/asm/data/jetpac
