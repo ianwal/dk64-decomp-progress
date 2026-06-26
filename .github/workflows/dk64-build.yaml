@@ -1,20 +1,22 @@
 name: dk64 build
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
-    if: ${{ github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout this repo
+    - name: Checkout main
       uses: actions/checkout@v7
+      with:
+        ref: main
 
-    - name: Clone dk64 repo
-      run: git clone --depth 1 --branch main https://gitlab.com/dk64_decomp/dk64.git dk64
+    - name: Checkout dk64 branch
+      uses: actions/checkout@v7
+      with:
+        ref: dk64
+        path: dk64
 
     - name: Update submodules
       run: git -C dk64 submodule update --init --recursive --depth 1 || true
