@@ -119,30 +119,9 @@ void func_jetpac_80025700(uSprite* arg0, s32 base_x, s32 base_y, rgba* color, s3
 }
 */
 
-void func_jetpac_80025904(Gfx **arg0) {
-    JetpacRenderingCell *s3;
-    s32 j, i;
-    Gfx *dl;
-    s32 k;
-    u8 red;
+#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80025904.s")
 
-    s3 = &D_jetpac_8002F3D0[0];
-    dl = *arg0;
-    for (i = 0; i < 0x18; i++) {
-        for (j = 0; j < 0x20; j++) {
-            if (s3->num_entries) {
-                gDPSetPrimColor(dl++, 0, 0, s3->hue.as_array[0], s3->hue.as_array[1], s3->hue.as_array[2], 0xFF);
-            }
-            for (k = 0; k < s3->num_entries; k++) {
-                func_global_asm_8070E8F0(&dl, s3->entries[k].draw_sprite);
-                func_global_asm_8070F2C8(0x400, 0x400, s3->entries[k].horizontal_flip, 0);
-                func_global_asm_8070F2FC(&dl, (s3->entries[k].x + 0x20) << 2, (s3->entries[k].y + 0x18) << 2);
-            }
-            s3++;
-        }
-    }
-    *arg0 = dl;
-}
+void func_jetpac_80025904(Gfx **arg0);
 
 void func_jetpac_80025A60(ExplosionSpriteState *arg0) {
     s32 sp2C;
