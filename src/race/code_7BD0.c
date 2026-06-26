@@ -1,0 +1,1114 @@
+#include "common.h"
+
+/*
+// .rodata
+D_race_800300C0 = "%d"
+D_race_800300C4 = "%s %d %s %d"
+D_race_800300F0 .float 0.6f
+D_race_80030108 .float 0.3f
+D_race_80030110 .double 0.15
+*/
+
+// .data
+s32 D_race_8002FCC0[] = {
+    0x00000004,
+    0x00000005,
+    0x00000006,
+    0x00000007,
+    0x00000008,
+};
+
+s32 D_race_8002FCD4[] = {
+    0x00000000,
+    0x00000001,
+    0x00000002,
+    0x00000003,
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+};
+
+void func_race_8002BBD0(Actor *arg0, s32 numRacers) {
+    RaceAdditionalActorData *sp1C;
+    RaaD_unk20 *temp_v0;
+
+    sp1C = arg0->RaaD;
+    temp_v0 = malloc(numRacers * sizeof(RaaD_unk20));
+    sp1C->unk20 = temp_v0;
+    func_global_asm_80611690(temp_v0);
+    sp1C->unk1E = numRacers;
+    sp1C->unk1C = -1;
+    arg0->control_state = 0;
+}
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    u8 unk26;
+    u8 unk27;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    s32 unk2C;
+    s32 unk30;
+    u8 unk34;
+    s8 unk35;
+    u8 unk36;
+    u8 unk37;
+    u8 unk38;
+    u8 unk39;
+    s16 unk3A;
+    u16 unk3C;
+    s8 unk3E[0x45 - 0x3E];
+    u8 unk45;
+    s8 unk46;
+    u8 unk47;
+    u32 unk48;
+} Struct8002D148_unk4;
+
+typedef struct {
+    s32 unk0;
+    Struct8002D148_unk4 *unk4;
+} Struct8002D148;
+
+void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, Struct8002D148_unk4 *arg3) {
+    u16 *temp_v0_2;
+    RaceAdditionalActorData *RaaD;
+    RaaD_unk20 *temp_v0;
+
+    RaaD = arg0->RaaD;
+    temp_v0 = RaaD->unk20;
+    temp_v0[arg1].unk0 = arg2;
+    temp_v0[arg1].unk4 = arg3;
+    arg3->unk45 = 0;
+    arg3->unk3A = 0;
+    arg3->unk37 = 1;
+    if (arg3->unk27 == 0) {
+        temp_v0_2 = func_race_8002E960(RaaD->unk26);
+        if (temp_v0_2 != NULL) {
+            arg3->unk3C = *temp_v0_2 - 1;
+            func_race_8002F36C(arg3, temp_v0_2);
+        }
+        arg3->unk48 = func_global_asm_806C7C94(arg3->unk28);
+    }
+}
+
+void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
+    RaceAdditionalActorData *aaD;
+    RaaD_unk20 *temp_t0;
+
+    aaD = arg0->RaaD;
+    temp_t0 = aaD->unk20;
+    *arg2 = temp_t0[arg1].unk0;
+    *arg3 = temp_t0[arg1].unk4;
+}
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} AAD_race_8002BCD4;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80027880;
+
+void func_race_8002BCD4(Actor *arg0) {
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f14;
+    f32 var_f2;
+    Struct80027880 *temp_a2;
+    Struct80027880 *var_v1;
+    AAD_race_8002BCD4 *aaD;
+
+    var_f0 = 9999.0f;
+    var_f2 = 9999.0f;
+    var_f12 = -1.0f;
+    var_f14 = -1.0f; 
+    aaD = arg0->additional_actor_data;
+    var_v1 = D_global_asm_807F5FD4[0].unk0[0];
+    temp_a2 = D_global_asm_807F5FD4[1].unk0[0];
+    while (var_v1 < temp_a2) {
+        if (var_v1->unk0 < var_f0) {
+            var_f0 = var_v1->unk0;
+        }
+        if (var_v1->unk8 < var_f2) {
+            var_f2 = var_v1->unk8;
+        }
+        if (var_f12 < var_v1->unk0) {
+            var_f12 = var_v1->unk0;
+        }
+        if (var_f14 < var_v1->unk8) {
+            var_f14 = var_v1->unk8;
+        }
+        var_v1++;
+    }
+    aaD->unkC = (((var_f12 - var_f0) * 0.5f) + var_f0) - 10.0f;
+    aaD->unk10 = (((var_f14 - var_f2) * 0.5f) + var_f2) - 20.0f;
+    aaD->unk4 = 116.4800034f / (var_f12 - var_f0);
+    aaD->unk8 = 121.5999985f / (var_f14 - var_f2);
+}
+
+// Displaylist stuff, close
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BDDC.s")
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} AAD_race_8002BDDC;
+
+/*
+Gfx *func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
+    f32 x, y;
+    AAD_race_8002BDDC *aaD;
+
+    aaD = arg1->additional_actor_data;
+    x = aaD->unkC - arg2;
+    y = aaD->unk10 - arg3;
+    x *= aaD->unk4;
+    y *= aaD->unk8;
+    x = (50.0f + ((x) * 0.5f));
+    x *= 4.0f;
+    y = (60.0f + ((y) * 0.5f));
+    y *= 4.0f;
+    gDPSetPrimColor(dl++, 0, 0, arg4, arg5, arg6, 0xC8);
+    return displayImage(dl, 0x4A, 3, 1, 16, 16, x, y, 1.0f, 1.0f, 0, 0.0f);
+}
+*/
+
+extern s16 D_global_asm_80744490;
+
+Gfx *func_race_8002BEE8(Gfx *dl, Actor *arg1) {
+    u8 alpha;
+    s32 sp38;
+    s32 pad;
+    f32 temp;
+    s32 var_a2;
+    char *var_s1;
+    RaceAdditionalActorData *RaaD;
+
+    alpha = 0xFF;
+    sp38 = D_global_asm_80744490 / 2;
+    RaaD = arg1->RaaD;
+    if (arg1->control_state == 2 || arg1->control_state == 1) {
+        if (RaaD->unk1C < 0x78) {
+            if (RaaD->unk1C < 0x5A) {
+                var_a2 = (0x78 - RaaD->unk1C) / 30;
+                if (var_a2 >= 3) {
+                    var_a2 = 3;
+                }
+                var_s1 = malloc(4);
+                func_global_asm_8061134C(var_s1);
+                _sprintf(var_s1, "%d", var_a2);
+            } else {
+                temp = 0.033333335f * (0x78 - RaaD->unk1C);
+                alpha *= temp;
+                var_s1 = getTextString(0x26, 9, 1);
+            }
+            gSPDisplayList(dl++, &D_1000118);
+            gDPPipeSync(dl++);
+            gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+            gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, alpha);
+            gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+            sp38 -= getCenterOfString(1, var_s1) >> 1;
+            dl = printStyledText(dl, 1, sp38 * 4, 0x3C, var_s1, 1);
+        }
+    }
+    return dl;
+}
+
+typedef struct {
+    u8 unk0[0x2A - 0x0];
+    u8 unk2A;
+    u8 unk2B[0x48 - 0x2B];
+    s16* unk48;
+} Struct8002C14C_arg1;
+
+Gfx *func_race_8002C14C(Gfx *dl, Struct8002C14C_arg1 *arg1) {
+    // Draw Missiles (Factory Car Race)
+    s16 temp_s4;
+    s32 temp_f16;
+    s32 temp_t0;
+    s16 *temp_v0;
+    s32 i;
+
+    temp_v0 = arg1->unk48;
+    temp_f16 = temp_v0[2] + 8 + 4.0;
+    temp_t0 = temp_v0[5] - 34;
+
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xC8, 0x00, 0xB4);
+    temp_s4 = temp_t0 * 2.0f * 4.0f;
+    for (i = 0; i < arg1->unk2A; i++) {
+        dl = displayImage(dl, 0x4AU, 3, 1, 16, 16, ((temp_f16 * 2.0f) + (i * 16)) * 4.0f, temp_s4, 4.0f, 4.0f, 0, 0.0f);
+    }
+    if (arg1->unk2A) {
+        gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    }
+    return dl;
+}
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
+
+/*
+Gfx *func_race_8002C2E8(Gfx *dl, RaceAdditionalActorData *arg1) {
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f24;
+    f32 w;
+    u32 temp_v0;
+    f32 temp_f0; // 70
+    f32 a;
+    f32 c;
+    s32 i;
+    s8 *temp_v0_2;
+    s16 *temp_s0;
+    f32 temp;
+
+    temp_s0 = arg1->unk48;
+    temp_v0 = func_global_asm_806FD894(1);
+    temp_f0 = temp_v0 * 0.5f;
+    temp_f20 = temp_s0[2] + 8;
+    temp_f24 = (temp_s0[5] - 0x10);
+    temp_f24 -= (2 * temp_f0);
+    temp_v0_2 = getTextString(0x26U, 0xA, 1);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    dl = printStyledText(dl, 1, (2.0f * (temp_f20 * 4.0f)), (2.0f * (temp_f24 * 4.0f)), temp_v0_2, 4U);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    c = getCenterOfString(1, temp_v0_2);
+    temp_f20 += (0.5f * c);
+    temp_f22 = 2.0f * (temp_f20 + 8.0);
+    temp = temp_f24 + (0.4 * temp_f0);
+    a = 1.5f;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+    for (i = 0; i < 5; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x4BU, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0xFF);
+    for (i = 0; i < 5 - arg1->unk44; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x45U, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return dl;
+}
+*/
+
+
+typedef struct {
+    u8 unk0[0x50 - 0x0];
+    f32 unk50[1][4][4];
+} Struct8002C63C_arg1;
+
+Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+
+    dl = func_global_asm_805FD030(dl);
+
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+    guScale(arg1->unk50[D_global_asm_807444FC], 0.5f, 0.5f, 1.0f);
+    gSPMatrix(dl++, arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    return dl;
+}
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C76C.s")
+
+Gfx *func_race_8002C2E8(Gfx*, RaceAdditionalActorData *);
+Gfx *func_race_8002C76C(Gfx*, RaceAdditionalActorData *);
+
+Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
+    RaceAdditionalActorData2 *sp24;
+    PlayerAdditionalActorData *PaaD;
+
+    sp24 = arg2->unk30->RaaD2;    
+    if (arg2 == NULL || gameIsInDKTVMode()) {
+        return dl;
+    }
+    if (character_change_array[arg2->unk28].playerPointer == NULL) {
+        return dl;
+    }
+    PaaD = character_change_array[arg2->unk28].playerPointer->PaaD;
+    if (arg1 != PaaD->vehicle_actor_pointer) {
+        return dl;
+    }
+
+    dl = func_race_8002C63C(dl, arg2);
+    if (sp24->unk0 & 8) {
+        dl = func_race_8002C2E8(dl, arg2);
+    } else if (sp24->unk0 & 0x10) {
+        dl = func_race_8002C14C(dl, arg2);
+    }
+    if (sp24->unk0 & 6) {
+        dl = func_race_8002C76C(dl, arg2);
+    }
+
+    return dl;
+}
+
+// Displaylist stuff, actor arg1, doable
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002CBEC.s")
+
+void func_race_8002CFF0(void) {
+    TempAAD *temp_v0;
+    Actor *temp_a0;
+
+    spawnActor(ACTOR_UNKNOWN_306, 0);
+    temp_a0 = gLastSpawnedActor;
+    func_race_80025E9C(temp_a0);
+    func_race_8002BCD4(temp_a0);
+    temp_v0 = temp_a0->TaaD;
+    temp_v0->unk0 = 0x17;
+    temp_v0->unk14 = 0x46;
+    temp_v0->unk16 = 0x47;
+    temp_v0->unk18 = 0x48;
+    temp_v0->unk1A = 0x49;
+    temp_v0->unk24 = 2;
+}
+
+void castleCarRaceSetup(void) {
+    RaceAdditionalActorData2 *RaaD;
+
+    spawnActor(ACTOR_UNKNOWN_306, 0);
+    RaaD = gLastSpawnedActor->RaaD2;
+    initializeCastleCarRace(gLastSpawnedActor);
+    RaaD->unk0 = 0xE;
+    RaaD->unk24 = 2;
+}
+
+void initializeSealRace(void) {
+    RaceAdditionalActorData2 *RaaD;
+
+    spawnActor(ACTOR_UNKNOWN_306, 0);
+    RaaD = gLastSpawnedActor->RaaD2;
+    func_race_800292D0(gLastSpawnedActor);
+    RaaD->unk0 = 0xE;
+    RaaD->unk24 = 2;
+}
+
+void func_race_8002D0FC(void) {
+    RaceAdditionalActorData2 *RaaD;
+
+    spawnActor(ACTOR_UNKNOWN_306, 0);
+    RaaD = gLastSpawnedActor->RaaD2;
+    func_race_8002E2C8(gLastSpawnedActor);
+    RaaD->unk0 = 2;
+    RaaD->unk24 = 1;
+}
+
+s8 func_global_asm_806FDB8C(s32, s32, s32, f32, f32, f32);
+
+void func_race_8002D148(Struct8002D148 *arg0, u8 arg1) {
+    u8 var_a3;
+    RaceAdditionalActorData *aaD;
+
+    if (arg0->unk4->unk34 != arg1) {
+        arg0->unk4->unk34 = arg1;
+        arg0->unk4->unk35 = 0;
+        if (arg1 == 3) {
+            aaD = gCurrentActorPointer->RaaD;
+            var_a3 = arg0->unk4->unk36;
+            if (((var_a3 + 1) == aaD->unk1E) || arg0->unk4->unk45) {
+                var_a3 = 3;
+            }
+            if (arg0->unk4->unk27 == 0) {
+                arg0->unk4->unk46 = func_global_asm_806FDB8C(1, getTextString(0x26, D_race_8002FCD4[var_a3], 1), 2, 160.0f, 100.0f, 0.0f);
+            }
+        }
+    }
+}
+
+void func_race_8002D224(u8 arg0) {
+    RaaD_unk20 *var_s0;
+    s32 i;
+    RaceAdditionalActorData *RaaD;
+
+    RaaD = gCurrentActorPointer->RaaD;
+    var_s0 = RaaD->unk20;
+    gCurrentActorPointer->control_state = arg0;
+    for (i = 0; i < RaaD->unk1E; i++) {
+        if (var_s0[i].unk0 != 0) {
+            func_race_8002D148(&var_s0[i], arg0);
+        }
+    }
+}
+
+typedef struct RaceStruct12 {
+    u8 pad0[0x26];
+    u8 unk26;
+    u8 unk27;
+    u8 unk28;
+} RaceStruct12;
+
+f32 func_race_8002D2C0(RaceStruct12 *arg0) {
+    if ((arg0->unk26 >= 0xB) && (arg0->unk26 < 0xF) && 
+        (D_global_asm_807FD610[arg0->unk28].unk2A & 0x2000)) {
+            f32 temp = (arg0->unk26 - 0xA);
+            return temp * 0.2f;
+    }
+    return 0.0f;
+}
+
+typedef struct {
+    u8 pad0[0xC];
+    Actor *unkC;
+} RaceStruct0;
+
+void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1) {
+    Actor *temp = arg1->unkC;
+    RaceAdditionalActorData *RaaD = temp->RaaD;
+    RaaD->unk2C = 0;
+    deleteActor(arg0);
+}
+
+// Appears to find the closest actor to whatever is passed in
+Actor *func_race_8002D360(Actor *arg0) {
+    f32 distance;
+    f32 closestDistance;
+    s32 i;
+    RaaD_unk20 *var_a1;
+    RaceAdditionalActorData *RaaD2;
+    RaceAdditionalActorData *RaaD;
+    Actor *examinedActor;
+    Actor *temp;
+    Actor *closestActor;
+
+    closestDistance = 1000000000.0f;
+    RaaD = arg0->RaaD;
+    temp = RaaD->unk30;
+    RaaD2 = temp->RaaD;
+    closestActor = NULL;
+    var_a1 = RaaD2->unk20;
+    for (i = 0; i < RaaD2->unk1E; i++) {
+        examinedActor = var_a1[i].unk0;
+        if (examinedActor != NULL) {
+            if (examinedActor != arg0) {
+                distance = ((arg0->x_position - examinedActor->x_position) * (arg0->x_position - examinedActor->x_position)) + ((arg0->y_position - examinedActor->y_position) * (arg0->y_position - examinedActor->y_position)) + ((arg0->z_position - examinedActor->z_position) * (arg0->z_position - examinedActor->z_position));
+                if (distance < closestDistance) {
+                    closestActor = examinedActor;
+                    closestDistance = distance;
+                }
+            }
+        }
+    }
+    return closestActor;
+}
+
+void func_race_8002D40C(void) {
+    MUSIC_E song;
+    s32 i;
+    RaceAdditionalActorData *RaaD;
+    RaaD_unk20_unk4 *temp_v0_2;
+    RaaD_unk20 *var_a0;
+
+    RaaD = gCurrentActorPointer->RaaD;
+    song = 0;
+    i = RaaD->unk1E - 1;
+    var_a0 = &RaaD->unk20[i];
+    while (song == 0 && i >= 0) {
+        if (RaaD->unk20[i].unk4->unk27 == 1) {
+            if (RaaD->unk20[i].unk4->unk36 != 0) {
+                song = MUSIC_86_SUCCESS_RACES;
+            } else {
+                song = MUSIC_87_FAILURE_RACES_TRY_AGAIN;
+            }
+        }
+        i--;
+        var_a0--;
+    }
+    if (song == 0) {
+        song = MUSIC_86_SUCCESS_RACES;
+    }
+    playSong(song, 1.0f);
+}
+
+void func_race_8002D4A0(void) {
+    MUSIC_E song;
+    f32 phi_f0;
+
+    phi_f0 = 1.0f;
+    switch (current_map) {
+        case MAP_AZTEC_BEETLE_RACE:
+            song = MUSIC_19_ANGRY_AZTEC_BEETLE_SLIDE;
+            phi_f0 = 0.6f;
+            break;
+        case MAP_GALLEON_SEAL_RACE:
+            song = MUSIC_61_GLOOMY_GALLEON_SEAL_RACE;
+            break;
+        case MAP_CAVES_BEETLE_RACE:
+            song = MUSIC_102_CRYSTAL_CAVES_BEETLE_RACE;
+            break;
+        case MAP_FACTORY_CAR_RACE:
+        default:
+            song = MUSIC_27_FRANTIC_FACTORY_CAR_RACE;
+    }
+
+    playSong(song, phi_f0);
+}
+
+// RaaD 0x20 array
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002D524.s")
+
+void func_race_8002D72C(Actor *arg0) {
+    if (arg0 && arg0->control_state == 0) {
+        RaceAdditionalActorData *RaaD = arg0->RaaD;
+        RaaD->unk1C = 2;
+    }
+}
+
+void func_race_8002D754(Actor *arg0) {
+    if (arg0 && arg0->control_state == 0) {
+        RaceAdditionalActorData* RaaD = arg0->RaaD;
+        RaaD->unk1C = 0;
+    }
+}
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002D778.s")
+
+void func_race_8002DA68(RaceStruct3 *arg0) {
+    f32 temp_f2;
+    s16 temp_v1;
+    s16 phi_v0;
+
+    switch (gCurrentActorPointer->control_state) {
+        case 0:
+            temp_v1 = arg0->unk2 % 2048;
+            if ((temp_v1 >= 0x81) && ((0x800 - temp_v1) >= 0x81)) {
+                arg0->unk2 += 0x80;
+            }
+            break;
+        case 1:
+            arg0->unk2 += 0x80;
+            break;
+    }
+
+    arg0->unk2 &= 0xFFF;
+    temp_f2 = (((func_global_asm_80612794(arg0->unk2) + 1.0f) * 1.5) + 1.0) * arg0->unk4;
+    gCurrentActorPointer->animation_state->scale_x = \
+    gCurrentActorPointer->animation_state->scale_y = \
+    gCurrentActorPointer->animation_state->scale_z = temp_f2;
+}
+
+void func_race_8002DB90(void) {
+    if (gCurrentActorPointer->control_state != 0) {
+        if ((gCurrentActorPointer->control_state == 1) && (func_global_asm_80688540(gCurrentActorPointer, 0) == 0)) {
+            func_global_asm_80688370(gCurrentActorPointer, 0, 1.0f);
+            func_global_asm_8068842C(gCurrentActorPointer, 0, -1);
+        }
+    } else if (func_global_asm_80688540(gCurrentActorPointer, 0)) {
+        func_global_asm_80688460(gCurrentActorPointer, 0, 1);
+    }
+}
+
+void func_race_8002DC24(void) {
+    RaceStruct3 *RaaD = gCurrentActorPointer->additional_actor_data;
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
+        RaaD->unk4 = gCurrentActorPointer->animation_state->scale_y;
+    }
+    switch (RaaD->unk0) {
+        case 2:
+            func_race_8002DB90();
+            break;
+        case 1:
+            func_race_8002DB90();
+            func_global_asm_80665564(gCurrentActorPointer, 0);
+            gCurrentActorPointer->y_position = gCurrentActorPointer->unkAC;
+            gCurrentActorPointer->unk6A |= 4;
+            gCurrentActorPointer->unk6C |= 4;
+            break;
+        default:
+            func_race_8002DA68(RaaD);
+            break;
+    }
+    renderActor(gCurrentActorPointer, 0);
+}
+
+typedef struct RaceStruct14 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    Actor *unk1C[2]; // Used
+} RaceStruct14;
+
+// TODO: Any overlap with existing PaaD/RaaD?
+typedef struct RaceAdditionalActorData3 {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8; // Used
+} RaceAdditionalActorData3;
+
+void func_race_8002DCF0(RaceStruct14 *arg0, s32 arg1);
+
+void func_race_8002DCF0(RaceStruct14 *arg0, s32 arg1) {
+    u8 i;
+    RaceAdditionalActorData3 *RaaD;
+    Actor *temp_v1;
+
+    for (i = 0; i < 2; i++) {
+        temp_v1 = arg0->unk1C[i];
+        if (temp_v1 != NULL) {
+            RaaD = temp_v1->RaaD;
+            if (arg1 == 1) {
+                if (RaaD->unk8 == 0) {
+                    temp_v1->control_state = arg1;
+                }
+                RaaD->unk8++;
+            } else {
+                if (RaaD->unk8) {
+                    RaaD->unk8--;
+                }
+                if (RaaD->unk8 == 0) {
+                    temp_v1->control_state = arg1;
+                }
+            }
+        }
+    }
+}
+
+f32 func_race_8002DD70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    return ((arg4 - arg2) * ((arg0 - arg1) / (arg3 - arg1))) + arg2;
+}
+
+typedef struct {
+    f32 unk0;
+    f32 unk4; // Used
+} Struct8002E1C8_arg0_unk4;
+
+typedef struct {
+    s32 unk0;
+    Struct8002E1C8_arg0_unk4 *unk4;
+    u8 unk8[0xF - 0x8];
+    u8 unkF;
+    u8 unk10;
+} Struct8002E1C8_arg0;
+
+typedef struct {
+    f32 unk0[6][2];
+} Struct8002E1C8_arg2;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct8002E1C8_arg3;
+
+f32 func_race_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1);
+
+f32 func_race_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1) {
+    s32 found;
+    f32 var_f2;
+    u8 i;
+
+    found = FALSE;
+    i = 1;
+    if (arg0 < arg1->unk0[0][0]) {
+        found = TRUE;
+        var_f2 = arg1->unk0[0][1];
+    }
+    while (i < 6 && !found) {
+        if (arg0 < arg1->unk0[i][0]) {
+            var_f2 = func_race_8002DD70(arg0, arg1->unk0[i - 1][0], arg1->unk0[i - 1][1], arg1->unk0[i][0], arg1->unk0[i][1]);
+            found = TRUE;
+        }
+        i++;
+    }
+    if (!found) {
+        var_f2 = arg1->unk0[5][1];
+    }
+    return var_f2;
+}
+
+void func_race_8002DE78(Struct8002E1C8_arg0 *arg0, u8 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
+    switch (arg1) {
+        case 0:
+        case 1:
+            arg2->unk0[0][1] = arg3->unk0;
+            arg2->unk0[1][1] = arg3->unk4;
+            arg2->unk0[2][1] = arg3->unk4;
+            arg2->unk0[3][1] = arg3->unk4;
+            arg2->unk0[4][1] = arg3->unk4;
+            arg2->unk0[5][1] = arg3->unk8;
+            break;
+        case 2:
+        case 3:
+            arg2->unk0[3][1] = arg3->unk8;
+            arg2->unk0[4][1] = arg3->unk8;
+            arg2->unk0[5][1] = arg3->unk8;
+            break;
+        case 5:
+            arg2->unk0[0][1] = arg3->unk0;
+            arg2->unk0[1][1] = arg3->unk8;
+            arg2->unk0[2][1] = arg3->unk8;
+            arg2->unk0[3][1] = arg3->unk8;
+            arg2->unk0[4][1] = arg3->unk8;
+            arg2->unk0[5][1] = arg3->unk8;
+            break;
+    }
+    gCurrentActorPointer->control_state_progress = 0;
+    arg0->unkF = arg1;
+}
+
+f32 func_race_8002DF38(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
+    f32 sp1C;
+    f32 var_f0;
+    Struct8002E1C8_arg0_unk4 *temp;
+
+    switch (arg0->unkF) {
+        case 0:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            break;
+        case 1:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            if ((arg0->unk10 != 0) && (arg2->unk0[4][0] < arg1) && ((func_global_asm_806119A0() % 255) < 0xA)) {
+                func_race_8002DE78(arg0, 2, arg2, arg3);
+            }
+            break;
+        case 2:
+        case 3:
+        case 4:
+            if ((arg0->unkF == 3) || (arg0->unkF == 4) || (arg0->unk10 != 0)) {
+                temp = arg0->unk4;
+                var_f0 = temp->unk4;
+                arg2->unk0[0][1] = MIN(var_f0, arg3->unk0);
+                arg2->unk0[1][1] = MIN(var_f0, arg3->unk4);
+                if (arg0->unkF == 4) {
+                    arg2->unk0[2][1] = var_f0;
+                } else {
+                    arg2->unk0[2][1] = arg3->unk8;
+                }
+                sp1C = func_race_8002DDA0(arg1, arg2);
+                if ((arg0->unkF == 2) && (arg1 < arg2->unk0[3][0])) {
+                    func_race_8002DE78(arg0, 3, arg2, arg3);
+                }
+                if ((arg0->unkF == 3) && (arg1 < arg2->unk0[2][0])) {
+                    func_race_8002DE78(arg0, 4, arg2, arg3);
+                }
+            } else if (arg0->unkF == 2) {
+                sp1C = arg3->unk4;
+                func_race_8002DE78(arg0, 1, arg2, arg3);
+            }
+            break;
+        case 5:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            if (arg1 < arg2->unk0[1][0]) {
+                func_race_8002DE78(arg0, 1, arg2, arg3);
+            }
+            break;
+        default:
+            sp1C = 0.0f;
+            break;
+    }
+    return sp1C;
+}
+
+f32 func_race_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
+    f32 var_f2;
+
+    switch (arg0->unkF) {
+        default:
+            var_f2 = 0.0f;
+            break;
+        case 0:
+            var_f2 = func_race_8002DDA0(arg1, arg2);
+            break;
+        case 1:
+            var_f2 = func_race_8002DDA0(arg1, arg2);
+            if (arg0->unk10 != 0) {
+                if (arg2->unk0[4][0] < arg1) {
+                    func_race_8002DE78(arg0, 5, arg2, arg3);
+                }
+            }
+            break;
+        case 5:
+            var_f2 = func_race_8002DDA0(arg1, arg2);
+            if (arg1 < arg2->unk0[1][0]) {
+                func_race_8002DE78(arg0, 1, arg2, arg3);
+            }
+            break;
+    }
+    return var_f2;
+}
+
+typedef struct {
+    u8 unk0[0x25 - 0x0];
+    u8 unk25;
+    u8 unk26;
+} AAD_race_8002E2C8;
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+    u8 unk28;
+    u8 unk29[0x30 - 0x29];
+    Actor *unk30;
+    u8 unk34[0x36 - 0x34];
+    u8 unk36;
+} AAD_race_8002E2C8_Actor315;
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+} A178_race_8002E2C8;
+
+void func_race_8002E2C8(Actor *arg0) {
+    AAD_race_8002E2C8 *sp5C;
+    AAD_race_8002E2C8_Actor315 *sp58;
+    Actor *sp54;
+    Actor17C *temp_a2;
+    s32 var_s1;
+    s32 i;
+    s32 numRacers;
+
+    numRacers = cc_number_of_players;
+    var_s1 = 0;
+    sp5C = arg0->additional_actor_data;
+    if (numRacers == 1) {
+        numRacers++;
+    }
+    func_race_8002BBD0(arg0, numRacers);
+    if (cc_number_of_players == 1) {
+        sp54 = func_global_asm_807271F4(1, 0, 0, 0, 0, 0, 0);
+        sp58 = sp54->unk178;
+        sp58->unk27 = 1;
+        func_race_8002BC2C(arg0, 0, sp54, sp58);
+        var_s1 = 1;
+        temp_a2 = sp54->unk17C;
+        func_race_8002BCB0(arg0, 0, temp_a2, &temp_a2->unk4);
+        sp5C->unk25 = 1;
+    } else {
+        sp5C->unk25 = 0;
+    }
+    for (i = 0; i < cc_number_of_players; i++) {
+        spawnActor(ACTOR_UNKNOWN_315, 0);
+        sp54 = gLastSpawnedActor;
+        sp58 = sp54->additional_actor_data;
+        sp58->unk27 = 0;
+        func_race_8002BC2C(arg0, var_s1, sp54, sp58);
+        var_s1++;
+        sp58->unk28 = i;
+    }
+    for (i = 0; i < numRacers; i++) {
+        func_race_8002BCB0(arg0, i, &sp54, &sp58);
+        sp58->unk36 = i;
+        sp58->unk30 = arg0;
+    }
+    sp5C->unk26 = 0;
+}
+
+Gfx *func_race_8002E464(Gfx *dl, Actor *arg1) {
+    return func_race_8002CAC8(dl, arg1, arg1->additional_actor_data);
+}
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    s32 unk2C;
+    s32 unk30;
+    u8 unk34;
+    u8 unk35;
+    u8 unk36;
+    u8 unk37;
+    s16 unk38;
+    u16 unk3A;
+    s32 unk3C;
+    f32 unk40;
+} AAD_race_8002E484;
+
+void func_race_8002E484(void) {
+    Actor *var_a3;
+    AAD_race_8002E484 *temp_s0;
+
+    temp_s0 = gCurrentActorPointer->additional_actor_data;
+    var_a3 = character_change_array[temp_s0->unk28].playerPointer;
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
+        setAction(0x4E, gCurrentActorPointer, temp_s0->unk28);
+        gCurrentActorPointer->control_state = 0;
+        gCurrentActorPointer->control_state_progress = 0;
+    }
+    if (temp_s0->unk34 == 2) {
+        if (gCurrentActorPointer->control_state == 0) {
+            setAction(0x57, NULL, temp_s0->unk28);
+            gCurrentActorPointer->control_state++;
+        }
+    }
+    gCurrentActorPointer->x_position = var_a3->x_position;
+    gCurrentActorPointer->y_position = var_a3->y_position;
+    gCurrentActorPointer->z_position = var_a3->z_position;
+    if (temp_s0->unk34 == 2) {
+        func_race_8002F490(temp_s0);
+    }
+    if (temp_s0->unk34 > 0) {
+        if (temp_s0->unk34 < 5) {
+            addActorToTextOverlayRenderArray(func_race_8002E464, gCurrentActorPointer, 3);
+        }
+    }
+    if (temp_s0->unk40 < temp_s0->unk1C) {
+        temp_s0->unk1C = temp_s0->unk1C;
+    } else {
+        temp_s0->unk1C = temp_s0->unk40;
+    }
+    temp_s0->unk14 = (temp_s0->unk3A * 3000) - temp_s0->unk40;
+    if (temp_s0->unk14 < temp_s0->unk18) {
+        temp_s0->unk18 = temp_s0->unk18;
+        return;
+    }
+    temp_s0->unk18 = temp_s0->unk14;
+}
+
+extern u8 D_global_asm_807FBD70;
+
+// TODO: Merge back into original struct
+typedef struct {
+    Actor *unk0;
+    s32 unk4; // Used
+    s32 unk8;
+    s8 unkC;
+    s8 unkD;
+    u8 unkE; // Used
+    u8 unkF; // Used
+    s8 unk10; // Used
+    s8 unk11;
+    s8 unk12;
+    s8 unk13;
+    f32 unk14; // Used
+} A17C_race_8002B964;
+
+void func_race_8002E644(A17C_race_8002B964 *arg0) {
+    f32 sp5C;
+    s32 pad58;
+    f32 sp54;
+    f32 sp50;
+    s32 pad4C;
+    s16 sp4A;
+    s16 sp48;
+    s16 sp46;
+    s16 pad44;
+    f32 sp40;
+    s32 sp3C;
+    f32 temp_f2_2;
+    Actor *actor;
+
+    actor = arg0->unk0;
+    sp5C = (((actor->x_position - gCurrentActorPointer->x_position)) * ((actor->x_position - gCurrentActorPointer->x_position))) + (((actor->z_position - gCurrentActorPointer->z_position)) * ((actor->z_position - gCurrentActorPointer->z_position)));
+    if (D_global_asm_807FBD70 == 4 && sp5C < arg0->unk14) {
+        if (arg0->unkF == 1
+            || arg0->unkF == 0
+            || arg0->unkF == 4
+            || (gCurrentActorPointer->unk58 == ACTOR_CAR_CASTLE_ENEMY && arg0->unkF == 5)) {
+            sp46 = func_global_asm_80665DE0(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, actor->x_position, actor->z_position);
+            sp40 = 1.0f;
+            if (func_global_asm_806CC14C(actor->unkEE, sp46) < 0x200) {
+                sp40 = 4.0f;
+            }
+            sp48 = (actor->unkEE - sp46);
+            sp48 &= 0xFFF;
+            
+            sp4A = (gCurrentActorPointer->unkEE - sp46);
+            sp4A &= 0xFFF;
+            
+            sp54 = func_global_asm_80612794(sp48) * actor->unkB8;
+            sp50 = func_global_asm_80612790(sp48) * actor->unkB8;
+            temp_f2_2 = func_global_asm_80612790(sp4A) * gCurrentActorPointer->unkB8;
+            sp50 = ((temp_f2_2 - sp50) * sp40) + temp_f2_2;
+            actor->unkB8 = sqrtf((sp54 * sp54) + (sp50 * sp50));
+            
+            actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / TWO_PI;
+            actor->unkEE += sp46;
+            actor->unkEE &= 0xFFF;
+            
+            if (arg0->unkE == 0) {
+                switch (gCurrentActorPointer->unk58) {
+                    case 0x134:
+                        sp3C = 0x1F9;
+                        break;
+                    case 0x143:
+                        sp3C = 0x18A;
+                        break;
+                }
+                playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, sp3C, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+                arg0->unkE = 0x14;
+            }
+        }
+    }
+    arg0->unk14 = sp5C;
+    if (arg0->unkE > 0) {
+        arg0->unkE--;
+    }
+}
+
+typedef struct {
+    u8 unk0[0x36 - 0];
+    u8 unk36;
+} Struct8002E8EC_arg0;
+
+typedef struct {
+    u8 unk0[0x45 - 0];
+    u8 unk45;
+} Struct8002E8EC_arg1;
+
+s32 func_race_8002E8EC(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1, s32 arg2) {
+    s32 var_v1;
+
+    if (arg1->unk45 != 0) {
+        var_v1 = 0;
+    } else if (arg0->unk36 != 0) {
+        if (func_global_asm_806F8AD4(0xB, 0) >= arg2) {
+            var_v1 = 1;
+        } else {
+            var_v1 = 3;
+        }
+    } else {
+        var_v1 = 2;
+    }
+    return var_v1;
+}

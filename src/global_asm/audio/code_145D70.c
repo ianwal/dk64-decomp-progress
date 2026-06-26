@@ -1,0 +1,52 @@
+#include "common.h"
+#include "synthinternal.h"
+
+Acmd *func_global_asm_80740100(CustomPVoice *, s16 *, s32, Acmd *);
+
+void *func_global_asm_80741070(CustomPVoice *arg0, s16 *arg1, Acmd *arg2) {
+    Acmd *sp34;
+    s16 sp32;
+    s32 sp2C;
+    s32 sp28;
+    f32 sp24;
+    Acmd *sp20;
+    Acmd *sp1C;
+
+    sp34 = arg2;
+    sp32 = 0x170;
+    if (arg0->resampler.unk1C != 0) {
+        sp34 = func_global_asm_80740100(arg0, &sp32, 0xB8, arg2);
+        sp20 = sp34++;
+        sp20->words.w0 = (sp32 & 0xFFFFFF) | 0x0A000000;
+        sp20->words.w1 = ((*arg1 & 0xFFFF) << 0x10) | 0x170;
+        if (1) {}
+    } else {
+        if (arg0->resampler.unk18 > 1.99996) {
+            arg0->resampler.unk18 = 1.99996f;
+        }
+        arg0->resampler.unk18 = (s32) (arg0->resampler.unk18 * 32768.0f);
+        arg0->resampler.unk18 /= 32768.0f;
+        sp24 = arg0->resampler.unk20 + (arg0->resampler.unk18 * 184.0f);
+        sp2C = (s32) sp24;
+        arg0->resampler.unk20 = sp24 - sp2C;
+        sp34 = func_global_asm_80740100(arg0, &sp32, sp2C, arg2);
+        sp28 = arg0->resampler.unk18 * 32768.0f;
+        sp1C = sp34++;
+        sp1C->words.w0 = (osVirtualToPhysical(arg0->resampler.unk14) & 0xFFFFFF) | 0x05000000;
+        sp1C->words.w1 = ((arg0->resampler.unk24 & 3) << 0x1E) | ((sp28 & 0xFFFF) << 0xE) | ((sp32 & 0xFFF) * 4);
+        arg0->resampler.unk24 = 0;
+    }
+    return sp34;
+}
+
+void func_global_asm_807407A8(void*, s32, void*);
+
+s32 func_global_asm_807412B4(void* arg0, s32 arg1, void* arg2) {
+    void* sp1C;
+
+    sp1C = arg0;
+    if (1) {} else {}
+    func_global_asm_807407A8(arg0, arg1, arg2);
+    if (1) {} else {}
+    return 0;
+}

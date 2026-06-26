@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="254" height="20">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <mask id="anybadge_1">
+        <rect width="254" height="20" rx="3" fill="#fff"/>
+    </mask>
+    <g mask="url(#anybadge_1)">
+        <path fill="#555" d="M0 0h77v20H0z"/>
+        <path fill="#a3c000" d="M77 0h177v20H77z"/>
+        <path fill="url(#b)" d="M0 0h254v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+        <text x="39.5" y="15" fill="#010101" fill-opacity=".3">global_asm</text>
+        <text x="38.5" y="14">global_asm</text>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+        <text x="166.5" y="15" fill="#010101" fill-opacity=".3">57.5112% | 3145/3602 funcs</text>
+        <text x="165.5" y="14">57.5112% | 3145/3602 funcs</text>
+    </g>
+</svg>

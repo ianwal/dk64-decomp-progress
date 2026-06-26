@@ -1,0 +1,434 @@
+#include "common.h"
+#include "stdarg.h"
+
+// .rodata
+const char D_global_asm_8075FFF0[] = "CLIP ARRAY OVERFLOW";
+const char D_global_asm_80760004[] = "MAIN STACK OVERFLOW";
+const char D_global_asm_80760018[] = "DFS OVERFLOW";
+const char D_global_asm_80760028[] = "OUT OF MEMORY";
+const char D_global_asm_80760038[] = "DATABASE ERROR";
+const char D_global_asm_80760048[] = "DMA ERROR";
+const char D_global_asm_80760054[] = "LOOKUP ERROR";
+const char D_global_asm_80760064[] = "TOO MANY OBJECTS";
+const char D_global_asm_80760078[] = "KILL SOUND ERROR";
+const char D_global_asm_8076008C[] = "STORED STATE ERROR";
+const char D_global_asm_807600A0[] = "MATRIX COPY ERROR";
+const char D_global_asm_807600B4[] = "DELAYED KILLS OVERFLOW";
+const char D_global_asm_807600CC[] = "LOCK STACK OVERFLOW";
+const char D_global_asm_807600E0[] = "POSTFUNCTIONS OVERFLOW";
+const char D_global_asm_807600F8[] = "SIGNALS OVERFLOW";
+const char D_global_asm_8076010C[] = "SORT LIST EARLY ERROR";
+const char D_global_asm_80760124[] = "SORT LIST LATE ERROR";
+const char D_global_asm_8076013C[] = "DISPLAY LIST ERROR";
+const char D_global_asm_80760150[] = "OBJECT EXIST OVERFLOW";
+
+// .data
+typedef struct StackTraceLetterStruct {
+    u8 line[6];
+} StackTraceLetterStruct;
+
+static StackTraceLetterStruct D_global_asm_80756130[] = {
+    {{ 0x04, 0x04, 0x04, 0x00, 0x04, 0x00 }},
+    {{ 0x0A, 0x0A, 0x00, 0x00, 0x00, 0x00 }},
+    {{ 0x0A, 0x0E, 0x0A, 0x0E, 0x0A, 0x00 }},
+    {{ 0x0E, 0x0C, 0x0E, 0x06, 0x0E, 0x00 }},
+    {{ 0x0A, 0x02, 0x04, 0x08, 0x0A, 0x00 }},
+    {{ 0x0E, 0x08, 0x0E, 0x0A, 0x0E, 0x00 }},
+    {{ 0x02, 0x04, 0x00, 0x00, 0x00, 0x00 }},
+    {{ 0x02, 0x04, 0x04, 0x04, 0x02, 0x00 }},
+    {{ 0x04, 0x02, 0x02, 0x02, 0x04, 0x00 }},
+    {{ 0x04, 0x04, 0x0E, 0x04, 0x0A, 0x00 }},
+    {{ 0x00, 0x04, 0x0E, 0x04, 0x00, 0x00 }},
+    {{ 0x00, 0x00, 0x00, 0x02, 0x04, 0x00 }},
+    {{ 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00 }},
+    {{ 0x00, 0x00, 0x00, 0x00, 0x04, 0x00 }},
+    {{ 0x02, 0x02, 0x04, 0x08, 0x08, 0x00 }},
+    {{ 0x0E, 0x0A, 0x0A, 0x0A, 0x0E, 0x00 }},
+    {{ 0x04, 0x0C, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x0E, 0x02, 0x0E, 0x08, 0x0E, 0x00 }},
+    {{ 0x0E, 0x02, 0x0E, 0x02, 0x0E, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0E, 0x02, 0x02, 0x00 }},
+    {{ 0x0E, 0x08, 0x0E, 0x02, 0x0E, 0x00 }},
+    {{ 0x0E, 0x08, 0x0E, 0x0A, 0x0E, 0x00 }},
+    {{ 0x0E, 0x02, 0x02, 0x02, 0x02, 0x00 }},
+    {{ 0x0E, 0x0A, 0x0E, 0x0A, 0x0E, 0x00 }},
+    {{ 0x0E, 0x0A, 0x0E, 0x02, 0x02, 0x00 }},
+    {{ 0x00, 0x04, 0x00, 0x04, 0x00, 0x00 }},
+    {{ 0x00, 0x02, 0x00, 0x02, 0x04, 0x00 }},
+    {{ 0x02, 0x04, 0x08, 0x04, 0x02, 0x00 }},
+    {{ 0x00, 0x0E, 0x00, 0x0E, 0x00, 0x00 }},
+    {{ 0x08, 0x04, 0x02, 0x04, 0x08, 0x00 }},
+    {{ 0x0C, 0x02, 0x04, 0x00, 0x04, 0x00 }},
+    {{ 0x0E, 0x0A, 0x0E, 0x08, 0x0E, 0x00 }},
+    {{ 0x04, 0x0A, 0x0E, 0x0A, 0x0A, 0x00 }},
+    {{ 0x0C, 0x0A, 0x0C, 0x0A, 0x0C, 0x00 }},
+    {{ 0x06, 0x08, 0x08, 0x08, 0x06, 0x00 }},
+    {{ 0x0C, 0x0A, 0x0A, 0x0A, 0x0C, 0x00 }},
+    {{ 0x0E, 0x08, 0x0C, 0x08, 0x0E, 0x00 }},
+    {{ 0x0E, 0x08, 0x0C, 0x08, 0x08, 0x00 }},
+    {{ 0x06, 0x08, 0x0A, 0x0A, 0x06, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0E, 0x0A, 0x0A, 0x00 }},
+    {{ 0x0E, 0x04, 0x04, 0x04, 0x0E, 0x00 }},
+    {{ 0x02, 0x02, 0x02, 0x0A, 0x04, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0C, 0x0A, 0x0A, 0x00 }},
+    {{ 0x08, 0x08, 0x08, 0x08, 0x0E, 0x00 }},
+    {{ 0x0A, 0x0E, 0x0E, 0x0A, 0x0A, 0x00 }},
+    {{ 0x0A, 0x0E, 0x0E, 0x0E, 0x0A, 0x00 }},
+    {{ 0x04, 0x0A, 0x0A, 0x0A, 0x04, 0x00 }},
+    {{ 0x0C, 0x0A, 0x0C, 0x08, 0x08, 0x00 }},
+    {{ 0x04, 0x0A, 0x0A, 0x0C, 0x06, 0x00 }},
+    {{ 0x0C, 0x0A, 0x0C, 0x0A, 0x0A, 0x00 }},
+    {{ 0x06, 0x08, 0x04, 0x02, 0x0C, 0x00 }},
+    {{ 0x0E, 0x04, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0A, 0x0A, 0x0E, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0A, 0x0A, 0x04, 0x00 }},
+    {{ 0x0A, 0x0A, 0x0E, 0x0E, 0x0A, 0x00 }},
+    {{ 0x0A, 0x0A, 0x04, 0x0A, 0x0A, 0x00 }},
+    {{ 0x0A, 0x0A, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x0E, 0x02, 0x04, 0x08, 0x0E, 0x00 }},
+    {{ 0x06, 0x04, 0x04, 0x04, 0x06, 0x00 }},
+    {{ 0x08, 0x08, 0x04, 0x02, 0x02, 0x00 }},
+    {{ 0x06, 0x02, 0x02, 0x02, 0x06, 0x00 }},
+    {{ 0x04, 0x0A, 0x00, 0x00, 0x00, 0x00 }},
+    {{ 0x00, 0x00, 0x00, 0x00, 0x0E, 0x00 }},
+    {{ 0x04, 0x02, 0x00, 0x00, 0x00, 0x00 }},
+    {{ 0x00, 0x04, 0x0A, 0x0A, 0x06, 0x00 }},
+    {{ 0x08, 0x0C, 0x0A, 0x0A, 0x0C, 0x00 }},
+    {{ 0x00, 0x06, 0x08, 0x08, 0x06, 0x00 }},
+    {{ 0x02, 0x06, 0x0A, 0x0A, 0x06, 0x00 }},
+    {{ 0x00, 0x06, 0x0E, 0x08, 0x06, 0x00 }},
+    {{ 0x02, 0x04, 0x0E, 0x04, 0x04, 0x00 }},
+    {{ 0x00, 0x06, 0x0A, 0x06, 0x02, 0x0C }},
+    {{ 0x08, 0x0C, 0x0A, 0x0A, 0x0A, 0x00 }},
+    {{ 0x04, 0x00, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x02, 0x00, 0x02, 0x02, 0x0A, 0x04 }},
+    {{ 0x08, 0x0A, 0x0C, 0x0C, 0x0A, 0x00 }},
+    {{ 0x04, 0x04, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x00, 0x0E, 0x0E, 0x0E, 0x0A, 0x00 }},
+    {{ 0x00, 0x0C, 0x0A, 0x0A, 0x0A, 0x00 }},
+    {{ 0x00, 0x04, 0x0A, 0x0A, 0x04, 0x00 }},
+    {{ 0x00, 0x0C, 0x0A, 0x0C, 0x08, 0x08 }},
+    {{ 0x00, 0x06, 0x0A, 0x06, 0x02, 0x02 }},
+    {{ 0x00, 0x0C, 0x0A, 0x08, 0x08, 0x00 }},
+    {{ 0x00, 0x06, 0x0C, 0x06, 0x0C, 0x00 }},
+    {{ 0x04, 0x0E, 0x04, 0x04, 0x04, 0x00 }},
+    {{ 0x00, 0x0A, 0x0A, 0x0A, 0x0E, 0x00 }},
+    {{ 0x00, 0x0A, 0x0A, 0x0A, 0x04, 0x00 }},
+    {{ 0x00, 0x0A, 0x0E, 0x0E, 0x0E, 0x00 }},
+    {{ 0x00, 0x0A, 0x04, 0x04, 0x0A, 0x00 }},
+    {{ 0x00, 0x0A, 0x0A, 0x06, 0x02, 0x0C }},
+    {{ 0x00, 0x0E, 0x06, 0x0C, 0x0E, 0x00 }},
+    {{ 0x06, 0x04, 0x0C, 0x04, 0x06, 0x00 }},
+    {{ 0x04, 0x04, 0x0A, 0x04, 0x04, 0x00 }},
+    {{ 0x0C, 0x04, 0x06, 0x04, 0x0C, 0x00 }},
+    {{ 0x02, 0x0E, 0x08, 0x00, 0x00, 0x00 }},
+};
+
+// TODO: Symbol is offset -4 bytes from address of first entry
+static void *D_global_asm_80756360[] = {
+    D_global_asm_8075FFF0,
+    D_global_asm_80760004,
+    D_global_asm_80760018,
+    D_global_asm_80760028,
+    D_global_asm_80760038,
+    D_global_asm_80760048,
+    D_global_asm_80760054,
+    D_global_asm_80760064,
+    D_global_asm_80760078,
+    D_global_asm_8076008C,
+    D_global_asm_807600A0,
+    D_global_asm_807600B4,
+    D_global_asm_807600CC,
+    D_global_asm_807600E0,
+    D_global_asm_807600F8,
+    D_global_asm_8076010C,
+    D_global_asm_80760124,
+    D_global_asm_8076013C,
+    D_global_asm_80760150,
+};
+
+static u8 D_global_asm_807563B0 = 0;
+u8 gCrashDebuggerEnabled = 0;
+static s32 D_global_asm_807563B8 = 0;
+
+//
+
+extern s32 D_global_asm_80744470[];
+
+extern OSThread D_global_asm_807FDDA0;
+
+extern OSMesgQueue D_global_asm_807FEF58;
+extern s32 D_global_asm_807FEF70;
+extern s32 D_global_asm_807FEF74;
+extern s32 D_global_asm_807FEF78;
+extern s32 D_global_asm_807FEF7C;
+extern u16 *D_global_asm_807FEF80;
+extern u16 D_global_asm_807FEF84;
+extern u16 D_global_asm_807FEF86;
+
+extern u8 D_global_asm_807FF01C;
+extern s32 D_global_asm_807FF020;
+extern s32 D_global_asm_807FF024;
+extern s32 D_global_asm_807FF028;
+
+void func_global_asm_80732280(void *);
+extern void *D_global_asm_807FEF50;
+
+void func_global_asm_80731B20(s32 arg0, s32 arg1, s32 arg2) {
+    D_global_asm_807FEF80 = arg0;
+    D_global_asm_807FEF78 = 2;
+    D_global_asm_807FEF84 = 0xFFFF;
+    D_global_asm_807FEF86 = 1;
+    D_global_asm_807FEF70 = arg1;
+    D_global_asm_807FEF74 = arg2;
+}
+
+void func_global_asm_80731B60(s32 arg0) {
+    if (!arg0) {
+        D_global_asm_807FEF84 = 0xFFFF;
+    } else {
+        D_global_asm_807FEF84 = 0xF801;
+    }
+}
+
+extern s16 D_global_asm_80744490;
+extern u8 D_global_asm_8074450C;
+
+void func_global_asm_80731B88(u8 arg0) {
+    s32 i, j, k, l;
+    u16 *var_v1;
+    u8 *var_v0;
+
+    var_v0 = &D_global_asm_80756130[arg0 - '!'];
+    var_v1 = ((D_global_asm_807FEF70 + 3) * D_global_asm_8074450C * 4) + D_global_asm_807FEF80 + (D_global_asm_80744490 * (D_global_asm_807FEF74 + 3) * D_global_asm_8074450C * 6);
+    for (i = 0; i < 6; i++) {
+        for (j = 0; j < D_global_asm_8074450C * D_global_asm_807FEF78; j++) {
+            for (k = 3; k >= 0; k--) {
+                for (l = 0; l < D_global_asm_8074450C * D_global_asm_807FEF78; l++) {
+                    *var_v1++ = *var_v0 & (1 << k) ? D_global_asm_807FEF84 : D_global_asm_807FEF86;
+                }
+            }
+            var_v1 += (D_global_asm_80744490 - (D_global_asm_807FEF78 * 4 * D_global_asm_8074450C));
+
+        }
+        var_v0++;
+    }
+}
+
+void func_global_asm_80731D20(char *arg0, ...) {
+    u8 character;
+    u8 sp4C[0x80];
+    u8 *var_s1;
+    va_list args;
+    va_start(args, arg0);
+
+    vsprintf(&sp4C, arg0, args);
+    va_end(args);
+    var_s1 = &sp4C;
+    character = *var_s1++;
+    while (character) {
+        switch (character) {
+            case ' ':
+                D_global_asm_807FEF70 += D_global_asm_807FEF78;
+                break;
+            case '\t':
+                D_global_asm_807FEF70 /= 8;
+                D_global_asm_807FEF70++;
+                D_global_asm_807FEF70 *= 8;
+                break;
+            case '\n':
+                D_global_asm_807FEF70 = D_global_asm_807FEF7C;
+                D_global_asm_807FEF74 += D_global_asm_807FEF78;
+                break;
+            default:
+                func_global_asm_80731B88(character);
+                D_global_asm_807FEF70 += D_global_asm_807FEF78;
+                break;
+        }
+        character = *var_s1++;
+    }
+}
+
+typedef struct {
+    void *unk0;
+    s32 unk4;
+} Struct807FEF88;
+
+extern Struct807FEF88 D_global_asm_807FEF88[];
+extern s32 D_global_asm_807FF018;
+
+typedef struct {
+    u8 unk0[0xE4 - 0x0];
+    s32 unkE4;
+    u8 unkE8[0xFC - 0xE8];
+    s32 unkFC;
+} Struct80731E68_unk20;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    Struct80731E68_unk20 *unk20;
+} Struct80731E68;
+
+// TODO: OSThread *arg0
+void func_global_asm_80731E68(Struct80731E68 *arg0) {
+    s32 *var_s1;
+    s32 i;
+    s32 j;
+    Struct80731E68_unk20 *temp_s6;
+
+    D_global_asm_807FEF78 = 2;
+    D_global_asm_807FEF84 = 0xFFFF;
+    D_global_asm_807FEF86 = 1;
+    temp_s6 = &arg0->unk20;
+    for (i = 0; i != 0x18; i += 6) {
+        D_global_asm_807FEF70 = D_global_asm_807FEF7C = i * 3;
+        D_global_asm_807FEF74 = i;
+        func_global_asm_80731D20("DK 64\n");
+        func_global_asm_80731D20("%X\n", temp_s6->unkFC);
+        func_global_asm_80731D20("%X\n", temp_s6->unkE4);
+        if (D_global_asm_807563B8 >= 4) {
+            for (j = 0; j < D_global_asm_807FF018; j++) {
+                func_global_asm_80731D20("%X\n", D_global_asm_807FEF88[j].unk0);
+            }
+        }
+    }
+    if (D_global_asm_807FF01C != 0) {
+        func_global_asm_80731D20("%s %x %x %x", D_global_asm_80756360[D_global_asm_807FF01C - 1], D_global_asm_807FF020, D_global_asm_807FF024, D_global_asm_807FF028);
+    }
+    if (D_global_asm_807563B8 < 4) {
+        D_global_asm_807563B8++;
+    }
+    if (D_global_asm_807563B8 == 4) {
+        func_global_asm_80732158(arg0);
+    }
+}
+
+int func_global_asm_8073202C(unsigned int inst, char *sp, unsigned int *arg2) {
+    // Looking for the MIPS instruction: lw ra, n(sp)
+    // Stores the return address that it finds in *arg2
+    int new_var;
+    if ((inst & 0xFFFF0000U) == 0x8FBF0000U) {
+        new_var = (short) (inst & 0xFFFFU);
+        *arg2 = *(unsigned int*)(sp + new_var);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+s32 func_global_asm_80732064(s32 arg0, s32 *arg1) {
+    s32 val;
+    s32 imm;
+    if (((arg0 & 0xFFFF0000) == 0x27BD0000) != 0) {
+        imm = (s16)arg0;
+        val = *arg1;
+        val += imm;
+        *arg1 = val;
+        return TRUE;
+    }
+    return 0;
+}
+
+s32 func_global_asm_80732064(s32, s32*);
+
+s32 func_global_asm_8073209C(s32 instruction, s32 *shift, s32 *addr, s32 **addr_0) {
+    if ((instruction & 0x03FFFFFF) == 0x03E00008) {
+        func_global_asm_80732064(**addr_0, shift);
+        if ((D_global_asm_807FF018 != 0) && ((addr == D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk0))) {
+            D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk4++;
+        } else {
+            D_global_asm_807FEF88[D_global_asm_807FF018].unk0 = addr;
+            D_global_asm_807FEF88[D_global_asm_807FF018].unk4 = 1;
+            D_global_asm_807FF018++;
+        }
+        *addr_0 = addr;
+        return 1;
+    }
+    return 0;
+}
+
+void func_global_asm_80732158(OSThread *arg0) {
+    s32 var_v1;
+    u32 *sp48;
+    s32 var_v0;
+    s32 sp40;
+    s32 sp3C;
+    u32 *temp_s0;
+
+    sp48 = arg0->context.pc;
+    sp40 = arg0->context.sp;
+    sp3C = arg0->context.ra;
+    D_global_asm_807FF018 = 0;
+    var_v1 = FALSE;
+    while ((sp48) && (D_global_asm_807FF018 < 0x12) && (!var_v1)) {
+        temp_s0 = *sp48++;
+        var_v0 = func_global_asm_8073209C(temp_s0, &sp40, sp3C, &sp48);
+        if (var_v0 == 0) {
+            var_v0 = func_global_asm_8073202C(temp_s0, sp40, &sp3C);
+        }
+        if (var_v0 == 0) {
+            func_global_asm_80732064(temp_s0, &sp40);
+        }
+        var_v1 = D_global_asm_807FF018;
+        if (D_global_asm_807FF018 != 0) {
+            var_v1 = D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk4 > 0xF;
+        } else {
+            var_v1 = FALSE;
+        }
+    }
+    D_global_asm_807563B8++;
+}
+
+// close
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732280.s")
+
+/*
+// TODO: Matches except for some extra NOPs being inserted in this version
+// No idea why
+void func_global_asm_80732280(void* arg0) {
+    OSMesg *sp3C;
+    s32 *pad;
+    OSThread *faulted_thread;
+    s32 temp;
+
+    osSetEventMesg(0xC, &D_global_asm_807FEF58, 0x10);
+    do {
+        do {
+            osRecvMesg(&D_global_asm_807FEF58, &sp3C, 1);
+        } while (!gCrashDebuggerEnabled);
+        faulted_thread = __osGetCurrFaultedThread();
+    } while (!faulted_thread);
+
+    while (TRUE) {
+        for (temp = 0; temp < 2; temp++) {
+            osViBlack(0);
+            D_global_asm_807FEF80 = D_global_asm_80744470[temp];
+            func_global_asm_80731E68(faulted_thread);
+            func_global_asm_80731E68(faulted_thread);
+        }
+    }
+}
+*/
+
+void raiseException(u8 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    D_global_asm_807FF01C = arg0;
+    D_global_asm_807FF020 = arg1;
+    D_global_asm_807FF024 = arg2;
+    D_global_asm_807FF028 = arg3;
+    func_global_asm_8061D4E4(NULL);
+}
+
+void func_global_asm_8073239C(void) {
+    __osSetFpcCsr(__osGetFpcCsr() | FPCSR_EZ);
+    osCreateMesgQueue(&D_global_asm_807FEF58, &D_global_asm_807FEF50, 1);
+    osCreateThread(&D_global_asm_807FDDA0, 8, func_global_asm_80732280, NULL, &D_global_asm_807FEF50, 0x32);
+    osStartThread(&D_global_asm_807FDDA0);
+    D_global_asm_807563B0 = 1;
+}

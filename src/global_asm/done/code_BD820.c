@@ -1,0 +1,121 @@
+#include "common.h"
+
+extern s16 D_global_asm_807F6248;
+extern s16 D_global_asm_807F624C;
+
+void func_global_asm_8071C9E8(otherSpriteControl *, s8 *);
+
+void func_global_asm_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    func_global_asm_8071498C(func_global_asm_8071C9E8);
+    func_global_asm_807149FC(-1);
+    func_global_asm_807149B8(1);
+    func_global_asm_8071496C(arg3);
+    drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 1.8f, arg0, arg1, arg2);
+}
+
+void func_global_asm_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
+    func_global_asm_80714998(2);
+    func_global_asm_8071498C(func_global_asm_80717D4C);
+    func_global_asm_80714950(-0x28);
+    func_global_asm_807149B8(1);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.0f, arg0, arg1, arg2);
+}
+
+void func_global_asm_806B8C78(void) {
+    switch (gCurrentActorPointer->control_state) {
+        case 1:
+            switch (gCurrentActorPointer->control_state_progress) {
+                case 0:
+                    gCurrentActorPointer->y_velocity = 0.0f;
+                    playActorAnimation(gCurrentActorPointer, 0x290);
+                    gCurrentActorPointer->control_state_progress++;
+                    break;
+                case 2:
+                    if (gCurrentActorPointer->y_position > -20.0f) {
+                        gCurrentActorPointer->y_position -= gCurrentActorPointer->y_velocity;
+                    }
+                    gCurrentActorPointer->y_velocity = MIN(gCurrentActorPointer->y_velocity + 0.5, 8.0f);
+                    break;
+            }
+            break;
+        case 2:
+            func_global_asm_806B8B20(0x258, 0x64, 0x1E5, 0x64);
+            func_global_asm_806B8B20(0x258, 0x96, 0x1E5, 0x64);
+            func_global_asm_806B8B20(0x258, 0xC8, 0x1E5, 0x67);
+            func_global_asm_806B8B20(0x258, 0xFA, 0x1E5, 0x68);
+            func_global_asm_806B8B20(0x258, 0x12C, 0x1E5, 0x6C);
+            func_global_asm_806B8B20(0x258, 0x15E, 0x1E5, 0x6E);
+            func_global_asm_806B8B20(0x258, 0x190, 0x1E5, 0x73);
+            func_global_asm_806B8B20(0x258, 0x1C2, 0x1E5, 0x74);
+            gCurrentActorPointer->control_state++;
+            D_global_asm_807FDC90->unk2C = 0x46;
+            break;
+        case 3:
+            if (D_global_asm_807FDC90->unk2C != 0) {
+                D_global_asm_807FDC90->unk2C--;
+            } else {
+                gCurrentActorPointer->control_state = 0x40;
+            }
+            if (D_global_asm_807FDC90->unk2C < 0x28) {
+                func_global_asm_8063C1EC(4, 0x10);
+                func_global_asm_8063C1EC(6, 0x10);
+                func_global_asm_8063C248(5, 0x10);
+                func_global_asm_8063C248(7, 0x10);
+                if (((D_global_asm_807FDC90->unk2C < 0x15) && (RandClamp(1000) < 0x12C)) || (gCurrentActorPointer->control_state == 0x40)) {
+                    if (gCurrentActorPointer->control_state == 0x40) {
+                        func_global_asm_8063C1EC(5, 0x10);
+                        func_global_asm_8063C1EC(7, 0x10);
+                        playSound(0x1D0, 0x58EF, 63.0f, 1.0f, 0, 0);
+                        playSong(MUSIC_58_AWAITING_ENTERING_THE_BOSS, 1.0f);
+                        func_global_asm_806B8BDC(0xBD, 0xAA, 0x2FB);
+                        func_global_asm_806B8BDC(0x19A, 0xA6, 0x2F8);
+                    }
+                    func_global_asm_8065F134(D_global_asm_807F6248, 0);
+                    func_global_asm_8065F134(D_global_asm_807F624C, 0);
+                    func_global_asm_80659670(0.15f, 0.15f, 0.15f, 0);
+                    return;
+                }
+                if (D_global_asm_807FDC90->unk2C >= 0x15) {
+                    func_global_asm_8065F134(D_global_asm_807F6248, 9);
+                    func_global_asm_8065F134(D_global_asm_807F624C, 9);
+                    func_global_asm_80659670(0.20f, 0.20f, 0.20f, 0);
+                    return;
+                }
+                func_global_asm_8065F134(D_global_asm_807F6248, 8);
+                func_global_asm_8065F134(D_global_asm_807F624C, 8);
+                func_global_asm_80659670(0.30f, 0.30f, 0.30f, 0);
+            }
+    }
+}
+
+void func_global_asm_806B904C(void) {
+    f32 scale;
+    s16 i;
+
+    initializeCharacterSpawnerActor();
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
+        scale = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
+        gCurrentActorPointer->animation_state->scale_x = scale;
+        gCurrentActorPointer->animation_state->scale_y = scale;
+        gCurrentActorPointer->animation_state->scale_z = scale;
+        if (func_global_asm_805FF0C8()) {
+            gCurrentActorPointer->control_state = 0x40;
+        } else {
+            gCurrentActorPointer->draw_distance = 1000;
+            gCurrentActorPointer->unk130 = 0x3C;
+            gCurrentActorPointer->unk131 = 0x3C;
+            func_global_asm_80613C48(gCurrentActorPointer, 0x482, 0, 0);
+        }
+        func_global_asm_8063C1EC(5, 0x10);
+        func_global_asm_8063C1EC(7, 0x10);
+    }
+    for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+        if (D_global_asm_807FBB70.unk258[i] == 3) {
+            gCurrentActorPointer->control_state = D_global_asm_807FBB70.unk278[i]->unk2;
+            gCurrentActorPointer->control_state_progress = 0;
+        }
+    }
+    func_global_asm_806B8C78();
+    renderActor(gCurrentActorPointer, 0);
+}

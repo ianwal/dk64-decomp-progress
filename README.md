@@ -1,12 +1,114 @@
-# dk64-decomp-progress
+# donkey
 
-Donkey Kong 64 decompilation progress decomp-dev pusher.
+<img src="./progress/progress_total.svg">
+
+| Progress | .data | .rodata |
+| -------- | ----- | ------- |
+| <img src="./progress/progress_dk64_boot.svg"> | <img src="./progress/data_percent_dk64_boot.svg"> | <img src="./progress/rodata_percent_dk64_boot.svg"> |
+| <img src="./progress/progress_global_asm.svg"> | <img src="./progress/data_percent_global_asm.svg"> | <img src="./progress/rodata_percent_global_asm.svg"> |
+| <img src="./progress/progress_arcade.svg"> | <img src="./progress/data_percent_arcade.svg"> | <img src="./progress/rodata_percent_arcade.svg"> |
+| <img src="./progress/progress_jetpac.svg"> | <img src="./progress/data_percent_jetpac.svg"> | <img src="./progress/rodata_percent_jetpac.svg"> |
+| <img src="./progress/progress_bonus.svg"> | <img src="./progress/data_percent_bonus.svg"> | <img src="./progress/rodata_percent_bonus.svg"> |
+| <img src="./progress/progress_boss.svg"> | <img src="./progress/data_percent_boss.svg"> | <img src="./progress/rodata_percent_boss.svg"> |
+| <img src="./progress/progress_menu.svg"> | <img src="./progress/data_percent_menu.svg"> | <img src="./progress/rodata_percent_menu.svg"> |
+| <img src="./progress/progress_minecart.svg"> | <img src="./progress/data_percent_minecart.svg"> | <img src="./progress/rodata_percent_minecart.svg"> |
+| <img src="./progress/progress_multiplayer.svg"> | <img src="./progress/data_percent_multiplayer.svg"> | <img src="./progress/rodata_percent_multiplayer.svg"> |
+| <img src="./progress/progress_race.svg"> | <img src="./progress/data_percent_race.svg"> | <img src="./progress/rodata_percent_race.svg"> |
+| <img src="./progress/progress_critter.svg"> | <img src="./progress/data_percent_critter.svg"> | <img src="./progress/rodata_percent_critter.svg"> |
 
 ## Setup
 
-### GitHub Secrets
+Grab tools
 
-`PRIVATE_REPO_ACCESS` GitHub fine-grained personal access token so it can read `dk64-private` repo for building.
-  - On the GitHub website, go to your profile, then Personal Access Tokens. Create a token with repo access to `dk64-private`, set Contents -> Read-only permissions
+```sh
+git submodule update --init --recursive
+```
 
-`BASEROM_US_KEY` with the encryption key.
+Drop in `US` as `baserom.us.z64` (sha1sum: `cf806ff2603640a748fca5026ded28802f1f4a50`)
+
+To extract and build the ROM use one of the installation options listed below.
+
+### Docker
+
+A Dockerfile is provided that is based on Ubuntu can be used for development and building the ROM.
+
+Build the Docker image:
+
+```sh
+docker build -t dk64 .
+```
+
+Then the ROM can be built with Docker using `make`
+
+```sh
+docker run --rm -v ${PWD}:/dk64 --user $UID:$GID dk64 make -j8
+```
+
+This command will start the docker container, build everything, then exit.
+
+See the [Makefile](./Makefile) for a full list of options and supported arguments, e.g. `make clean`.
+
+---
+
+Other tools and scripts can be used with the Docker container as well.
+
+For example, running a script from the tools folder:
+
+```sh
+docker run --rm -v ${PWD}:/dk64 --user $UID:$GID dk64 python tools/generate_decompressed_rom.py
+```
+
+### Ubuntu
+
+Ubuntu 18.04 or higher.
+
+```sh
+sudo apt-get update && \
+  sudo apt-get install -y \
+    binutils-mips-linux-gnu \
+    build-essential \
+    gcc-mips-linux-gnu \
+    less \
+    libglib2.0 \
+    python3 \
+    python3-pip \
+    unzip \
+    wget \
+    libssl-dev \
+    vbindiff
+
+sudo python3 -m pip install -r requirements.txt
+
+# ROM can now be built with:
+make -j
+```
+
+### Arch (pacman)
+
+Requires AUR (yay is used here). Make sure to replace `gcc-bootstrap` with the main `gcc` when prompted. pacman doesn't have our pip packages, and pip is configured with the `externally-managed-environment` flag enabled, so we will be using uv to generate a venv for this project.
+
+```sh
+sudo pacman -S \
+  base-devel \
+  less \
+  glib2 \
+  python \
+  python-pip \
+  unzip \
+  wget \
+  openssl \
+  vbindiff \
+  uv && \
+yay -S \
+  mips64-linux-gnu-gcc-bootstrap \
+  mips64-linux-gnu-gcc
+
+# set up the venv (one time only)
+uv venv && \
+uv pip install -r requirements.txt
+
+# make our python venv available in PATH for this terminal session
+source .venv/bin/activate
+# compile dk64 (pass through the correct path to gcc)
+make -j CROSS="mips64-linux-gnu-"
+```

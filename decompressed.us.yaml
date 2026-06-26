@@ -1,0 +1,778 @@
+sha1: c2067ea456b8c95bd70bf5725e271c5d041d9825
+options:
+  basename: donkeykong64
+  find_file_boundaries: True
+  compiler: "IDO"
+  platform: n64
+  generated_s_preamble: .set fp=64
+  auto_decompile_empty_functions: False
+  asm_data_macro: dlabel
+  asm_jtbl_label_macro: jlabel
+  asm_emit_size_directive: true
+  generated_c_preamble: |
+    #include <ultra64.h>
+    #include "functions.h"
+  undefined_funcs_auto_path: undefined_funcs_auto.us.txt
+  undefined_syms_auto_path: undefined_syms_auto.us.txt
+  symbol_addrs_path: symbol_addrs.us.txt
+  ld_symbol_header_path: include/ld_addrs.h
+  ld_script_path: donkeykong64.ld
+  section_order: [".text", ".data", ".rodata", ".bss"]
+  hasm_in_src_path: True
+  reloc_addrs_path:
+    - reloc_addrs.us.txt
+  symbol_name_format: $SEG_$VRAM
+  base_path: .
+  target_path: baserom.us.decompressed.z64
+  asset_path: bin
+  build_path: build/us
+segments:
+  - name: header
+    type: header
+    start: 0x0
+  - name: boot
+    type: bin
+    start: 0x40
+    vram: 0xA4000040
+    subsegments:
+    - [0x0040, asm, boot]
+    - [0x0B70, bin, boot2]
+  - name:  entry
+    type:  code
+    start: 0x1000
+    vram:  0x80000400
+    subsegments:
+    - [0x1000, hasm, entry]
+  - name: dk64_boot
+    type: code
+    start: 0x1050
+    vram: 0x80000450
+    bss_size: 0x5F10
+    dir: dk64_boot
+    subsegments:
+      - [0x1050, c, dk64_boot_1050]
+      - [0x1630, c, dk64_boot_1630]
+      - [0x1CC0, c, inflate]
+      - [0x30E0, c, dk64_boot_30E0]
+      - [0x3390, c, dk64_boot_3390]
+      - [0x3C00, c, dk64_boot_3C00]
+      - [0x3D20, c, dk64_boot_3D20]
+      - [0x5120, hasm, os/invaldcache]        #DONE
+      - [0x51D0, c, io/pirawdma]              #DONE
+      - [0x52B0, c, io/pigetstat]             #DONE
+      - [0x52C0, c, os/recvmesg]              #DONE
+      - [0x5400, c, io/viblack]               #DONE
+      - [0x5470, c, os/setthreadpri]          #DONE
+      - [0x5550, c, os/createmesgqueue]       #DONE
+      - [0x5580, c, os/seteventmesg]          #DONE
+      - [0x55F0, c, os/createthread]
+      - [0x5740, c, os/startthread]           #DONE
+      - [0x5890, c, io/vimgr]
+      - [0x5BA0, c, io/visetmode]             #DONE
+      - [0x5C10, hasm, os/parameter] #??? nops ???
+      - [0x5C70, c, io/aisetfreq]
+      - [0x5DC0, hasm, libc/bzero]            #DONE
+      - [0x5E60, hasm, os/invalicache]        #DONE
+      - [0x5EE0, hasm, os/writebackdcacheall] #DONE
+      - [0x5F10, c, os/initialize]
+      - [0x6270, hasm, os/writebackdcache]    #DONE
+      - [0x62F0, c, io/visetevent]
+      - [0x6360, c, io/viswapbuf]             #DONE
+      - [0x63B0, c, ll]
+      - [0x6670, c, os/getcurrfaultthread]
+      - [0x6680, hasm, os/getfpccsr]          #DONE
+      - [0x6690, c, gu/usprite]
+      - [0x66E0, c, os/stopthread]            #DONE
+      - [0x67A0, c, io/dpsetstat]             #DONE
+      - [0x67B0, c, io/spsetstat]             #DONE
+      - [0x67C0, c, io/visetspecial]          #DONE
+      - [0x6980, c, gu/translate]             #DONE
+      - [0x6A20, c, gu/perspective]           #DONE
+      - [0x6CB0, c, os/gettime]               #DONE
+      - [0x6D40, c, os/settime]               #DONE
+      - [0x6D70, c, gu/lookathil]
+      - [0x7560, c, gu/lookat]                #DONE
+      - [0x7890, c, gu/ortho]                 #DONE
+      - [0x7A50, c, io/aisetnextbuf]          #DONE
+      - [0x7B00, c, io/aigetlen]              #DONE
+      - [0x7B10, c, os/pidma]                 #DONE
+      - [0x7C20, c, io/controller]
+      - [0x7F60, c, io/contsetch]
+      - [0x7FD0, c, io/contreaddata]
+      - [0x81B0, c, libc/llcvt]
+      - [0x83C0, c, os/settimer]              #DONE
+      - [0x84A0, c, os/getthreadid]           #DONE
+      - [0x84C0, c, io/conteeplongread]       #DONE
+      - [0x8550, c, io/conteepwrite]
+      - [0x8920, c, io/conteepprobe]
+      - [0x8990, c, io/motor]
+      - [0x8D60, c, io/dpgetstat]             #DONE
+      - [0x8D70, c, io/vigetcurrframebuf]     #DONE
+      - [0x8DB0, c, io/vigetnextframebuf]     #DONE
+      - [0x8DF0, c, io/sptaskyielded]         #DONE
+      - [0x8E70, c, io/sptask]                #DONE
+      - [0x9160, c, io/sptaskyield]           #DONE
+      - [0x9180, c, gu/scale]                 #DONE
+      - [0x9220, c, gu/rotate]
+      - [0x9410, c, gu/mtxcatf]               #DONE
+      - [0x9620, c, gu/mtxcatl]               #DONE
+      - [0x96E0, c, gu/align]
+      - [0x98F0, c, io/piread]                #DONE
+      - [0x9930, c, io/vigetmode]             #DONE
+      - [0x9980, c, gu/position]
+      - [0x9BA0, c, os/virtualtophysical]     #DONE
+      - [0x9C20, hasm, interrupt]             #DONE
+      - [0x9C60, c, os/thread]
+      - [0x9CA0, hasm, os/exceptasm]
+      - [0xA5A0, c, io/vi]                    #DONE
+      - [0xA6E0, c, os/timerintr]
+      - [0xAAE0, c, os/getthreadpri]          #DONE
+      - [0xAB00, c, io/vigetcurrcontext]      #DONE
+      - [0xAB10, c, io/viswapcontext]
+      - [0xAE10, c, os/sendmesg]              #DONE
+      - [0xAF60, hasm, os/getcount]           #DONE
+      - [0xAF70, hasm, os/setsr]              #DONE
+      - [0xAF80, hasm, os/getsr]              #DONE
+      - [0xAF90, hasm, os/setfpccsr]          #DONE
+      - [0xAFA0, c, io/sirawread]             #DONE
+      - [0xAFF0, c, io/sirawwrite]            #DONE
+      - [0xB040, hasm, os/unmaptlball]        #DONE
+      - [0xB090, hasm, os/maptlbrdb]          #DONE
+      - [0xB0F0, c, io/pirawread]             #DONE
+      - [0xB150, c, io/pimgr]
+      - [0xB2C0, c, gu/mtxutil]               #DONE
+      - [0xB530, c, gu/cosf]
+      - [0xB6A0, c, gu/sinf]
+      - [0xB860, hasm, gu/sqrt]               #DONE
+      - [0xB870, c, io/ai]                    #DONE
+      - [0xB8A0, c, os/jammesg]               #DONE
+      - [0xB9F0, c, io/pigetcmdq]             #DONE
+      - [0xBA20, c, io/sirawdma]
+      - [0xBAD0, c, io/siacs]
+      - [0xBB90, c, io/conteepread]
+      - [0xBDE0, c, io/crc]
+      - [0xBF50, c, io/pfsselectbank]
+      - [0xBFD0, c, io/contramread]
+      - [0xC200, c, io/spgetstat]
+      - [0xC210, hasm, bcopy]                 #DONE
+      - [0xC520, c, io/spsetpc]               #DONE
+      - [0xC560, c, io/sprawdma]              #DONE
+      - [0xC5F0, c, io/sp]                    #DONE
+      - [0xC620, c, gu/normalize]             #DONE
+      - [0xC6B0, c, io/piacs]
+      - [0xC770, hasm, probetlb]              #DONE
+      - [0xC830, hasm, os/setIntMask]
+      - [0xC8D0, c, os/destroythread]         #DONE
+      - [0xC9E0, hasm, os/setcompare]
+      - [0xC9F0, c, io/si]
+      - [0xCA20, c, dk64_boot_CA20]
+      - [0xCC00, c, io/devmgr]
+      - [0xD090, c, io/contramwrite]
+      - [0xD2E0, c, io/pfsisplug]
+      - [0xD620, c, io/pfsgetstatus]
+      - [0xD850, c, os/resetglobalintmask]
+      - [0xD8B0, c, io/epirawwrite]
+      - [0xDA10, c, io/epirawread]
+      - [0xDB70, c, os/setglobalintmask]      #DONE
+      - [0xDBC0, c, os/yieldthread]           #DONE
+      - [0xDC10, c, io/contpfs]
+      - [0xE790, hasm, libc/bcmp]
+      - [0xE8B0, data]
+      - [0xF9E0, data, inflate]
+      - [0xFAE0, .data, dk64_boot_30E0]
+      - [0xFAF0, .data, dk64_boot_3390]
+      - [0xFB00, .data, io/vimgr]
+      - [0xFB20, .data, io/vitbl]
+      - [0x10840, data, io/viModes]
+      - [0x10CA0, .data, os/initialize]
+      - [0x10CC0, .data, io/aisetnextbuf]
+      - [0x10CD0, .data, io/controller]
+      - [0x10CE0, .data, os/thread]
+      - [0x10D00, data]
+      - [0x10D30, .data, io/vi]
+      - [0x10DA0, .data, os/timerintr]
+      - [0x10DB0, .data, io/pimgr]
+      - [0x10DE0, .data, io/siacs]
+      - [0x10DF0, .data, io/contramread]
+      - [0x10E00, .data, io/piacs]
+      - [0x10E10, data]
+      - [0x10F00, .data, io/contpfs]
+      - [0x10F10, .rodata, dk64_boot_3D20]
+      - [0x11120, .rodata, gu/perspective]
+      - [0x11130, .rodata, gu/lookathil]
+      - [0x11140, .rodata, libc/llcvt]
+      - [0x11150, .rodata, gu/rotate]
+      - [0x11160, .rodata, gu/align]
+      - [0x11170, .rodata, gu/position]
+      - [0x11180, rodata, os/exceptasm]
+      - [0x111D0, .rodata, gu/cosf]
+      - [0x11220, .rodata, gu/sinf]
+      - [0x11270, rodata, os/setintmask]
+      - [0x112F0, .rodata, io/devmgr]
+      - [0x11310, rodata]
+      - { start: 0x11320, type: bss, vram: 0x80010720, name: globalBSS }
+      - { start: 0x11320, type: .bss, vram: 0x80013B10, name: os/seteventmesg }
+      - { start: 0x11320, type: .bss, vram: 0x80013B90, name: io/vimgr }
+      - { start: 0x11320, type: .bss, vram: 0x80014DB0, name: os/initialize }
+      - { start: 0x11320, type: .bss, vram: 0x80014DC0, name: io/controller }
+      - { start: 0x11320, type: .bss, vram: 0x80014E50, name: io/motor }
+      - { start: 0x11320, type: .bss, vram: 0x80014F50, name: io/sptask }
+      - { start: 0x11320, type: .bss, vram: 0x80014F90, name: gu/rotate }
+      - { start: 0x11320, type: .bss, vram: 0x80014FA0, name: gu/align }
+      - { start: 0x11320, type: .bss, vram: 0x80014FB0, name: gu/position }
+      - { start: 0x11320, type: .bss, vram: 0x80014FC0, name: os/timerintr }
+      - { start: 0x11320, type: .bss, vram: 0x80015000, name: io/pimgr }
+      - { start: 0x11320, type: .bss, vram: 0x800162C0, name: io/siacs }
+      - { start: 0x11320, type: .bss, vram: 0x800162E0, name: io/conteepread }
+      - { start: 0x11320, type: .bss, vram: 0x80016320, name: io/piacs }
+      - { start: 0x11320, type: .bss, vram: 0x80016340, name: os/kdebugserver }
+      - { start: 0x11320, type: .bss, vram: 0x800164F0, name: io/pfsisplug }
+      - { start: 0x11320, type: .bss, vram: 0x80016530, name: io/contpfs }
+
+  - name: rspText
+    type: bin
+    start: 0x11320
+    vram: 0x805FB000
+    subsegments:
+      - [0x11320, data, rspBootText]
+  - name: assets
+    type: bin
+    start: 0x113F0
+    follow_vram: rspText
+    subsegments:
+      - [0x113F0, bin]
+  - name: assets2
+    type: bin
+    start: 0x11620
+    subsegments:
+      - [0x11620, bin]
+  - name: global_asm
+    dir: global_asm
+    type: code
+    start: 0x2000000
+    vram: 0x805FB300
+    exclusive_ram_id: global_asm
+    bss_size: 0x9E0B0
+    subsegments:
+      - [0x2000000, c, code_0]
+      - [0x2000450, c, code_450]
+      - [0x2003C10, c, code_3C10]
+      - [0x2005650, c, done/code_5650]
+      - [0x2005A50, c, done/code_5A50]
+      - [0x2006710, c, code_6710]
+      - [0x200F4C0, c, done/code_F4C0]
+      - [0x200F600, c, code_F600]
+      - [0x200FE40, c, done/code_FE40]
+      - [0x2010130, c, done/dktv]
+      - [0x20104F0, c, saveFile]
+      - [0x20131B0, c, code_131B0]
+      - [0x2014CF0, c, done/code_14CF0]
+      - [0x2015010, hasm, code_15010]
+      - [0x2015050, c, heap]
+      - [0x2016550, c, done/code_16550]
+      - [0x20166A0, c, done/rand]
+      - [0x20169F0, c, done/code_169F0]
+      - [0x2016A20, c, done/code_16A20]
+      - [0x2016B60, hasm, code_16B60]
+      - [0x2017490, hasm, code_17490]
+      - [0x2017540, c, done/code_17540]
+      - [0x2017800, c, done/code_17800]
+      - [0x2017A10, hasm, code_17A10]
+      - [0x2017B40, c, done/code_17B40]
+      - [0x2017B90, c, code_17B90]
+      - [0x2018750, c, code_18750]
+      - [0x201E200, c, done/code_1E200]
+      - [0x201E2D0, hasm, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
+      # - [0x201E2D0, c, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
+      #- [0x201F9A0, bin, code_1F9A0] # Float to Array
+      - [0x20201B0, c, code_201B0]
+      - [0x202C700, c, code_2C700]
+      - [0x202C910, c, code_2C910]
+      - [0x202DE90, c, code_2DE90]
+      - [0x202F550, c, code_2F550]
+      - [0x2035000, c, code_35000]
+      - [0x2036880, c, code_36880]
+      - [0x2042630, c, code_42630]
+      - [0x20478F0, c, propScripts]
+      - [0x2054150, c, code_54150]
+      - [0x2055B20, c, code_55B20]
+      - [0x205DE10, c, done/code_5DE10]
+      - [0x205E020, c, done/code_5E020]
+      - [0x205E2F0, c, code_5E2F0]
+      - [0x2061690, c, code_61690] # TODO: Weird "handwritten instructions" in function, could it be mips3? Could it be hasm?
+      - [0x2061AA0, c, code_61AA0]
+      - [0x2063810, c, code_63810]
+      - [0x2063EC0, c, code_63EC0]
+      - [0x2067890, c, code_67890]
+      - [0x20684C0, c, done/code_684C0]
+      - [0x2068960, c, done/code_68960]
+      - [0x2068AA0, c, code_68AA0]
+      - [0x2068EA0, c, done/code_68EA0]
+      - [0x20699B0, c, done/code_699B0]
+      - [0x2069E60, c, code_69E60]
+      - [0x206AF80, c, code_6AF80]
+      - [0x2070FD0, c, code_70FD0]
+      - [0x2077B90, hasm, code_77B90]
+      - [0x2079890, c, code_79890]
+      - [0x207A510, c, done/code_7A510]
+      - [0x207AF60, c, done/code_7AF60]
+      - [0x207BA00, c, done/code_7BA00]
+      - [0x207BBD0, c, code_7BBD0]
+      - [0x207CA80, c, code_7CA80]
+      - [0x2080150, c, code_80150]
+      - [0x2089250, c, code_89250]
+      - [0x208CA50, c, done/code_8CA50]
+      - [0x208D3E0, c, code_8D3E0]
+      - [0x208F050, c, done/code_8F050]
+      - [0x208F4B0, c, code_8F4B0]
+      - [0x20910A0, c, code_910A0]
+      - [0x20936B0, c, code_936B0]
+      - [0x209BF30, c, code_9BF30]
+      - [0x209CE20, c, code_9CE20]
+      - [0x209DD70, c, code_9DD70]
+      - [0x20A2F10, c, code_A2F10]
+      - [0x20A6280, c, done/code_A6280]
+      - [0x20A7710, c, code_A7710]
+      - [0x20A8400, c, code_A8400]
+      - [0x20AAAF0, c, done/code_AAAF0]
+      - [0x20ACDC0, c, code_ACDC0]
+      - [0x20B1F60, c, done/code_B1F60]
+      - [0x20B2CE0, c, code_B2CE0]
+      - [0x20B5EC0, c, code_B5EC0]
+      - [0x20B6C50, c, done/code_B6C50]
+      - [0x20B7490, c, code_B7490]
+      - [0x20BA790, c, code_BA790]
+      - [0x20BB300, c, done/code_BB300]
+      - [0x20BC3B0, c, code_BC3B0]
+      - [0x20BD820, c, done/code_BD820]
+      - [0x20BDEE0, c, code_BDEE0]
+      - [0x20C0EE0, c, IceTomato]
+      - [0x20C1E70, c, code_C1E70]
+      - [0x20C2A90, c, code_C2A90]
+      - [0x20C8C10, c, done/code_C8C10]
+      - [0x20CB230, c, done/code_CB230]
+      - [0x20CBEA0, c, code_CBEA0]
+      - [0x20CC800, c, code_CC800]
+      - [0x20CEAE0, c, code_CEAE0]
+      - [0x20D78D0, c, code_D78D0]
+      - [0x20E4090, c, code_E4090]
+      - [0x20EBBE0, c, done/code_EBBE0]
+      - [0x20EFDC0, c, code_EFDC0]
+      - [0x20F56F0, c, code_F56F0]
+      - [0x20F9450, c, code_F9450]
+      - [0x20FCCD0, c, hud]
+      - [0x2100180, c, code_100180]
+      - [0x21025E0, c, code_1025E0]
+      - [0x2103AB0, c, code_103AB0]
+      - [0x210D2D0, c, code_10D2D0]
+      - [0x210E1D0, c, code_10E1D0]
+      - [0x2110F00, c, code_110F00]
+      - [0x2112080, c, code_112080]
+      - [0x21135F0, c, code_1135F0]
+      - [0x2114270, c, code_114270]
+      - [0x2117880, c, code_117880]
+      - [0x2119370, c, code_119370]
+      - [0x211BE00, c, code_11BE00]
+      - [0x2124780, hasm, code_124780] #sprites
+      - [0x2126260, c, code_126260]
+      - [0x2127B00, c, code_127B00]
+      - [0x21292F0, c, done/code_1292F0]
+      - [0x21295B0, c, code_1295B0]
+      - [0x212E800, c, code_12E800]
+      - [0x21332B0, c, done/triggers]
+      - [0x2133A90, c, code_133A90]
+      - [0x2135D30, c, code_135D30]
+      - [0x2136820, c, code_136820]
+      - [0x2137120, c, audio/heap]
+      - [0x21371D0, c, audio/bnkf]
+      - [0x2137630, c, audio/code_137630]
+      - [0x2137C10, c, audio/n_csplayer]
+      - [0x213A750, c, audio/cspsetbank]
+      - [0x213A7A0, c, audio/n_sndplayer]
+      - [0x213C920, c, audio/code_13C920]
+      - [0x213CB30, c, audio/seqpgetstate]
+      - [0x213CB50, c, audio/cspplay]
+      - [0x213CB90, c, audio/code_13CB90]
+      - [0x213CE70, c, audio/code_13CE70]
+      - [0x213CFA0, c, audio/code_13CFA0]
+      - [0x213D020, c, audio/code_13D020]
+      - [0x213D0B0, c, audio/code_13D0B0]
+      - [0x213D100, c, audio/code_13D100]
+      - [0x213D170, c, audio/n_csq]
+      - [0x213E020, c, audio/n_sl]
+      - [0x213E0E0, c, audio/link]
+      - [0x213E160, c, audio/n_synthesizer]
+      - [0x213EC00, c, audio/seqpstop]
+      - [0x213EC40, c, audio/seqpsetseq]
+      - [0x213EC90, c, audio/seqpsetvol]
+      - [0x213ECE0, c, audio/code_13ECE0]
+      - [0x213ED70, c, audio/n_seqplayer]
+      - [0x213FED0, c, audio/event]
+      - [0x2140260, c, audio/synaddplayer]
+      - [0x21402D0, c, audio/code_1402D0]
+      - [0x21403B0, c, audio/n_synstopvoice]
+      - [0x2140450, c, audio/synfreevoice]
+      - [0x2140530, c, audio/synsetvol]
+      - [0x2140600, c, audio/n_synsetpitch]
+      - [0x21406B0, c, audio/n_synfilter13]
+      - [0x2140760, c, audio/n_synfilter12]
+      - [0x2140810, c, audio/n_drvrNew]
+      - [0x2141520, c, audio/code_141520]
+      - [0x21417C0, c, audio/n_synallocvoice]
+      - [0x2141AD0, c, audio/synstartvoiceparam]
+      - [0x2141C00, c, audio/code_141C00]
+      - [0x2141E40, c, audio/n_syndelete]
+      - [0x2141E60, c, audio/code_141E60]
+      - [0x2141EF0, c, audio/n_reverb]
+      - [0x21435A0, c, audio/synsetpriority]
+      - [0x21435C0, c, audio/n_env]
+      - [0x21445A0, c, audio/code_1445A0]
+      - [0x2144A90, c, audio/code_144A90]
+      - [0x2144E00, c, audio/n_load]
+      - [0x2145950, c, audio/n_resample2]
+      - [0x2145D70, c, audio/code_145D70]
+      - [0x2146010, bin, n_aspMainText]
+      - [0x2146C40, bin, data_146C40]
+      - [0x2149160, data, data_149160]
+      - [0x214B0A0, .data, done/dktv]
+      - [0x214B0C0, data, data_14B0C0]
+      - [0x214B510, .data, code_131B0]
+      - [0x214B730, data, heap]
+      - [0x214B740, data, rand]
+      - [0x214B750, .data, done/code_16A20]
+      - [0x214B860, data, data_14B860]
+      - [0x214D870, .data, done/code_68960]
+      - [0x214D8A0, .data, done/code_699B0]
+      - [0x214DA40, data, data_14DA40]
+      - [0x215A350, .data, code_11BE00]
+      - [0x215A380, .data, code_126260]
+      - [0x215A390, .data, code_1295B0]
+      - [0x215A4A0, .data, done/triggers]
+      - [0x215A720, .data, code_135D30]
+      - [0x215AE30, .data, code_136820]
+      - [0x215B0C0, .data, audio/n_sndplayer]
+      - [0x215B0E0, data, data_15B0E0] # TODO: Audio
+      - [0x215B190, .data, audio/n_env]
+      - [0x215B290, .rodata, code_450]
+      - [0x215B2E0, .rodata, code_3C10]
+      - [0x215B4B0, .rodata, code_6710] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
+      - [0x215BD20, .rodata, saveFile]
+      - [0x215BE40, .rodata, code_131B0]
+      - [0x215BF90, .rodata, heap]
+      - [0x215BFD0, .rodata, done/code_16550]
+      - [0x215BFF0, .rodata, done/rand]
+      - [0x215C010, .rodata, done/code_17800]
+      - [0x215C020, rodata] # TODO: code_17800+, probably a split and HASM in here
+      - [0x215C050, .rodata, done/code_17B40]
+      - [0x215C060, .rodata, code_17B90]
+      - [0x215C070, .rodata, code_18750]
+      - [0x215C190, rodata] # TODO: split here
+      - [0x215C1A0, .rodata, code_201B0]
+      - [0x215CC70, .rodata, code_2C910]
+      - [0x215CE00, .rodata, code_2DE90]
+      - [0x215CE60, .rodata, code_2F550]
+      - [0x215CED0, .rodata, code_35000]
+      - [0x215CF00, .rodata, code_36880]
+      - [0x215D260, .rodata, code_42630]
+      - [0x215D630, .rodata, propScripts]
+      - [0x215D8E0, .rodata, code_54150]
+      - [0x215D960, .rodata, code_55B20]
+      - [0x215D9A0, .rodata, code_5E2F0]
+      - [0x215DA50, .rodata, code_61690]
+      - [0x215DA60, .rodata, code_61AA0]
+      - [0x215DAC0, .rodata, code_63810]
+      - [0x215DAD0, .rodata, code_63EC0]
+      - [0x215DAE0, .rodata, code_67890]
+      - [0x215DAF0, .rodata, done/code_68960]
+      - [0x215DB10, .rodata, done/code_68EA0]
+      - [0x215DB20, .rodata, done/code_699B0]
+      - [0x215DB30, .rodata, code_69E60]
+      - [0x215DBC0, rodata] # code_6AF80
+      - [0x215DD50, .rodata, code_70FD0]
+      - [0x215DEA0, .rodata, code_79890]
+      - [0x215DEC0, .rodata, done/code_7A510]
+      - [0x215DEE0, .rodata, done/code_7AF60]
+      - [0x215DF50, .rodata, done/code_7BA00]
+      - [0x215DF60, .rodata, code_7CA80]
+      - [0x215E090, .rodata, code_80150]
+      - [0x215E790, .rodata, code_89250]
+      - [0x215E8B0, .rodata, code_8D3E0]
+      - [0x215EA00, .rodata, code_8F4B0]
+      - [0x215EC30, .rodata, code_910A0]
+      - [0x215EC70, .rodata, code_936B0]
+      - [0x215EEF0, .rodata, code_9BF30]
+      - [0x215EF40, .rodata, code_9CE20]
+      - [0x215EFD0, .rodata, code_9DD70]
+      - [0x215F110, .rodata, code_A2F10]
+      - [0x215F250, .rodata, done/code_A6280]
+      - [0x215F2B0, .rodata, code_A7710]
+      - [0x215F440, .rodata, code_A8400]
+      - [0x215F6A0, .rodata, done/code_AAAF0]
+      - [0x215F780, .rodata, code_ACDC0]
+      - [0x215FA20, .rodata, done/code_B1F60]
+      - [0x215FB20, .rodata, code_B2CE0]
+      - [0x215FFA0, .rodata, code_B5EC0]
+      - [0x21600C0, .rodata, done/code_B6C50]
+      - [0x21600F0, .rodata, code_B7490]
+      - [0x2160420, .rodata, code_BA790]
+      - [0x2160460, .rodata, done/code_BB300]
+      - [0x2160570, .rodata, code_BC3B0]
+      - [0x21605B0, .rodata, done/code_BD820]
+      - [0x21605D0, .rodata, code_BDEE0]
+      - [0x2160830, .rodata, IceTomato]
+      - [0x21608C0, .rodata, code_C1E70]
+      - [0x21608E0, .rodata, code_C2A90]
+      - [0x2160F60, .rodata, done/code_C8C10]
+      - [0x2161080, .rodata, done/code_CB230]
+      - [0x21610E0, .rodata, code_CBEA0]
+      - [0x2161110, .rodata, code_CC800]
+      - [0x21614B0, .rodata, code_CEAE0]
+      - [0x21619E0, .rodata, code_D78D0]
+      - [0x2161DE0, .rodata, code_E4090]
+      - [0x2162030, .rodata, done/code_EBBE0]
+      - [0x2162080, .rodata, code_EFDC0]
+      - [0x21622F0, .rodata, code_F56F0]
+      - [0x2162560, .rodata, code_F9450]
+      - [0x2162760, .rodata, hud]
+      - [0x2162920, .rodata, code_100180]
+      - [0x2162A40, .rodata, code_1025E0]
+      - [0x2162B70, .rodata, code_103AB0]
+      - [0x21630F0, .rodata, code_10D2D0]
+      - [0x2163130, .rodata, code_10E1D0]
+      - [0x2163170, .rodata, code_110F00]
+      - [0x2163190, .rodata, code_112080]
+      - [0x21631B0, .rodata, code_114270]
+      - [0x21632C0, .rodata, code_117880]
+      - [0x21633A0, .rodata, code_119370]
+      - [0x21633D0, .rodata, code_11BE00]
+      - [0x2163800, .rodata, code_126260]
+      - [0x2163840, .rodata, code_127B00]
+      - [0x2163870, .rodata, done/code_1292F0]
+      - [0x2163880, rodata] # code_1295B0, code12E800?
+      - [0x2164880, rodata] # code_12E800
+      - [0x2164C50, .rodata, code_133A90]
+      - [0x2164CF0, .rodata, code_136820]
+      - [0x2164E90, .rodata, audio/code_137630]
+      - [0x2164EA0, .rodata, audio/n_csplayer]
+      - [0x2165150, .rodata, audio/n_sndplayer]
+      - [0x2165190, .rodata, audio/n_synthesizer]
+      - [0x21651A0, .rodata, audio/code_13ECE0]
+      - [0x21651B0, .rodata, audio/n_drvrNew]
+      - [0x21651D0, .rodata, audio/code_141520]
+      - [0x21651E0, .rodata, audio/n_reverb]
+      - [0x2165210, .rodata, audio/n_env]
+      - [0x2165260, .rodata, audio/code_1445A0]
+      - [0x2165270, .rodata, audio/n_resample2]
+      - [0x2165280, .rodata, audio/code_145D70]
+      - [0x2165290, rodata, n_aspMain_data]
+      - [0x2165540, rodata] # ???
+      - { start: 0x2165D50, type: bss, vram: 0x80761050, name: global_asm_BSS }
+      - { start: 0x2165D50, type: .bss, vram: 0x807655E0, name: code_0 }
+      - { start: 0x2165D50, type: bss, vram: 0x807655F0, name: global_asm_BSS2 }
+      - { start: 0x2165D50, type: .bss, vram: 0x807F02D0, name: code_131B0 }
+      - { start: 0x2165D50, type: bss, vram: 0x807F0570, name: global_asm_BSS3 }
+      - { start: 0x2165D50, type: .bss, vram: 0x807FDCD0, name: code_135D30 }
+      - { start: 0x2165D50, type: bss, vram: 0x807FDDA0, name: global_asm_BSS4 }
+
+  - name: menu
+    dir: menu
+    type: code
+    start: 0x2165D50
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0xC0
+    subsegments:
+      - [0x2165D50, c, code_0]
+      - [0x2167840, c, code_1AF0]
+      - [0x2169B60, c, code_3E10]
+      - [0x21742A0, c, code_E550]
+      - [0x2174CA0, data, code_0]
+      - [0x2174FB0, data, code_1AF0]
+      - [0x21753C0, data, code_3E10]
+      - [0x2175720, .data, code_E550]
+      - [0x2175730, .rodata, code_0]
+      - [0x21757A0, .rodata, code_1AF0]
+      - [0x2175880, .rodata, code_3E10]
+      - [0x2175C40, .rodata, code_E550]
+      - { start: 0x2175C60, type: bss, vram: 0x80033F10, name: menu_BSS }
+  - name: multiplayer
+    dir: multiplayer
+    type: code
+    start: 0x2175C60
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x10
+    subsegments:
+      - [0x2175C60, c, code_0]
+      - [0x2178BD0, .data, code_0]
+      - [0x2178CA0, .rodata, code_0]
+      - { start: 0x2178D60, type: bss, vram: 0x80027100, name: multiplayer_BSS }
+      
+  - name: minecart
+    dir: minecart
+    type: code
+    start: 0x2178D60
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x10
+    subsegments:
+      - [0x2178D60, c, code_0]
+      - [0x217B350, c, code_25F0]
+      - [0x217D8F0, .data, code_25F0]
+      - [0x217D9C0, .rodata, code_0]
+      - [0x217DAA0, .rodata, code_25F0]
+      - { start: 0x217DB70, type: bss, vram: 0x80028E10, name: minecart_BSS }
+
+  - name: bonus
+    dir: bonus
+    type: code
+    start: 0x217DB70
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x20
+    subsegments:
+      - [0x217DB70, c, code_0]
+      - [0x217EE10, c, code_12A0]
+      - [0x2180200, c, code_2690]
+      - [0x2186B80, c, code_9010]
+      - [0x21873D0, .data, code_0]
+      - [0x2187420, .data, code_12A0]
+      - [0x2187430, .data, code_2690]
+      - [0x2187480, .data, code_9010]
+      - [0x21874B0, .rodata, code_0]
+      - [0x2187800, .rodata, code_12A0]
+      - [0x2187890, rodata] # code_2690
+      - [0x2187A30, .rodata, code_9010]
+      - { start: 0x2187A60, type: bss, vram: 0x8002DEF0, name: bonus_BSS }
+      
+  - name: race
+    dir: race
+    type: code
+    start: 0x2187A60
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x10
+    subsegments:
+      - [0x2187A60, c, code_0]
+      - [0x21891D0, c, code_1770]
+      - [0x218B110, c, code_36B0]
+      - [0x218CD10, c, code_52B0]
+      - [0x218E0B0, c, code_6650]
+      - [0x218F630, c, code_7BD0]
+      - [0x21923C0, c, code_A960]
+      - [0x2193570, .data, code_0]
+      - [0x2193610, .data, code_1770]
+      - [0x2193630, .data, code_36B0]
+      - [0x2193680, .data, code_52B0]
+      - [0x21936D0, .data, code_6650]
+      - [0x2193720, .data, code_7BD0]
+      - [0x2193750, .data, code_A960]
+      - [0x2193760, .rodata, code_0]
+      - [0x2193830, .rodata, code_1770]
+      - [0x21938D0, .rodata, code_36B0]
+      - [0x2193A10, .rodata, code_52B0]
+      - [0x2193A80, .rodata, code_6650]
+      - [0x2193B20, .rodata, code_7BD0]
+      - [0x2193BB0, .rodata, code_A960]
+      - { start: 0x2193BC0, type: bss, vram: 0x80030160, name: race_BSS }
+
+  - name: critter
+    dir: critter
+    type: code
+    start: 0x2193BC0
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    subsegments:
+      - [0x2193BC0, c, code_0]
+      - [0x2196F00, c, code_3340]
+      - [0x2198400, c, code_4840]
+      - [0x2198CD0, c, code_5110]
+      - [0x21993B0, .data, code_0]
+      - [0x2199B40, .data, code_3340]
+      - [0x2199B60, .data, code_5110]
+      - [0x2199B70, .rodata, code_0]
+      - [0x2199C70, .rodata, code_3340]
+      - [0x2199D30, .rodata, code_4840]
+      - [0x2199D50, .rodata, code_5110]
+      - { start: 0x2199D70, type: bss, vram: 0x8002A1B0, name: critter_BSS }
+      
+  - name: boss
+    dir: boss
+    type: code
+    start: 0x2199D70
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x30
+    subsegments:
+      - [0x2199D70, c, ArmyDillo]
+      - [0x219D5B0, c, KRoolGeneric]
+      - [0x219F020, c, Pufftoss]
+      - [0x219FFB0, c, Dogadon]
+      - [0x21A2290, c, SpiderBoss]
+      - [0x21A2FA0, c, KRoolDK]
+      - [0x21A39D0, c, KRoolDiddy]
+      - [0x21A4510, c, KRoolLanky]
+      - [0x21A4E70, c, KRoolTiny]
+      - [0x21A6690, c, KRoolChunky]
+      - [0x21A7810, c, KutOut]
+      - [0x21A8E40, c, MadJack]
+      - [0x21AB620, .data, ArmyDillo]
+      - [0x21AB710, .data, KRoolGeneric]
+      - [0x21AB770, .data, Pufftoss]
+      - [0x21AB790, .data, Dogadon]
+      - [0x21AB7C0, .data, KRoolDK]
+      - [0x21AB7D0, .data, KRoolDiddy]
+      - [0x21AB7F0, .data, KRoolLanky]
+      - [0x21AB800, .data, KRoolTiny]
+      - [0x21AB830, .data, KRoolChunky]
+      - [0x21AB870, .data, KutOut]
+      - [0x21AB8F0, .data, MadJack]
+      - [0x21AB970, .rodata, ArmyDillo]
+      - [0x21ABD00, .rodata, KRoolGeneric]
+      - [0x21ABED0, .rodata, Pufftoss]
+      - [0x21AC060, .rodata, Dogadon]
+      - [0x21AC350, .rodata, SpiderBoss]
+      - [0x21AC3D0, .rodata, KRoolDK]
+      - [0x21AC4C0, .rodata, KRoolDiddy]
+      - [0x21AC5B0, .rodata, KRoolLanky]
+      - [0x21AC630, .rodata, KRoolTiny]
+      - [0x21AC800, .rodata, KRoolChunky]
+      - [0x21AC8F0, .rodata, KutOut]
+      - [0x21AC980, .rodata, MadJack]
+      - { start: 0x21ACB30, type: bss, vram: 0x80036DC0, name: boss_BSS }
+
+  - name: arcade
+    dir: arcade
+    type: code
+    start: 0x21ACB30
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    subsegments:
+      - [0x21ACB30, c, code_0]
+      - [0x21BAD50, .data, code_0]
+      - [0x21D3370, .rodata, code_0]
+      - { start: 0x21D3730, type: bss, vram: 0x8004AC00 }
+      - [0x21D47B0, .bss, code_0]
+  - name: jetpac
+    dir: jetpac
+    type: code
+    start: 0x21D3730
+    vram: 0x80024000
+    exclusive_ram_id: overlay
+    bss_size: 0x16FD0
+    subsegments:
+      - [0x21D3730, c, code_0]
+      - [0x21D4B90, c, code_1460]
+      - [0x21D4D04, c, code_15D4]
+      - [0x21D6790, c, code_3060]
+      - [0x21D6BB0, c, code_3480]
+      - [0x21D86F0, c, code_4FC0]
+      - [0x21DA7C0, data, code_0]
+      - [0x21DE100, .rodata, code_0]
+      - [0x21DE250, .rodata, code_1460]
+      - [0x21DE260, .rodata, code_15D4]
+      - [0x21DE2A0, .rodata, code_3060]
+      - [0x21DE2B0, .rodata, code_3480]
+      - [0x21DE2E0, .rodata, code_4FC0]
+      - { start: 0x21DE360, type: bss, vram: 0x8002EC30}
+  - [0x21DE360] # end of ROM
