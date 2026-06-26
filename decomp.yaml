@@ -50,35 +50,11 @@ tools:
             - us/
 
         # Categories by segment
-        - id: segment_.header
-          name: Segment .header
-          paths:
-            - us/asm/header
-        - id: segment_.boot
-          name: Segment .boot
-          paths:
-            - us/bin/boot
-        - id: segment_.entry
-          name: Segment .entry
-          paths:
-            - us/src/entry
         - id: segment_.dk64_boot
           name: Segment .dk64_boot
           paths:
             - us/src/dk64_boot
             - us/asm/data/dk64_boot
-        - id: segment_.rspText
-          name: Segment .rspText
-          paths:
-            - us/bin/rspText
-        - id: segment_.assets
-          name: Segment .assets
-          paths:
-            - us/bin/assets
-        - id: segment_.assets2
-          name: Segment .assets2
-          paths:
-            - us/bin/assets2
         - id: segment_.global_asm
           name: Segment .global_asm
           paths:
